@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>框架介绍</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href=''>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-store"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!--IOS设备上禁止将数字识别为可点击的tel link-->
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+    <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+    <link rel="stylesheet" type="text/css" href="../../static/css/help.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/_public/flatpickr.min.css"/>
+    <!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="iframe-body">
+	<div class="card-space">
+		<div class="card-title">框架介绍</div>
+		<div class="card-container">
+			<p class="help-detail">为了方便移动端的快速开发，以及迭代升级，所以采用hybird开发方式，即混合开发和服务器端H5开发，移动端框架是基于webview+ H5 的开发方式，原生通信采用cordova的方式。</p>
+			<p class="help-detail">本框架是基于cordova进行定制开发，H5基于vue+zepto定制化开发，完成了基本移动开发常用组件，能够兼容web 和 app内运行，方便测试和集成。</p>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">期望和目标</div>
+		<div class="card-container">
+			<p class="help-detail">1.期望经过团队的共同努力，形成完整的app开发方案，形成sdk和UI组件库，形成app快速开发</p>
+			<p class="help-detail">2.进行部分的开源，万一火了呢，嘿嘿</p>
+		</div>
+	</div>
+<script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/jquery.form.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/flatpickr.min.js' charset='utf-8'></script>
+<script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$('textarea').each(function(){
+		$(this).css('height',this.scrollHeight);
+	});
+</script>
+</body>
+</html>

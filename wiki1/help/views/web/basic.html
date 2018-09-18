@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>后台管理</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href=''>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-store"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!--IOS设备上禁止将数字识别为可点击的tel link-->
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+    <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+    <link rel="stylesheet" type="text/css" href="../../static/css/help.css"/>
+    <!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="iframe-body">
+	<div class="card-space">
+		<div class="card-title">排版布局</div>
+		<div class="card-container">
+			<p class="help-title">1.字体对齐</p>
+			<p class="text-left">字体居左</p>
+			<p class="text-center">字体居中</p>
+			<p class="text-right">字体居右</p>
+			<textarea class="code-space" disabled>
+<p class="text-left">字体居左</p>
+<p class="text-center">字体居中</p>
+<p class="text-right">字体居右</p>
+			</textarea>
+			<p class="help-title">2.禁止选中</p>
+			<div class="no-select">这里的文字无法选中复制</div>
+			<textarea class="code-space" disabled>
+<div class="no-select">这里的文字无法选中复制</div>
+			</textarea>
+			<p class="help-title">3.清除浮动</p>
+			<div class="help-detail">给float元素添加clearfix样式</div>
+			<p class="help-title">4.浮动和边距</p>
+			<textarea class="code-space" disabled>
+.ml { margin-left: 10px;}
+.mr { margin-right: 10px;}
+.fr { float: right !important;}
+.fl { float: left !important;}
+			</textarea>
+			<p class="help-title">5.背景色</p>
+			<div class="help-detail">.bg-main 白色</div>
+			<p class="help-title">6.背景阴影</p>
+			<div class="help-detail">.m-shadow 给元素添加阴影</div>
+			<p class="help-title">7.盒布局</p>
+			<textarea class="code-space" disabled>
+.webkit-box {
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+}
+			</textarea>
+			<p class="help-title">8.字体长度控制</p>
+			<p class="text-warp" style="width: 100px;">文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+			<textarea class="code-space" disabled>
+<p class="text-warp" style="width: 100px;">文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+			</textarea>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">内层body和标题右侧按钮组
+			<div class="button-group">
+				<i class="iconfont icon-zengjia"></i>
+				<i class="iconfont icon-shanchu1"></i>
+			</div>
+		</div>
+		<div class="card-container">
+			<p class="help-title">1.内层请在body上添加样式iframe-body</p>
+			<p class="help-title">2.标题右侧按钮组</p>
+			<textarea class="code-space" disabled>
+<div class="button-group">
+	<i class="iconfont icon-zengjia"></i>
+	<i class="iconfont icon-shanchu1"></i>
+</div>
+			</textarea>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">卡片样式1</div>
+		<div class="card-container">
+			<p class="help-title">当前卡片</p>
+			<textarea class="code-space" disabled>
+<div class="card-space">
+	<div class="card-title">这里是卡片标题</div>
+	<div class="card-container">
+		这里是卡片内容
+	</div>
+</div>
+			</textarea>
+		</div>
+	</div>
+	<div class="card-space card-form">
+		<div class="card-title">卡片样式2</div>
+		<div class="card-container">
+			<p class="help-title">当前卡片</p>
+			<textarea class="code-space" disabled>
+<div class="card-space card-form">
+	<div class="card-title">这里是卡片标题</div>
+	<div class="card-container">
+		这里是卡片内容
+	</div>
+</div>
+			</textarea>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">暂无数据提示，常用语列表页无数据时使用</div>
+		<div class="card-container">
+			<div class="no-data">暂无数据</div>
+			<textarea class="code-space" disabled>
+<div class="no-data">暂无数据</div>
+			</textarea>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">绘画分页</div>
+		<div class="card-container">
+			<div class="page-navigation"></div>
+			<textarea class="code-space" disabled>
+<div class="page-navigation"></div>
+			</textarea>
+			<p class="help-title">分页js控制</p>
+			<textarea class="code-space" disabled>
+/*绘画分页*/
+module.pageManage({
+	pageTotal: 500,
+	pageIndex: 5
+});
+			</textarea>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">首页主页菜单</div>
+		<div class="card-container">
+			<textarea class="code-space" disabled>
+<div class="menu-item-1 no-collapse" data-click="loadtab" data-url="views/view1.html" data-title="对账明细">
+	<span class="iconfont icon-duizhangmingxi"></span><span class="menu-item-title">对账明细</span>
+</div>
+<div class="menu-item-1 has-collapse" data-click="collapse" data-target="#menu1" data-parent="#mainMenus">
+	<span class="iconfont icon-tubiaozhizuomoban-copy"></span><span class="menu-item-title">供应商管理</span>
+</div>
+<div id="menu1" class="menus-space">
+	<div class="menu-item-2" data-click="loadtab" data-url="views/view1.html" data-title="账号管理">
+		<span class="iconfont icon-tubiaozhizuomoban-copy"></span>供应商分析1
+	</div>
+	<div class="menu-item-2 has-collapse" data-click="collapse" data-target="#menu1_1" data-parent="#menu1">
+		<span class="iconfont icon-tubiaozhizuomoban-copy"></span>供应商分析tab1
+	</div>
+	<div id="menu1_1" class="menus-space">
+		<div class="menu-item-3" data-click="loadtab" data-url="views/view1.html" data-title="供应商分析2">供应商分析2</div>
+		<div class="menu-item-3" data-click="loadtab" data-url="views/view1.html" data-title="供应商分析3">供应商分析3</div>
+	</div>
+</div>
+			</textarea>
+		</div>
+	</div>
+<script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+<script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$('textarea').each(function(){
+		$(this).css('height',this.scrollHeight);
+	});
+	/*绘画分页*/
+	module.pageManage({
+		pageTotal: 500,
+		pageIndex: 5
+	});
+</script>
+</body>
+</html>

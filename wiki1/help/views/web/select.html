@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>后台管理</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href=''>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-store"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!--IOS设备上禁止将数字识别为可点击的tel link-->
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+    <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+    <link rel="stylesheet" type="text/css" href="../../static/css/help.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/_public/flatpickr.min.css"/>
+    <!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="iframe-body">
+	<div class="card-space">
+		<div class="card-title">select选择器</div>
+		<div class="card-container">
+			<div class="help-detail">
+				select选择器是在框架初始化doTree中添加的扩展，包含单选和多选，只需要配置对应参数即可进行初始化使用，配置参数如下：
+				<pre class="code-space">
+val: null,			/* ! 默认值 */
+search: false, 		/* ! 是否带search */
+multiple: false,	/* ! 是否支持多选 */
+split: ',' 			/* ! 多选值，分隔符 */
+				</pre>
+				<p class="help-detail">select属性配置data-val 值为默认值，如果值不存在，则会选择隐藏input的val值，如果值都不存在，或者默认值，在下来选择中不存在，则会选择下来选择的第一个为默认值， 使用时请配置data-do="select"，其他参数根据需要配置,需要的是，带搜索的选择框，需要依赖第三方库pinyin.js，如果配置data-search="true"时，请引入该库</p>
+			</div>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">select选择器</div>
+		<div class="card-container clearfix">
+			<div class="search-item">
+				<label class="input-label">单选-搜索：</label>
+				<div class="select-dropdown m-input" data-do="select" data-search="true">
+					<div class="text-warp selected-value"></div>
+					<input type="hidden" name="selectValue"/>
+					<ul class="dropdown-menu">
+						<li class="dropdown-item text-warp" data-value="0">中国</li>
+						<li class="dropdown-item text-warp" data-value="1">美国</li>
+						<li class="dropdown-item text-warp" data-value="2">俄罗斯</li>
+						<li class="dropdown-item text-warp" data-value="3">罗马尼亚</li>
+						<li class="dropdown-item text-warp" data-value="4">中国</li>
+						<li class="dropdown-item text-warp" data-value="5">美国</li>
+						<li class="dropdown-item text-warp" data-value="6">俄罗斯</li>
+						<li class="dropdown-item text-warp" data-value="7">罗马尼亚</li>
+						<li class="dropdown-item text-warp" data-value="8">中国</li>
+						<li class="dropdown-item text-warp" data-value="9">美国</li>
+						<li class="dropdown-item text-warp" data-value="10">俄罗斯</li>
+						<li class="dropdown-item text-warp" data-value="11">罗马尼亚</li>
+					</ul>
+				</div>
+			</div>
+			<div class="search-item">
+				<label class="input-label">单选：</label>
+				<div class="select-dropdown m-input" data-do="select">
+					<div class="text-warp selected-value"></div>
+					<input type="hidden" name="selectValue" value="0"/>
+					<ul class="dropdown-menu">
+						<li class="dropdown-item text-warp" data-value="3">中国</li>
+						<li class="dropdown-item text-warp" data-value="1">美国</li>
+						<li class="dropdown-item text-warp" data-value="2">俄罗斯</li>
+						<li class="dropdown-item text-warp" data-value="0">罗马尼亚</li>
+					</ul>
+				</div>
+			</div>
+			<div class="search-item">
+				<label class="input-label">多选-搜索：</label>
+				<div class="select-dropdown m-input" data-do="select" data-search="true" data-multiple="true">
+					<div class="text-warp selected-value"></div>
+					<input type="hidden" name="selectValue"/>
+					<ul class="dropdown-menu">
+						<li class="dropdown-item text-warp" data-value="0">中国</li>
+						<li class="dropdown-item text-warp" data-value="1">美国</li>
+						<li class="dropdown-item text-warp" data-value="2">俄罗斯</li>
+						<li class="dropdown-item text-warp" data-value="3">罗马尼亚</li>
+						<li class="dropdown-item text-warp" data-value="4">中国</li>
+						<li class="dropdown-item text-warp" data-value="5">美国</li>
+						<li class="dropdown-item text-warp" data-value="6">俄罗斯</li>
+						<li class="dropdown-item text-warp" data-value="7">罗马尼亚</li>
+						<li class="dropdown-item text-warp" data-value="8">中国</li>
+						<li class="dropdown-item text-warp" data-value="9">美国</li>
+						<li class="dropdown-item text-warp" data-value="10">俄罗斯</li>
+						<li class="dropdown-item text-warp" data-value="11">罗马尼亚</li>
+					</ul>
+				</div>
+			</div>
+			<div class="search-item">
+				<label class="input-label">多选：</label>
+				<div class="select-dropdown m-input" data-do="select" data-multiple="true">
+					<div class="text-warp selected-value"></div>
+					<input type="hidden" name="selectValue" value="0,1"/>
+					<ul class="dropdown-menu">
+						<li class="dropdown-item text-warp" data-value="0">中国</li>
+						<li class="dropdown-item text-warp" data-value="1">美国</li>
+						<li class="dropdown-item text-warp" data-value="2">俄罗斯</li>
+						<li class="dropdown-item text-warp" data-value="3">罗马尼亚</li>
+						<li class="dropdown-item text-warp" data-value="4">中国</li>
+						<li class="dropdown-item text-warp" data-value="5">美国</li>
+						<li class="dropdown-item text-warp" data-value="6">俄罗斯</li>
+						<li class="dropdown-item text-warp" data-value="7">罗马尼亚</li>
+						<li class="dropdown-item text-warp" data-value="8">中国</li>
+						<li class="dropdown-item text-warp" data-value="9">美国</li>
+						<li class="dropdown-item text-warp" data-value="10">俄罗斯</li>
+						<li class="dropdown-item text-warp" data-value="11">罗马尼亚</li>
+					</ul>
+				</div>
+			</div>
+			<textarea class="code-space" disabled>
+<div class="search-item">
+	<label class="input-label">单选-搜索：</label>
+	<div class="select-dropdown m-input" data-do="select" data-search="true">
+		<div class="text-warp selected-value"></div>
+		<input type="hidden" name="selectValue"/>
+		<ul class="dropdown-menu">
+			<li class="dropdown-item text-warp" data-value="0">中国</li>
+			<li class="dropdown-item text-warp" data-value="1">美国</li>
+			<li class="dropdown-item text-warp" data-value="2">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="3">罗马尼亚</li>
+			<li class="dropdown-item text-warp" data-value="4">中国</li>
+			<li class="dropdown-item text-warp" data-value="5">美国</li>
+			<li class="dropdown-item text-warp" data-value="6">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="7">罗马尼亚</li>
+			<li class="dropdown-item text-warp" data-value="8">中国</li>
+			<li class="dropdown-item text-warp" data-value="9">美国</li>
+			<li class="dropdown-item text-warp" data-value="10">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="11">罗马尼亚</li>
+		</ul>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">单选：</label>
+	<div class="select-dropdown m-input" data-do="select">
+		<div class="text-warp selected-value"></div>
+		<input type="hidden" name="selectValue" value="0"/>
+		<ul class="dropdown-menu">
+			<li class="dropdown-item text-warp" data-value="3">中国</li>
+			<li class="dropdown-item text-warp" data-value="1">美国</li>
+			<li class="dropdown-item text-warp" data-value="2">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="0">罗马尼亚</li>
+		</ul>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">多选-搜索：</label>
+	<div class="select-dropdown m-input" data-do="select" data-search="true" data-multiple="true">
+		<div class="text-warp selected-value"></div>
+		<input type="hidden" name="selectValue"/>
+		<ul class="dropdown-menu">
+			<li class="dropdown-item text-warp" data-value="0">中国</li>
+			<li class="dropdown-item text-warp" data-value="1">美国</li>
+			<li class="dropdown-item text-warp" data-value="2">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="3">罗马尼亚</li>
+			<li class="dropdown-item text-warp" data-value="4">中国</li>
+			<li class="dropdown-item text-warp" data-value="5">美国</li>
+			<li class="dropdown-item text-warp" data-value="6">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="7">罗马尼亚</li>
+			<li class="dropdown-item text-warp" data-value="8">中国</li>
+			<li class="dropdown-item text-warp" data-value="9">美国</li>
+			<li class="dropdown-item text-warp" data-value="10">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="11">罗马尼亚</li>
+		</ul>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">多选：</label>
+	<div class="select-dropdown m-input" data-do="select" data-multiple="true">
+		<div class="text-warp selected-value"></div>
+		<input type="hidden" name="selectValue" value="0,1"/>
+		<ul class="dropdown-menu">
+			<li class="dropdown-item text-warp" data-value="0">中国</li>
+			<li class="dropdown-item text-warp" data-value="1">美国</li>
+			<li class="dropdown-item text-warp" data-value="2">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="3">罗马尼亚</li>
+			<li class="dropdown-item text-warp" data-value="4">中国</li>
+			<li class="dropdown-item text-warp" data-value="5">美国</li>
+			<li class="dropdown-item text-warp" data-value="6">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="7">罗马尼亚</li>
+			<li class="dropdown-item text-warp" data-value="8">中国</li>
+			<li class="dropdown-item text-warp" data-value="9">美国</li>
+			<li class="dropdown-item text-warp" data-value="10">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="11">罗马尼亚</li>
+		</ul>
+	</div>
+</div>
+			</textarea>
+		</div>
+	</div>
+<script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/jquery.form.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/flatpickr.min.js' charset='utf-8'></script>
+<script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$('textarea').each(function(){
+		$(this).css('height',this.scrollHeight);
+	});
+</script>
+</body>
+</html>

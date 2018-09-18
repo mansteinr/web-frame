@@ -1,0 +1,18 @@
+$mv-default-dis: 20px; //常用边距
+
+//背景颜色
+$mv-color-success: #67c23a !default;
+$mv-color-warning: #e6a23c !default;
+$mv-color-danger: #f56c6c !default;
+$mv-color-info: #909399 !default;
+
+//字体色值
+$mv-color-text-primary: #303133 !default;
+$mv-color-text-regular: #606266 !default;
+$mv-color-text-secondary: #909399 !default;
+$mv-color-text-placeholder: #c0c4cc !default;
+
+//常用背影样式
+.mv-box-shadow {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+}

@@ -1,0 +1,20 @@
+{
+  "_dev/static/js/apiConfig.js" : [
+    {
+      "rex": ":protocol",
+      "newCtx": "http://"
+    },
+    {
+      "rex": ":hostRbacWeb",
+      "newCtx": "gmedev.miniscores.cn/gmeManage/"
+    },
+    {
+      "rex": ":hostRbacApi",
+      "newCtx": "gmedev.miniscores.cn:8081/"
+    },
+    {
+      "rex": ":hostProject",
+      "newCtx": "gmedev.miniscores.cn:8060/"
+    }
+  ]
+}

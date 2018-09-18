@@ -1,0 +1,20 @@
+{
+  "dist/static/js/apiConfig.js" : [
+    {
+      "rex": ":protocol",
+      "newCtx": "http://"
+    },
+    {
+      "rex": ":hostRbacWeb",
+      "newCtx": "boss.miniscores.cn/"
+    },
+    {
+      "rex": ":hostRbacApi",
+      "newCtx": "boss.miniscores.cn:9023/"
+    },
+    {
+      "rex": ":hostProject",
+      "newCtx": "boss.miniscores.cn:8060/"
+    }
+  ]
+}

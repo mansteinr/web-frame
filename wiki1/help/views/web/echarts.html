@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>使用说明</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href=''>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!--IOS设备上禁止将数字识别为可点击的tel link-->
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+    <link rel="stylesheet" type="text/css" href="../../static/css/help.css" />
+    <!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+    <![endif]-->
+    <style>
+        ul li {
+            display: inline-block;
+            width: 33%;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body class="iframe-body">
+    <div class="card-space">
+        <div class="card-title">折线图</div>
+        <!-- <div class="card-container">
+            <div class="help-detail">使用前请先引入pinyin.js</div>
+            <p class="help-title">1.方法pinyin.getFullChars 提取拼音, 返回首字母大写形式</p>
+            <p class="help-title">2.方法pinyin.getCamelChars 提取首字母，返回大写形式 </p>
+        </div> -->
+        <div id="echarts1" style="height:500px"></div>
+    </div>
+    <div class="card-space">
+        <div class="card-title">柱状图</div>
+        <div id="echarts2" style="height:500px"></div>
+    </div>
+    <div class="card-space">
+        <div class="card-title">圆形图</div>
+        <ul>
+            <li id="echarts3">
+            </li>
+            <li id="echarts4">
+            </li>
+            <li id="echarts5">
+            </li>
+        </ul>
+    </div>
+    <script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='../../static/_public/echarts.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+    <script type='text/javascript' src='../../static/js/myChart.js' charset='utf-8'></script>
+    <script type="text/javascript">
+        var FN = {
+            //折线
+            setLine: function () {
+                var legend = ['放款量', '申请量', '注册量'],
+                    xAxisData = ['2', '4', '6', '8', '10', '12', '14', '16', '18', '20', '22', '24'],
+                    series = [{
+                        name: '放款量',
+                        type: 'line',
+                        smooth: true, //是否平滑曲线显示
+                        lineStyle: { //线条样式 
+                            normal: {
+                                width: 1,
+                                color: 'rgba(44,181,171, 1)'
+                            }
+                        },
+                        areaStyle: { //区域填充样式
+                            normal: {
+                                //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
+                                color: 'rgba(44,181,171, 0.3)'
+                            }
+                        },
+                        itemStyle: { //折现拐点标志的样式
+                            normal: {
+                                color: 'rgba(44,181,171, 1)'
+                            }
+                        },
+                        data: [1, 1, 5, 9, 5, 8, 9, 5, 7, 6, 4, 12]
+                    }, {
+                        name: '申请量',
+                        type: 'line',
+                        smooth: true, //是否平滑曲线显示
+                        lineStyle: { //线条样式 
+                            normal: {
+                                width: 1,
+                                color: 'rgba(145,191,93,1)'
+                            }
+                        },
+                        areaStyle: { //区域填充样式
+                            normal: {
+                                //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
+                                color: 'rgba(145,191,93,0.3)'
+                            }
+                        },
+                        itemStyle: { //折现拐点标志的样式
+                            normal: {
+                                color: 'rgba(145,191,93,1)'
+                            }
+                        },
+                        data: [6, 9, 2, 0, 8, 1, 7, 6, 4, 3, 8, 0]
+                    }, {
+                        name: '注册量',
+                        type: 'line',
+                        smooth: true, //是否平滑曲线显示
+                        lineStyle: { //线条样式 
+                            normal: {
+                                width: 1,
+                                color: 'rgb(248,168,159)'
+                            }
+                        },
+                        areaStyle: { //区域填充样式
+                            normal: {
+                                //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
+                                color: 'rgba(248,168,159,0.3)'
+                            }
+                        },
+                        itemStyle: { //折现拐点标志的样式
+                            normal: {
+                                color: 'rgb(248,168,159)'
+                            }
+                        },
+                        data: [11, 3, 4, 6, 7, 8, 0, 1, 2, 4, 6, 20]
+                    }];
+                module.renderChart("#echarts1", module.setLineData(legend, xAxisData, series));
+            },
+            setBar: function () {
+                var legend = ['放款量', '申请量'],
+                    xAxisData = ['2', '4', '6', '8', '10', '12', '14', '16', '18', '20', '22', '24'],
+                    series = [{
+                        name: '放款量',
+                        type: 'bar',
+                        barWidth: '50',
+                        stack: 'sum',
+                        itemStyle: {
+                            normal: {
+                                color: chart.color[0]
+                            }
+                        },
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'inside'
+                            }
+                        },
+                        data: [1, 1, 5, 9, 5, 8, 9, 5, 7, 6, 4, 12]
+                    }, {
+                        name: '申请量',
+                        type: 'bar',
+                        barWidth: '50',
+                        stack: 'sum',
+                        itemStyle: {
+                            normal: {
+                                color: chart.color[1]
+                            }
+                        },
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'inside'
+                            }
+                        },
+                        data: [1, 1, 5, 9, 5, 8, 9, 5, 7, 6, 4, 12]
+                    }];
+                module.renderChart("#echarts2", module.setLineData(legend, xAxisData, series));
+            },
+            setCircle: function () {
+                var obj = {
+                    legend: ['男', '女', '未知'],
+                    data: [{ name: '男', value: 3 }, { name: '女', value: 3 }, { name: '未知', value: 3 }]
+                }
+                module.renderChart("#echarts3", module.setCircleData("性别分布", obj));
+            },
+            setRadii: function () {
+                var obj = {
+                    legend: ['iphone1', 'iphone2', 'iphone3', 'iphone4', 'iphone5', 'iphone6'],
+                    data: [{ name: 'iphone1', value: 3 }, { name: 'iphone2', value: 3 }, { name: 'iphone3', value: 3 }, { name: 'iphone4', value: 3 }, { name: 'iphone5', value: 3 }, { name: 'iphone6', value: 3 }]
+                }
+                module.renderChart("#echarts4", module.setRadiiData("手机型号", obj));
+            },
+            setPie: function () {
+                var obj = {
+                    legend: ['江苏', '上海', '北京', '广州'],
+                    data: [{ name: '江苏', value: 3 }, { name: '上海', value: 3 }, { name: '北京', value: 3 }, { name: '广州', value: 3 }]
+                }
+                module.renderChart("#echarts5", module.setPieData("地域分布", obj));
+            }
+        }
+        FN.setLine();
+        FN.setBar();
+        FN.setCircle();
+        FN.setRadii();
+        FN.setPie();
+    </script>
+</body>
+
+</html>

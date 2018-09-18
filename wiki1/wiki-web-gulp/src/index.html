@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href='static/images/Logo_02.png'>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <!--IOS设备上禁止将数字识别为可点击的tel link-->
+  <meta content="telephone=no" name="format-detection">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" href='static/css/font.css'>
+  <link rel="stylesheet" href='static/css/base.css'>
+  <!--[if lt IE 9]>
+    <script src="static/_public/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+</body>
+
+<script id="jsView" type="text/html">
+  <nav class="navbar">
+    <div class="header-logo"></div>
+    <div class="user-space">
+      <div class="user-header"></div>
+      <span class="username">admin</span>
+      <ul class="nav-menu-list">
+        <li data-click="pChoose">
+          <span class="iconfont icon-tongdao"></span>{{chooseProject}}</li>
+        <li data-click="loginOut">
+          <span class="iconfont icon-Close"></span>{{exit}}</li>
+      </ul>
+    </div>
+  </nav>
+  <div class="main-menus no-select" id="mainMenus">
+    <div class="main-menus-bg"></div>
+    <div class="menu-controll" id="menuControll" data-click="showMenu">
+      <span class="iconfont icon-tubiaozhizuomoban"></span>
+    </div>
+    <div class="menu-item-1 no-collapse" data-click="loadtab" data-url="views/demo.html" data-title="{{menuItem1}}">
+      <span class="iconfont icon-guanli"></span>
+      <span class="menu-item-title">{{menuItem1}}</span>
+    </div>
+  </div>
+  <div class="main-container">
+    <div class="main-tabs no-select">
+      <div class="tab-item-space" id="tab-space"></div>
+      <div class="tabs-controller">
+        <i class="iconfont icon-zhongzhi" title="{{refresh}}" data-click="reloadTab"></i>
+        <i class="iconfont icon-delete" title="{{delAllTab}}" data-click="dAllTab"></i>
+      </div>
+    </div>
+    <div class="main-pages" id="main-pages"></div>
+  </div>
+</script>
+
+<script src="static/_public/jquery-3.3.1.min.js"></script>
+<script src="static/_public/template-web.js"></script>
+<script src="static/js/lib/rConfig.js"></script>
+<script src="static/_public/require-2.3.5.js" data-main="static/js/src/forward.js"></script>
+
+</html>

@@ -1,0 +1,20 @@
+{
+  "_test/static/js/apiConfig.js" : [
+    {
+      "rex": ":protocol",
+      "newCtx": "http://"
+    },
+    {
+      "rex": ":hostRbacWeb",
+      "newCtx": "wx.miniscores.cn/manage/"
+    },
+    {
+      "rex": ":hostRbacApi",
+      "newCtx": "120.55.242.243:8081/"
+    },
+    {
+      "rex": ":hostProject",
+      "newCtx": "wx.miniscores.cn/"
+    }
+  ]
+}

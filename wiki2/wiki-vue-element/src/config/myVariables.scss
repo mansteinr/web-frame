@@ -1,0 +1,120 @@
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";
+@import "./commonVariables.scss";
+
+/*主要样式*/
+* {
+	margin: 0;
+	padding: 0;
+}
+html,
+body {
+	width: 100%;
+	font-size: 14px;
+	line-height: 1.42857143;
+  font-family: "微软雅黑";
+  background-color: #f0f2f5;
+  color: #36383c;
+}
+/*重写滚动条样式 for webkit浏览器*/
+/*滚动条整体部分，可以设置宽度啥的*/
+::-webkit-scrollbar {
+  width: 4px;
+  height: 6px;
+}
+/*滚动条两端的按钮*/
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+/*外层轨道*/
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,.5);
+  border:solid 1px #121212;
+  box-shadow: 0px 0px 3px #121212 inset;
+  border-radius: 8px;
+}
+/*内层滚动槽*/
+::-webkit-scrollbar-track-piece {
+  background-color: #fff;
+}
+/*滚动的滑块*/
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.3);
+  border-radius: 8px;
+}
+/*滚动的滑块,鼠标放上时*/
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,.5);
+}
+/*禁止选中*/
+.no-select {
+  -webkit-user-select: none; /* Chrome all / Safari all */
+  -moz-user-select: none; /* Firefox all */
+  -ms-user-select: none; /* IE 10+ */
+  -o-user-select: none;
+  user-select: none;
+}
+/*清除浮动*/
+.mv-clearfix:after {
+  content: '\20';
+  display: block;
+  height: 0;
+  clear: both;
+}
+.mv-clearfix {
+  *zoom: 1;
+}
+//常用样式和边距
+.mv-pl {
+  padding-left: $mv-default-dis;
+}
+.mv-pr {
+  padding-right: $mv-default-dis;
+}
+.mv-pt {
+  padding-top: $mv-default-dis;
+}
+.mv-pb {
+  padding-bottom: $mv-default-dis;
+}
+.mv-pv {
+  padding-top: $mv-default-dis;
+  padding-bottom: $mv-default-dis;
+}
+.mv-ph {
+  padding-left: $mv-default-dis;
+  padding-right: $mv-default-dis;
+}
+.mv-ml {
+  margin-left: $mv-default-dis;
+}
+.mv-mr {
+  margin-right: $mv-default-dis;
+}
+.mv-mt {
+  margin-top: $mv-default-dis;
+}
+.mv-mb {
+  margin-bottom: $mv-default-dis;
+}
+.mv-mv {
+  margin-top: $mv-default-dis;
+  margin-bottom: $mv-default-dis;
+}
+.mv-mh {
+  margin-left: $mv-default-dis;
+  margin-right: $mv-default-dis;
+}
+//卡片
+.mv-card {
+  background-color: #ffffff;
+  border-radius: 6px;
+  @extend .mv-box-shadow;
+}
+//标题
+.mv-title {
+  
+}

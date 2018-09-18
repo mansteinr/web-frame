@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>后台管理</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href=''>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-store"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!--IOS设备上禁止将数字识别为可点击的tel link-->
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+    <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+    <link rel="stylesheet" type="text/css" href="../../static/css/help.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/_public/flatpickr.min.css"/>
+    <!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+    <![endif]-->
+</head>
+	<div class="card-space">
+		<div class="card-title">时间选择</div>
+		<div class="card-container">
+			<div class="help-detail">
+				时间选择控件是依赖于第三方插件flatpickr,通过doTree初始化进行二次封装，只需要配置对应参数即可进行初始化使用，配置参数如下：
+				<pre class="code-space">
+date: 'defaultDate',			/*! 时间选择器默认时间 */
+nodate: 'noCalendar',			/*! 是否显示时间选择 */
+min: 'minDate',					/*! 最小时间 */
+max: 'maxDate',					/*! 最大时间 */
+format: 'dateFormat',			/*! 时间格式化 */
+mode: 'mode',					/*! 选择权类型,选择器模式，配置为range则为区间选择器 */
+time: 'enableTime',				/*! 是否可以选择时间 */
+second: 'enableSeconds',		/*! 是否允许选择秒 */
+time24: 'time_24hr',			/*! 时间选择是否为24 小时 */
+hour: 'defaultHour',			/*! 默认小时 */
+minute: 'defaultMinute'			/*! 默认分钟 */
+				</pre>
+				<p class="help-detail">左侧为元素配置参数，右侧是flatpickr的参数，封装的插件进行转换后传入flatpickr进行初始化，使用时请配置data-do="timepick"，其他参数根据需要配置</p>
+			</div>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">时间选择器示例</div>
+		<div class="card-container clearfix">
+			<div class="search-item">
+				<label class="input-label">基本：</label>
+				<div class="timepick-warp">
+					<input type="text" class="m-input" data-do="timepick"/>
+				</div>
+			</div>
+			<div class="search-item">
+				<label class="input-label">带默认值：</label>
+				<div class="timepick-warp">
+					<input type="text" class="m-input" data-do="timepick" value="2017-11-9"/>
+				</div>
+			</div>
+			<div class="search-item">
+				<label class="input-label">带默认值：</label>
+				<div class="timepick-warp">
+					<input type="text" class="m-input" data-do="timepick" data-date="2017-11-9"/>
+				</div>
+			</div>
+			<div class="search-item">
+				<label class="input-label">带默认值：</label>
+				<div class="timepick-warp">
+					<input type="text" class="m-input" data-do="timepick" data-date="today"/>
+				</div>
+			</div>
+			<div class="search-item">
+				<label class="input-label">带最小值：</label>
+				<div class="timepick-warp">
+					<input type="text" class="m-input" data-do="timepick" data-min="2017-11-08"/>
+				</div>
+			</div>
+			<div class="search-item">
+				<label class="input-label">带最大值：</label>
+				<div class="timepick-warp">
+					<input type="text" class="m-input" data-do="timepick" data-max="2017-11-09"/>
+				</div>
+			</div>
+			<div class="search-item">
+				<label class="input-label">选择时间：</label>
+				<div class="timepick-warp">
+					<input type="text" class="m-input" data-do="timepick" data-time="true"/>
+				</div>
+			</div>
+			<div class="search-item">
+				<label class="input-label">24H时间：</label>
+				<div class="timepick-warp">
+					<input type="text" class="m-input" data-do="timepick" data-time="true" data-time24="true"/>
+				</div>
+			</div>
+			<div class="search-item">
+				<label class="input-label">时间选择：</label>
+				<div class="timepick-warp">
+					<input type="text" class="m-input" data-do="timepick" data-nodate="true" data-time="true"/>
+				</div>
+			</div>
+			<div class="search-item">
+				<label class="input-label">时间选择24H：</label>
+				<div class="timepick-warp">
+					<input type="text" class="m-input" data-do="timepick" data-nodate="true" data-time="true" data-time24="true"/>
+				</div>
+			</div>
+			<div class="search-item">
+				<label class="input-label">区间选择：</label>
+				<div class="timepick-warp">
+					<input type="text" class="m-input" data-do="timepick" data-mode="range"/>
+				</div>
+			</div>
+			<div class="search-item">
+				<label class="input-label">区间选择：</label>
+				<div class="timepick-warp">
+					<input type="text" class="m-input" data-do="timepick" data-mode="range" data-time="true" data-time24="true"/>
+				</div>
+			</div>
+			<textarea class="code-space" disabled>
+<div class="search-item">
+	<label class="input-label">基本：</label>
+	<div class="timepick-warp">
+		<input type="text" class="m-input" data-do="timepick"/>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">带默认值：</label>
+	<div class="timepick-warp">
+		<input type="text" class="m-input" data-do="timepick" value="2017-11-9"/>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">带默认值：</label>
+	<div class="timepick-warp">
+		<input type="text" class="m-input" data-do="timepick" data-date="2017-11-9"/>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">带默认值：</label>
+	<div class="timepick-warp">
+		<input type="text" class="m-input" data-do="timepick" data-date="today"/>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">带最小值：</label>
+	<div class="timepick-warp">
+		<input type="text" class="m-input" data-do="timepick" data-min="2017-11-08"/>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">带最大值：</label>
+	<div class="timepick-warp">
+		<input type="text" class="m-input" data-do="timepick" data-max="2017-11-09"/>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">选择时间：</label>
+	<div class="timepick-warp">
+		<input type="text" class="m-input" data-do="timepick" data-time="true"/>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">24H时间：</label>
+	<div class="timepick-warp">
+		<input type="text" class="m-input" data-do="timepick" data-time="true" data-time24="true"/>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">时间选择：</label>
+	<div class="timepick-warp">
+		<input type="text" class="m-input" data-do="timepick" data-nodate="true" data-time="true"/>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">时间选择24H：</label>
+	<div class="timepick-warp">
+		<input type="text" class="m-input" data-do="timepick" data-nodate="true" data-time="true" data-time24="true"/>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">区间选择：</label>
+	<div class="timepick-warp">
+		<input type="text" class="m-input" data-do="timepick" data-mode="range"/>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">区间选择：</label>
+	<div class="timepick-warp">
+		<input type="text" class="m-input" data-do="timepick" data-mode="range" data-time="true" data-time24="true"/>
+	</div>
+</div>
+			</textarea>
+		</div>
+	</div>
+<script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/jquery.form.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/flatpickr.min.js' charset='utf-8'></script>
+<script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$('textarea').each(function(){
+		$(this).css('height',this.scrollHeight);
+	});
+</script>
+</body>
+</html>
