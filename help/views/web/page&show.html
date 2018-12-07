@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>后台管理</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href=''>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-store"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!--IOS设备上禁止将数字识别为可点击的tel link-->
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+    <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+    <link rel="stylesheet" type="text/css" href="../../static/css/help.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/_public/flatpickr.min.css"/>
+    <!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+    <![endif]-->
+</head>
+	<div class="card-space">
+		<div class="card-title">分页器</div>
+		<div class="card-container">
+			<div class="help-detail">
+				分页器是一个独立的组建，挂载在module上，只有内层才可以使用，使用方法如下：
+				<pre class="code-space">
+module.pageManage({
+	selector: '.page-navigation',	/* ! 分页容器selector，可选,默认 .page-navigation */
+	pageTotal: 0,					/* ! 总长度，条数，必填 */
+	pageSize: 10,					/* ! 每页条数，可选，默认 10  */
+	pageIndex: 1,					/* ! 当前页码值，可选，默认 1 */
+	showCount: 6					/* ! 显示长度，可选，默认 6 */
+});
+				</pre>
+				使用监听方式查看分页改变，与业务分离
+				<pre class="code-space">
+$('.page-navigation').on('pageManageChange',function(e,index) {
+	console.log(index);
+});
+				</pre>
+				例如： <div class="page-navigation"></div>
+			</div>
+			<textarea class="code-space" disabled>
+<div class="page-navigation"></div>
+module.pageManage({
+	pageTotal: 200,
+	pageIndex: 3
+});
+$('.page-navigation').on('pageManageChange',function(e,index) {
+	module.alert(index);
+	module.pageManage({
+		pageTotal: 200,
+		pageIndex: index
+	});
+});
+			</textarea>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">提示框</div>
+		<div class="card-container">
+			<div class="help-detail">框架提供的提示框分为三种，alert，confirm，和自定义popup</div>
+			<p class="help-detail">1.alert提示</p>
+			<div class="help-detail">
+				使用module.alert([info|op]);info 要显示的信息，默认显示2000ms隐藏 ，传递op参数 info 打印信息 time显示时间 默认 2000ms
+				<div class="button" data-click="alertDemo">点击弹出信息</div>
+				<textarea class="code-space" disabled>
+<div class="button" data-click="alertDemo">点击弹出信息</div>
+module.clickTree.alertDemo = function() {
+	module.alert('这是一个alert');
+}
+				</textarea>
+			</div>
+			<p class="help-detail">2.confirm提示</p>
+			<div class="help-detail">
+				confirm提示分为三种 成功，警告，错误，使用module.confirm(options),options参数如下：<br>
+				title -> confirm标题，可选，默认'this is confirm title'/<br>
+    			info -> confirm提示内容，可选，默认'这里是提示信息！'<br>
+    			status -> confirm状态，0 警告 1 成功 2 失败 ，可选，默认 0<br>
+    			bclose -> 点击背景是否关闭，可选，默认false<br>
+    			okbtn -> 确定按钮文字，可选，默认'确定'<br>
+    			cancel: -> 取消按钮文字，可选，默认'取消'<br>
+    			callback -> confirm点击确认回调,可选，默认空<br>
+				例如：<div class="button button-main" data-click="confirmDemo" data-status='0'>confirm-waring</div>
+				<div class="button ml" data-click="confirmDemo" data-status='1'>confirm-success</div>
+				<div class="button button-main ml" data-click="confirmDemo" data-status='2'>confirm-error</div>
+				<textarea class="code-space" disabled>
+<div class="button button-main ml" data-click="confirmDemo" data-status='0'>confirm-waring</div>
+<div class="button ml" data-click="confirmDemo" data-status='1'>confirm-success</div>
+<div class="button button-main ml" data-click="confirmDemo" data-status='2'>confirm-error</div>
+module.clickTree.confirmDemo = function() {
+	var status = $(this).data('status');
+	module.confirm({
+		title: '这是一个confirm',
+		info: '这里是提示信息',
+		status: status,
+		callback: function() {
+			module.alert('点击确定了');
+		}
+	});
+}
+				</textarea>
+			</div>
+			<p class="help-detail">3.popup提示</p>
+			<div class="help-detail">
+				popup提示是一个公用弹出窗，可用户自定义内容，confirm就是使用popup实现的，使用module.popup(options),options参数如下：<br>
+				title -> popup标题，可选，默认'this is popup title'/<br>
+    			content -> confirm提示内容，可以插入html片段，进行自定义<br>
+    			bclose -> 点击背景是否关闭，可选，默认false<br>
+    			callback -> popup创建成功回调，在回调函数内使用$(this)获取 popup对象<br>
+    			style -> popup外层样式，用于定制外层大小
+				例如：<div class="button ml" data-click="popupDemo">popup</div>
+				<div class="button ml" data-click="popupDemo" data-style="width: 600px;margin-left: -300px;">定制大小</div>
+				<textarea class="code-space" disabled>
+<div class="button ml" data-click="popupDemo">popup</div>
+<div class="button ml" data-click="popupDemo" data-style="width: 600px;margin-left: -300px;">定制大小</div>
+module.clickTree.popupDemo = function() {
+	var style = $(this).data('style');
+	module.popup.show({
+		title: '这是一个popup',
+		content: '这里是popup内容',
+		style: style,
+		callback: function() {
+			module.alert('创建成功的回调');
+		}
+	});
+}
+				</textarea>
+			</div>
+		</div>
+	</div>
+<script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/jquery.form.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/flatpickr.min.js' charset='utf-8'></script>
+<script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$('textarea').each(function(){
+		$(this).css('height',this.scrollHeight);
+	});
+	module.pageManage({
+		pageTotal: 200,
+		pageIndex: 3
+	});
+	$('.page-navigation').on('pageManageChange',function(e,index) {
+		module.alert(index);
+		module.pageManage({
+			pageTotal: 200,
+			pageIndex: index
+		});
+	});
+	/*弹出窗组*/
+	module.clickTree.alertDemo = function() {
+		module.alert('这是一个alert');
+	}
+	module.clickTree.confirmDemo = function() {
+		var status = $(this).data('status');
+		module.confirm({
+			title: '这是一个confirm',
+			info: '这里是提示信息',
+			status: status,
+			callback: function() {
+				module.alert('点击确定了');
+			}
+		});
+	}
+	module.clickTree.popupDemo = function() {
+		var style = $(this).data('style');
+		module.popup.show({
+			title: '这是一个popup',
+			content: '这里是popup内容',
+			style: style,
+			callback: function() {
+				module.alert('创建成功的回调');
+			}
+		});
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>后台管理</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href='static/images/Logo_02.png'>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-store"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!--IOS设备上禁止将数字识别为可点击的tel link-->
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href='static/css/font.css'>
+    <link rel="stylesheet" type="text/css" href='static/css/base.css'>
+    <!--[if lt IE 9]>
+            <script src="/static/_public/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<nav class="navbar">
+	<div class="header-logo"></div>
+	<div class="user-space">
+		<div class="user-header" style="background-image: url(static/images/default.png);"></div>
+		<span class="username">admin</span>
+		<ul class="nav-menu-list">
+			<li data-click="pChoose"><span class="iconfont icon-tongdao"></span>项目选择</li>
+			<li data-click="loginOut"><span class="iconfont icon-Close"></span>退出</li>
+		</ul>
+	</div>
+</nav>
+<div class="main-menus no-select" id="mainMenus">
+	<div class="main-menus-bg"></div>
+	<div class="menu-controll" id="menuControll"><span class="iconfont icon-tubiaozhizuomoban"></span></div>
+	<div class="menu-item-1 has-collapse" data-click="collapse" data-target="#menu1" data-parent="#mainMenus">
+		<span class="iconfont icon-guanli"></span><span class="menu-item-title">WEB前端</span>
+	</div>
+	<div id="menu1" class="menus-space">
+		<div class="menu-item-2" data-click="loadtab" data-url="views/web/web-specifications.html" data-title="编程规范">
+			<span class="iconfont icon-guanli"></span>编程规范
+		</div>
+		<div class="menu-item-2 has-collapse" data-click="collapse" data-target="#menu1_1" data-parent="#menu1">
+			<span class="iconfont icon-guanli"></span>综述
+		</div>
+		<div id="menu1_1" class="menus-space">
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/instructions.html" data-title="使用说明">使用说明</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/all.html" data-title="基本库展示">基本库展示</div>
+		</div>
+		<div class="menu-item-2 has-collapse" data-click="collapse" data-target="#menu1_2" data-parent="#menu1">
+			<span class="iconfont icon-guanli"></span>全局样式
+		</div>
+		<div id="menu1_2" class="menus-space">
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/iconfont/demo_fontclass.html" data-title="字体图标">字体图标</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/basic.html" data-title="基础样式">基础样式</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/input.html" data-title="输入框组">输入框组</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/table.html" data-title="列表">列表</div>
+		</div>
+		<div class="menu-item-2 has-collapse" data-click="collapse" data-target="#menu1_3" data-parent="#menu1">
+			<span class="iconfont icon-guanli"></span>组件
+		</div>
+		<div id="menu1_3" class="menus-space">
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/basicjs.html" data-title="基础介绍">基础介绍</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/$http.html" data-title="$http">$http</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/apiconfig.html" data-title="API配置">API配置</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/tabmanage.html" data-title="tab管理">tab管理</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/page&show.html" data-title="提示和分页">提示和分页</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/timepick.html" data-title="timepick">timepick</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/select.html" data-title="select">select</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/checkForm.html" data-title="checkForm">表单校验</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/myChart.html" data-title="myChart使用">myChart使用</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/otherjs.html" data-title="其他扩展组件">其他扩展组件</div>
+		</div>
+		<div class="menu-item-2 has-collapse" data-click="collapse" data-target="#menu1_4" data-parent="#menu1">
+			<span class="iconfont icon-guanli"></span>第三方库
+		</div>
+		<div id="menu1_4" class="menus-space">
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/echarts.html" data-title="二次封装echarts">二次封装echarts</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="http://jquery.cuishifeng.cn/" data-title="Jquery">Jquery</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="https://chmln.github.io/flatpickr/examples/" data-title="flatpickr">flatpickr</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="views/web/pinyin.html" data-title="pinyin">pinyin</div>
+			<div class="menu-item-3" data-click="loadtab" data-url="http://www.swiper.com.cn/api/index.html" data-title="swiper">swiper</div>
+		</div>
+	</div>
+	<div class="menu-item-1 has-collapse" data-click="collapse" data-target="#menu2" data-parent="#mainMenus">
+		<span class="iconfont icon-guanli"></span><span class="menu-item-title">APP</span>
+	</div>
+	<div id="menu2" class="menus-space">
+		<div class="menu-item-2" data-click="loadtab" data-url="views/app/standard.html" data-title="编程规范">
+			<span class="iconfont icon-guanli"></span>编程规范
+		</div>
+		<div class="menu-item-2" data-click="loadtab" data-url="views/app/abstract.html" data-title="框架介绍">
+			<span class="iconfont icon-guanli"></span>框架介绍
+		</div>
+		<div class="menu-item-2 has-collapse" data-click="collapse" data-target="#menu2_1" data-parent="#menu2">
+			<span class="iconfont icon-guanli"></span>综述
+		</div>
+		<div id="menu2_1" class="menus-space">
+			<div class="menu-item-3" data-click="loadtab" data-url="" data-title="1">说明</div>
+		</div>
+		<div class="menu-item-2 has-collapse" data-click="collapse" data-target="#menu2_2" data-parent="#menu2">
+			<span class="iconfont icon-guanli"></span>JS库
+		</div>
+		<div id="menu2_2" class="menus-space">
+			<div class="menu-item-3" data-click="loadtab" data-url="" data-title="1">待补充</div>
+		</div>
+		<div class="menu-item-2 has-collapse" data-click="collapse" data-target="#menu2_3" data-parent="#menu2">
+			<span class="iconfont icon-guanli"></span>第三方库
+		</div>
+		<div id="menu2_3" class="menus-space">
+			<div class="menu-item-3" data-click="loadtab" data-url="" data-title="1">待补充</div>
+		</div>
+	</div>
+	<div class="menu-item-1 no-collapse" data-click="loadtab" data-url="views/help.html" data-title="团队宗旨">
+		<span class="iconfont icon-guanli"></span><span class="menu-item-title">团队宗旨</span>
+	</div>
+</div>
+<div class="main-container">
+	<div class="main-tabs no-select">
+		<div class="tab-item-space" id="tab-space"></div>
+		<div class="tabs-controller">
+			<i class="iconfont icon-zhongzhi" title="刷新" data-click="reloadTab"></i>
+			<i class="iconfont icon-delete" title="删除所有tab" data-click="dAllTab"></i>
+		</div>
+	</div>
+	<div class="main-pages" id="main-pages"></div>
+</div>
+<!--描述：最后加载js，增加页面相应速度-->
+<script type='text/javascript' src='static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+<script src="static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src='static/js/common.js' charset='utf-8'></script>
+<script type='text/javascript' src='static/js/base.js' charset='utf-8'></script>
+<script src="static/js/index.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

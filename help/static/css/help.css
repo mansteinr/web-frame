@@ -1,0 +1,27 @@
+.code-space {
+	display: block;
+	width: 100%;
+	resize: none;
+	outline: none;
+	border: none;
+	color: red;
+	line-height: 18px;
+	background-color: #ecf1f5;
+}
+.help-title {
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+}
+.help-subtitle {
+	height: 40px;
+	line-height: 40px;
+	padding-left: 20px;
+}
+.help-detail {
+	line-height: 20px;
+}
+.help-subdetail {
+	padding-left: 20px;
+	line-height: 20px;
+}

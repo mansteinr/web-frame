@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>后台管理</title>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href=''>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-store" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<!--IOS设备上禁止将数字识别为可点击的tel link-->
+	<meta content="telephone=no" name="format-detection">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+	<link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+	<link rel="stylesheet" type="text/css" href="../../static/css/help.css" />
+	<!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body class="iframe-body">
+	<div class="card-space">
+		<div class="card-title">myChart.js</div>
+		<div class="card-container">
+			<P class="help-title">1.引入static/js/myChart.js</P>
+			<p class="help-title">2.构建echarts方法renderChart(id,option)</p>
+			<textarea class="code-space" disabled>
+module.renderChart("#echarts1", module.setLineData(legend, xAxisData, series));
+init()初始化、clear()清除echarts图、setOption()echarts创建数据
+			</textarea>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">折线图
+		</div>
+		<div class="card-container">
+			<p class="help-title">1.使用折线图方法module.setLineData(legend, xAxisData, series)</p>
+			<p class="help-title">2.数据格式</p>
+			<textarea class="code-space" disabled>
+legend（颜色、名称展示栏）、xAxisData（x轴数据）、series（折线样式、名称、数据）y轴数据自动生成
+legend = ['放款量', '申请量', '注册量'] 
+xAxisData = ['2', '4', '6', '8', '10', '12', '14', '16', '18', '20', '22', '24']
+series = [{
+	name: '放款量',
+	type: 'line',
+	smooth: true, //是否平滑曲线显示
+	lineStyle: { //线条样式 
+		normal: {
+			width: 1,
+			color: 'rgba(44,181,171, 1)'
+		}
+	},
+	areaStyle: { //区域填充样式
+		normal: {
+			//线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
+			color: 'rgba(44,181,171, 0.3)'
+		}
+	},
+	itemStyle: { //折现拐点标志的样式
+		normal: {
+			color: 'rgba(44,181,171, 1)'
+		}
+	},
+	data: [1, 1, 5, 9, 5, 8, 9, 5, 7, 6, 4, 12]
+}]
+								</textarea>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">柱状图</div>
+		<div class="card-container">
+			<p class="help-title">1.柱状图使用方法module.setLineData(legend, xAxisData, series)</p>
+			<p class="help-title">2.数据格式</p>
+			<textarea class="code-space" disabled>
+legend（颜色、名称展示栏）、xAxisData（x轴数据）、series（折线样式、名称、数据）y轴数据自动生成
+legend = ['放款量', '申请量'],
+xAxisData = ['2', '4', '6', '8', '10', '12', '14', '16', '18', '20', '22', '24'],
+series = [{
+	name: '放款量',
+	type: 'bar',
+	barWidth: '50',
+	stack: 'sum',
+	itemStyle: {
+		normal: {
+			color: chart.color[0]
+		}
+	},
+	label: {
+		normal: {
+			show: true,
+			position: 'inside'
+		}
+	},
+	data: [1, 1, 5, 9, 5, 8, 9, 5, 7, 6, 4, 12]
+}, {
+	name: '申请量',
+	type: 'bar',
+	barWidth: '50',
+	stack: 'sum',
+	itemStyle: {
+		normal: {
+			color: chart.color[1]
+		}
+	},
+	label: {
+		normal: {
+			show: true,
+			position: 'inside'
+		}
+	},
+	data: [1, 1, 5, 9, 5, 8, 9, 5, 7, 6, 4, 12]
+}];
+			</textarea>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">圆形图</div>
+		<div class="card-container">
+				<p class="help-title">1.圆环图使用方法 module.setCircleData("性别分布", data)</p>
+				<p class="help-title">2.圆半径图使用方法 module.setRadiiData("手机型号", data)</p>
+				<p class="help-title">3.饼图使用方法 module.setPieData("地域分布", data)</p>
+				<p class="help-title">4.数据格式</p>
+				<textarea class="code-space" disabled>
+legend（颜色、名称展示栏）、data（名称、占比）
+legend: ['江苏', '上海', '北京', '广州'],
+data: [{ name: '江苏', value: 3 }, { name: '上海', value: 3 }, { name: '北京', value: 3 }, { name: '广州', value: 3 }]
+			</textarea>
+		</div>
+	</div>
+	
+	<script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+	<script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+	<script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+	<script type="text/javascript">
+		$('textarea').each(function () {
+			$(this).css('height', this.scrollHeight);
+		});
+	</script>
+</body>
+
+</html>

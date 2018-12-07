@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>后台管理</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href=''>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-store"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!--IOS设备上禁止将数字识别为可点击的tel link-->
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+    <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+    <link rel="stylesheet" type="text/css" href="../../static/css/help.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/_public/flatpickr.min.css"/>
+    <!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="iframe-body">
+<div class="card-space">
+	<div class="card-title">搜索区域，输入框组</div>
+	<div class="card-container clearfix">
+		<div class="search-item">
+			<label class="input-label">公司名称：</label>
+			<input type="text" class="m-input"/>
+		</div>
+		<div class="search-item">
+			<label class="input-label">查询日期：</label>
+			<div class="timepick-warp">
+				<input type="text" class="m-input" data-do="timepick" value="2017-03-02"/>
+			</div>
+		</div>
+		<div class="search-item">
+			<label class="input-label">单选-搜索：</label>
+			<div class="select-dropdown m-input" data-do="select" data-search="true">
+				<div class="text-warp selected-value"></div>
+				<input type="hidden" name="selectValue"/>
+				<ul class="dropdown-menu">
+					<li class="dropdown-item text-warp" data-value="0">中国</li>
+					<li class="dropdown-item text-warp" data-value="1">美国</li>
+					<li class="dropdown-item text-warp" data-value="2">俄罗斯</li>
+					<li class="dropdown-item text-warp" data-value="3">罗马尼亚</li>
+					<li class="dropdown-item text-warp" data-value="4">中国</li>
+					<li class="dropdown-item text-warp" data-value="5">美国</li>
+					<li class="dropdown-item text-warp" data-value="6">俄罗斯</li>
+					<li class="dropdown-item text-warp" data-value="7">罗马尼亚</li>
+					<li class="dropdown-item text-warp" data-value="8">中国</li>
+					<li class="dropdown-item text-warp" data-value="9">美国</li>
+					<li class="dropdown-item text-warp" data-value="10">俄罗斯</li>
+					<li class="dropdown-item text-warp" data-value="11">罗马尼亚</li>
+				</ul>
+			</div>
+		</div>
+		<div class="search-item">
+			<label class="input-label">搜索-副词：</label>
+			<div class="select-dropdown m-input" data-do="select" data-search="true">
+				<div class="text-warp selected-value"></div>
+				<input type="hidden" name="selectValue"/>
+				<ul class="dropdown-menu">
+					<li class="dropdown-item text-warp" data-value="0" data-val="china">中国</li>
+					<li class="dropdown-item text-warp" data-value="1" data-val="usa">美国</li>
+					<li class="dropdown-item text-warp" data-value="2" data-val="russia">俄罗斯</li>
+					<li class="dropdown-item text-warp" data-value="3" data-val="romania">罗马尼亚</li>
+					<li class="dropdown-item text-warp" data-value="4" data-val="china">中国</li>
+					<li class="dropdown-item text-warp" data-value="5" data-val="usa">美国</li>
+					<li class="dropdown-item text-warp" data-value="6" data-val="russia">俄罗斯</li>
+					<li class="dropdown-item text-warp" data-value="7" data-val="russia">罗马尼亚</li>
+					<li class="dropdown-item text-warp" data-value="8" data-val="china">中国</li>
+					<li class="dropdown-item text-warp" data-value="9" data-val="usa">美国</li>
+					<li class="dropdown-item text-warp" data-value="10" data-val="russia">俄罗斯</li>
+					<li class="dropdown-item text-warp" data-value="11" data-val="russia">罗马尼亚</li>
+				</ul>
+			</div>
+		</div>
+		<div class="search-item">
+			<label class="input-label">单选：</label>
+			<div class="select-dropdown m-input" data-do="select">
+				<div class="text-warp selected-value"></div>
+				<input type="hidden" name="selectValue" value="0"/>
+				<ul class="dropdown-menu">
+					<li class="dropdown-item text-warp" data-value="3">中国</li>
+					<li class="dropdown-item text-warp" data-value="1">美国</li>
+					<li class="dropdown-item text-warp" data-value="2">俄罗斯</li>
+					<li class="dropdown-item text-warp" data-value="0">罗马尼亚</li>
+				</ul>
+			</div>
+		</div>
+		<div class="search-item">
+			<label class="input-label">多选-搜索：</label>
+			<div class="select-dropdown m-input" data-do="select" data-search="true" data-multiple="true">
+				<div class="text-warp selected-value"></div>
+				<input type="hidden" name="selectValue"/>
+				<ul class="dropdown-menu">
+					<li class="dropdown-item text-warp" data-value="0">中国</li>
+					<li class="dropdown-item text-warp" data-value="1">美国</li>
+					<li class="dropdown-item text-warp" data-value="2">俄罗斯</li>
+					<li class="dropdown-item text-warp" data-value="3">罗马尼亚</li>
+					<li class="dropdown-item text-warp" data-value="4">中国</li>
+					<li class="dropdown-item text-warp" data-value="5">美国</li>
+					<li class="dropdown-item text-warp" data-value="6">俄罗斯</li>
+					<li class="dropdown-item text-warp" data-value="7">罗马尼亚</li>
+					<li class="dropdown-item text-warp" data-value="8">中国</li>
+					<li class="dropdown-item text-warp" data-value="9">美国</li>
+					<li class="dropdown-item text-warp" data-value="10">俄罗斯</li>
+					<li class="dropdown-item text-warp" data-value="11">罗马尼亚</li>
+				</ul>
+			</div>
+		</div>
+		<div class="search-item">
+			<label class="input-label">多选：</label>
+			<div class="select-dropdown m-input" data-do="select" data-multiple="true">
+				<div class="text-warp selected-value"></div>
+				<input type="hidden" name="selectValue" value="0,1"/>
+				<ul class="dropdown-menu">
+					<li class="dropdown-item text-warp" data-value="0">中国</li>
+					<li class="dropdown-item text-warp" data-value="1">美国</li>
+					<li class="dropdown-item text-warp" data-value="2">俄罗斯</li>
+					<li class="dropdown-item text-warp" data-value="3">罗马尼亚</li>
+					<li class="dropdown-item text-warp" data-value="4">中国</li>
+					<li class="dropdown-item text-warp" data-value="5">美国</li>
+					<li class="dropdown-item text-warp" data-value="6">俄罗斯</li>
+					<li class="dropdown-item text-warp" data-value="7">罗马尼亚</li>
+					<li class="dropdown-item text-warp" data-value="8">中国</li>
+					<li class="dropdown-item text-warp" data-value="9">美国</li>
+					<li class="dropdown-item text-warp" data-value="10">俄罗斯</li>
+					<li class="dropdown-item text-warp" data-value="11">罗马尼亚</li>
+				</ul>
+			</div>
+		</div>
+		<div class="search-item radio-group">
+			<label class="input-label">选择：</label>
+			<div class="radio-item"><input type="radio" class="iconfont" name="ss" checked="checked"/>选项1</div>
+			<div class="radio-item"><input type="radio" class="iconfont" name="ss"/>选项1</div>
+		</div>
+		<div class="search-item checkbox-group">
+			<label class="input-label">公司名称：</label>
+			<div class="checkbox-item"><input type="checkbox" class="iconfont"/>选项1</div>
+			<div class="checkbox-item"><input type="checkbox" class="iconfont"/>选项1</div>
+		</div>
+		<div class="search-space">
+			<div class="button button-disabled">禁用</div>
+			<div class="button ml">重置</div>
+			<div class="button button-main ml">查询</div>
+		</div>
+		<textarea class="code-space" disabled>
+<div class="search-item">
+	<label class="input-label">公司名称：</label>
+	<input type="text" class="m-input"/>
+</div>
+<div class="search-item">
+	<label class="input-label">查询日期：</label>
+	<div class="timepick-warp">
+		<input type="text" class="m-input" data-do="timepick" value="2017-03-02"/>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">单选-搜索：</label>
+	<div class="select-dropdown m-input" data-do="select" data-search="true">
+		<div class="text-warp selected-value"></div>
+		<input type="hidden" name="selectValue"/>
+		<ul class="dropdown-menu">
+			<li class="dropdown-item text-warp" data-value="0">中国</li>
+			<li class="dropdown-item text-warp" data-value="1">美国</li>
+			<li class="dropdown-item text-warp" data-value="2">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="3">罗马尼亚</li>
+			<li class="dropdown-item text-warp" data-value="4">中国</li>
+			<li class="dropdown-item text-warp" data-value="5">美国</li>
+			<li class="dropdown-item text-warp" data-value="6">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="7">罗马尼亚</li>
+			<li class="dropdown-item text-warp" data-value="8">中国</li>
+			<li class="dropdown-item text-warp" data-value="9">美国</li>
+			<li class="dropdown-item text-warp" data-value="10">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="11">罗马尼亚</li>
+		</ul>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">单选：</label>
+	<div class="select-dropdown m-input" data-do="select">
+		<div class="text-warp selected-value"></div>
+		<input type="hidden" name="selectValue" value="0"/>
+		<ul class="dropdown-menu">
+			<li class="dropdown-item text-warp" data-value="3">中国</li>
+			<li class="dropdown-item text-warp" data-value="1">美国</li>
+			<li class="dropdown-item text-warp" data-value="2">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="0">罗马尼亚</li>
+		</ul>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">多选-搜索：</label>
+	<div class="select-dropdown m-input" data-do="select" data-search="true" data-multiple="true">
+		<div class="text-warp selected-value"></div>
+		<input type="hidden" name="selectValue"/>
+		<ul class="dropdown-menu">
+			<li class="dropdown-item text-warp" data-value="0">中国</li>
+			<li class="dropdown-item text-warp" data-value="1">美国</li>
+			<li class="dropdown-item text-warp" data-value="2">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="3">罗马尼亚</li>
+			<li class="dropdown-item text-warp" data-value="4">中国</li>
+			<li class="dropdown-item text-warp" data-value="5">美国</li>
+			<li class="dropdown-item text-warp" data-value="6">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="7">罗马尼亚</li>
+			<li class="dropdown-item text-warp" data-value="8">中国</li>
+			<li class="dropdown-item text-warp" data-value="9">美国</li>
+			<li class="dropdown-item text-warp" data-value="10">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="11">罗马尼亚</li>
+		</ul>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">搜索-副词：</label>
+	<div class="select-dropdown m-input" data-do="select" data-search="true">
+		<div class="text-warp selected-value"></div>
+		<input type="hidden" name="selectValue"/>
+		<ul class="dropdown-menu">
+			<li class="dropdown-item text-warp" data-value="0" data-val="china">中国</li>
+			<li class="dropdown-item text-warp" data-value="1" data-val="usa">美国</li>
+			<li class="dropdown-item text-warp" data-value="2" data-val="russia">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="3" data-val="romania">罗马尼亚</li>
+			<li class="dropdown-item text-warp" data-value="4" data-val="china">中国</li>
+			<li class="dropdown-item text-warp" data-value="5" data-val="usa">美国</li>
+			<li class="dropdown-item text-warp" data-value="6" data-val="russia">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="7" data-val="russia">罗马尼亚</li>
+			<li class="dropdown-item text-warp" data-value="8" data-val="china">中国</li>
+			<li class="dropdown-item text-warp" data-value="9" data-val="usa">美国</li>
+			<li class="dropdown-item text-warp" data-value="10" data-val="russia">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="11" data-val="russia">罗马尼亚</li>
+		</ul>
+	</div>
+</div>
+<div class="search-item">
+	<label class="input-label">多选：</label>
+	<div class="select-dropdown m-input" data-do="select" data-multiple="true">
+		<div class="text-warp selected-value"></div>
+		<input type="hidden" name="selectValue" value="0,1"/>
+		<ul class="dropdown-menu">
+			<li class="dropdown-item text-warp" data-value="0">中国</li>
+			<li class="dropdown-item text-warp" data-value="1">美国</li>
+			<li class="dropdown-item text-warp" data-value="2">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="3">罗马尼亚</li>
+			<li class="dropdown-item text-warp" data-value="4">中国</li>
+			<li class="dropdown-item text-warp" data-value="5">美国</li>
+			<li class="dropdown-item text-warp" data-value="6">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="7">罗马尼亚</li>
+			<li class="dropdown-item text-warp" data-value="8">中国</li>
+			<li class="dropdown-item text-warp" data-value="9">美国</li>
+			<li class="dropdown-item text-warp" data-value="10">俄罗斯</li>
+			<li class="dropdown-item text-warp" data-value="11">罗马尼亚</li>
+		</ul>
+	</div>
+</div>
+<div class="search-item radio-group">
+	<label class="input-label">选择：</label>
+	<div class="radio-item"><input type="radio" class="iconfont" name="ss" checked="checked"/>选项1</div>
+	<div class="radio-item"><input type="radio" class="iconfont" name="ss"/>选项1</div>
+</div>
+<div class="search-item checkbox-group">
+	<label class="input-label">公司名称：</label>
+	<div class="checkbox-item"><input type="checkbox" class="iconfont"/>选项1</div>
+	<div class="checkbox-item"><input type="checkbox" class="iconfont"/>选项1</div>
+</div>
+<div class="search-space">
+	<div class="button button-disabled">禁用</div>
+	<div class="button ml">重置</div>
+	<div class="button button-main ml">查询</div>
+</div>
+		</textarea>
+	</div>
+</div>
+<div class="card-space card-form">
+	<div class="card-title">普通form组</div>
+	<div class="card-container">
+		<div class="form-item">
+			<label class="form-label">label1:</label>
+			<input type="text" class="m-input form-input"/>
+		</div>
+		<div class="form-item">
+			<label class="form-label">label2:</label>
+			<input type="text" class="m-input form-input"/>
+		</div>
+		<div class="form-item">
+			<label class="form-label">时间选择:</label>
+			<div class="timepick-warp form-input">
+				<input type="text" class="m-input" data-do="timepick" value="2017-03-02"/>
+			</div>
+		</div>
+		<div class="form-item radio-group">
+			<label class="form-label">radio:</label>
+			<div class="radio-item"><input type="radio" class="iconfont" name="aa" checked="checked"/>选项1</div>
+			<div class="radio-item"><input type="radio" class="iconfont" name="aa"/>选项1</div>
+		</div>
+		<div class="form-item checkbox-group">
+			<label class="form-label">checkbox:</label>
+			<div class="checkbox-item"><input type="checkbox" class="iconfont" checked/>选项1</div>
+			<div class="checkbox-item"><input type="checkbox" class="iconfont" />选项1</div>
+			<div class="checkbox-item"><input type="checkbox" class="iconfont"/>选项1</div>
+			<div class="checkbox-item"><input type="checkbox" class="iconfont" />选项1</div>
+		</div>
+		<div class="form-item">
+			<label class="form-label">select:</label>
+			<div class="select-dropdown m-input form-input" data-do="select">
+				<div class="text-warp selected-value"></div>
+				<input type="hidden" name="ruleState" value="1" data-submit/>
+				<ul class="dropdown-menu">
+					<li class="dropdown-item text-warp" data-value="1">启用</li>
+					<li class="dropdown-item text-warp" data-value="0">禁用</li>
+				</ul>
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="form-label">textarea:</label>
+			<textarea class="m-input form-input input-textarea"></textarea>
+		</div>
+		<div class="text-center">
+			<div class="card-space-savebtn">保存</div>
+		</div>
+		<textarea class="code-space" disabled>
+<div class="form-item">
+	<label class="form-label">label1:</label>
+	<input type="text" class="m-input form-input"/>
+</div>
+<div class="form-item">
+	<label class="form-label">label2:</label>
+	<input type="text" class="m-input form-input"/>
+</div>
+<div class="form-item">
+	<label class="form-label">时间选择:</label>
+	<div class="timepick-warp form-input">
+		<input type="text" class="m-input" data-do="timepick" value="2017-03-02"/>
+	</div>
+</div>
+<div class="form-item radio-group">
+	<label class="form-label">radio:</label>
+	<div class="radio-item"><input type="radio" class="iconfont" name="ss" checked="checked"/>选项1</div>
+	<div class="radio-item"><input type="radio" class="iconfont" name="ss"/>选项1</div>
+</div>
+<div class="form-item checkbox-group">
+	<label class="form-label">checkbox:</label>
+	<div class="checkbox-item"><input type="checkbox" class="iconfont" checked/>选项1</div>
+	<div class="checkbox-item"><input type="checkbox" class="iconfont" />选项1</div>
+	<div class="checkbox-item"><input type="checkbox" class="iconfont"/>选项1</div>
+	<div class="checkbox-item"><input type="checkbox" class="iconfont" />选项1</div>
+</div>
+<div class="form-item">
+	<label class="form-label">select:</label>
+	<div class="select-dropdown m-input form-input" data-do="select">
+		<div class="text-warp selected-value"></div>
+		<input type="hidden" name="ruleState" value="1" data-submit/>
+		<ul class="dropdown-menu">
+			<li class="dropdown-item text-warp" data-value="1">启用</li>
+			<li class="dropdown-item text-warp" data-value="0">禁用</li>
+		</ul>
+	</div>
+</div>
+<div class="form-item">
+	<label class="form-label">textarea:</label>
+	<textarea class="m-input form-input input-textarea"></ textarea>
+</div>
+<div class="text-center">
+	<div class="card-space-savebtn">保存</div>
+</div>
+		</textarea>
+	</div>
+</div>
+<div class="card-space card-form">
+	<div class="card-title">带必填项的form组</div>
+	<div class="card-container">
+		<div class="form-item form-must-icon">
+			<label class="form-label">label1</label>
+			<input type="text" class="m-input form-input"/>
+		</div>
+		<div class="form-item form-must-icon">
+			<label class="form-label">label2:</label>
+			<input type="text" class="m-input form-input"/>
+		</div>
+		<div class="form-item has-icon">
+			<label class="form-label">时间选择:</label>
+			<div class="timepick-warp form-input">
+				<input type="text" class="m-input" data-do="timepick" value="2017-03-02"/>
+			</div>
+		</div>
+		<div class="form-item radio-group has-icon">
+			<label class="form-label">radio:</label>
+			<div class="radio-item"><input type="radio" class="iconfont" name="bb" checked="checked"/>选项1</div>
+			<div class="radio-item"><input type="radio" class="iconfont" name="bb"/>选项1</div>
+		</div>
+		<div class="form-item checkbox-group has-icon">
+			<label class="form-label">checkbox:</label>
+			<div class="checkbox-item"><input type="checkbox" class="iconfont" checked/>选项1</div>
+			<div class="checkbox-item"><input type="checkbox" class="iconfont" />选项1</div>
+			<div class="checkbox-item"><input type="checkbox" class="iconfont"/>选项1</div>
+			<div class="checkbox-item"><input type="checkbox" class="iconfont" />选项1</div>
+		</div>
+		<div class="form-item has-icon">
+			<label class="form-label">select:</label>
+			<div class="select-dropdown m-input form-input" data-do="select">
+				<div class="text-warp selected-value"></div>
+				<input type="hidden" name="ruleState" value="1" data-submit/>
+				<ul class="dropdown-menu">
+					<li class="dropdown-item text-warp" data-value="1">启用</li>
+					<li class="dropdown-item text-warp" data-value="0">禁用</li>
+				</ul>
+			</div>
+		</div>
+		<div class="form-item form-must-icon">
+			<label class="form-label">textarea:</label>
+			<textarea class="m-input form-input input-textarea"></textarea>
+		</div>
+		<div class="text-center">
+			<div class="card-space-savebtn">保存</div>
+		</div>
+		<textarea class="code-space" disabled>
+<div class="form-item form-must-icon">
+	<label class="form-label">label1</label>
+	<input type="text" class="m-input form-input"/>
+</div>
+<div class="form-item form-must-icon">
+	<label class="form-label">label2:</label>
+	<input type="text" class="m-input form-input"/>
+</div>
+<div class="form-item has-icon">
+	<label class="form-label">时间选择:</label>
+	<div class="timepick-warp form-input">
+		<input type="text" class="m-input" data-do="timepick" value="2017-03-02"/>
+	</div>
+</div>
+<div class="form-item radio-group has-icon">
+	<label class="form-label">radio:</label>
+	<div class="radio-item"><input type="radio" class="iconfont" name="ff" checked="checked"/>选项1</div>
+	<div class="radio-item"><input type="radio" class="iconfont" name="ff"/>选项1</div>
+</div>
+<div class="form-item checkbox-group has-icon">
+	<label class="form-label">checkbox:</label>
+	<div class="checkbox-item"><input type="checkbox" class="iconfont" checked/>选项1</div>
+	<div class="checkbox-item"><input type="checkbox" class="iconfont" />选项1</div>
+	<div class="checkbox-item"><input type="checkbox" class="iconfont"/>选项1</div>
+	<div class="checkbox-item"><input type="checkbox" class="iconfont" />选项1</div>
+</div>
+<div class="form-item has-icon">
+	<label class="form-label">select:</label>
+	<div class="select-dropdown m-input form-input" data-do="select">
+		<div class="text-warp selected-value"></div>
+		<input type="hidden" name="ruleState" value="1" data-submit/>
+		<ul class="dropdown-menu">
+			<li class="dropdown-item text-warp" data-value="1">启用</li>
+			<li class="dropdown-item text-warp" data-value="0">禁用</li>
+		</ul>
+	</div>
+</div>
+<div class="form-item form-must-icon">
+	<label class="form-label">textarea:</label>
+	<textarea class="m-input form-input input-textarea"></ textarea>
+</div>
+<div class="text-center">
+	<div class="card-space-savebtn">保存</div>
+</div>
+		</textarea>
+	</div>
+</div>
+<div class="card-space">
+	<div class="card-title">弹出式输入框组</div>
+	<div class="card-container">
+		<div class="button ml" data-click="popupDemo" data-id="#popupDemo1">popup-form非必填</div>
+		<div class="button ml" data-click="popupDemo" data-id="#popupDemo2">popup-form存在必填</div>
+		<div id="popupDemo1" style="display: none;">
+			<div class="form-item">
+				<label class="form-label">label1:</label>
+				<input type="text" class="m-input"/>
+			</div>
+			<div class="form-item">
+				<label class="form-label">label2:</label>
+				<input type="text" class="m-input"/>
+			</div>
+			<div class="form-item">
+				<label class="form-label">时间选择:</label>
+				<div class="timepick-warp">
+					<input type="text" class="m-input" data-do="timepick" value="2017-03-02"/>
+				</div>
+			</div>
+			<div class="form-item radio-group">
+				<label class="form-label">radio:</label>
+				<div class="radio-item"><input type="radio" class="iconfont" name="dd" checked="checked"/>选项1</div>
+				<div class="radio-item"><input type="radio" class="iconfont" name="dd"/>选项1</div>
+			</div>
+			<div class="form-item checkbox-group">
+				<label class="form-label">checkbox:</label>
+				<div class="checkbox-item"><input type="checkbox" class="iconfont" checked="checked"/>选项1</div>
+				<div class="checkbox-item"><input type="checkbox" class="iconfont" />选项1</div>
+			</div>
+			<div class="form-item">
+				<label class="form-label">select:</label>
+				<div class="select-dropdown m-input" data-do="select">
+					<div class="text-warp selected-value"></div>
+					<input type="hidden" name="ruleState" value="1" data-submit/>
+					<ul class="dropdown-menu">
+						<li class="dropdown-item text-warp" data-value="1">启用</li>
+						<li class="dropdown-item text-warp" data-value="0">禁用</li>
+					</ul>
+				</div>
+			</div>
+			<div class="form-item">
+				<label class="form-label">textarea:</label>
+				<textarea class="m-input input-textarea"></textarea>
+			</div>
+			<div class="confirm-btns">
+				<div class="button button-main">保存</div>
+				<div class="button ml" data-click="hidepopup">取消</div>
+			</div>
+		</div>
+		<div id="popupDemo2" style="display: none;">
+			<div class="form-item form-must-icon">
+				<label class="form-label">label1</label>
+				<input type="text" class="m-input"/>
+			</div>
+			<div class="form-item form-must-icon">
+				<label class="form-label">label2:</label>
+				<input type="text" class="m-input"/>
+			</div>
+			<div class="form-item has-icon">
+				<label class="form-label">时间选择:</label>
+				<div class="timepick-warp form-input">
+					<input type="text" class="m-input" data-do="timepick" value="2017-03-02"/>
+				</div>
+			</div>
+			<div class="form-item radio-group has-icon">
+				<label class="form-label">radio:</label>
+				<div class="radio-item"><input type="radio" class="iconfont" name="ee" checked="checked"/>选项1</div>
+				<div class="radio-item"><input type="radio" class="iconfont" name="ee"/>选项1</div>
+			</div>
+			<div class="form-item checkbox-group has-icon">
+				<label class="form-label">checkbox:</label>
+				<div class="checkbox-item"><input type="checkbox" class="iconfont" checked="checked"/>选项1</div>
+				<div class="checkbox-item"><input type="checkbox" class="iconfont" />选项1</div>
+			</div>
+			<div class="form-item has-icon">
+				<label class="form-label">select:</label>
+				<div class="select-dropdown m-input" data-do="select">
+					<div class="text-warp selected-value"></div>
+					<input type="hidden" name="ruleState" value="1" data-submit/>
+					<ul class="dropdown-menu">
+						<li class="dropdown-item text-warp" data-value="1">启用</li>
+						<li class="dropdown-item text-warp" data-value="0">禁用</li>
+					</ul>
+				</div>
+			</div>
+			<div class="form-item has-icon">
+				<label class="form-label">textarea:</label>
+				<textarea class="m-input input-textarea"></textarea>
+			</div>
+			<div class="confirm-btns">
+				<div class="button button-main">保存</div>
+				<div class="button ml" data-click="hidepopup">取消</div>
+			</div>
+		</div>
+		<textarea class="code-space" disabled>
+<div class="button ml" data-click="popupDemo" data-id="#popupDemo1">popup-form非必填</div>
+<div class="button ml" data-click="popupDemo" data-id="#popupDemo2">popup-form存在必填</div>
+<div id="popupDemo1" style="display: none;">
+	<div class="form-item">
+		<label class="form-label">label1:</label>
+		<input type="text" class="m-input"/>
+	</div>
+	<div class="form-item">
+		<label class="form-label">label2:</label>
+		<input type="text" class="m-input"/>
+	</div>
+	<div class="form-item">
+		<label class="form-label">时间选择:</label>
+		<div class="timepick-warp">
+			<input type="text" class="m-input" data-do="timepick" value="2017-03-02"/>
+		</div>
+	</div>
+	<div class="form-item radio-group">
+		<label class="form-label">radio:</label>
+		<div class="radio-item"><input type="radio" class="iconfont" name="ss"/>选项1</div>
+		<div class="radio-item"><input type="radio" class="iconfont" name="ss"/>选项1</div>
+	</div>
+	<div class="form-item checkbox-group">
+		<label class="form-label">checkbox:</label>
+		<div class="checkbox-item"><input type="checkbox" class="iconfont" checked="checked"/>选项1</div>
+		<div class="checkbox-item"><input type="checkbox" class="iconfont" />选项1</div>
+	</div>
+	<div class="form-item">
+		<label class="form-label">select:</label>
+		<div class="select-dropdown m-input" data-do="select">
+			<div class="text-warp selected-value"></div>
+			<input type="hidden" name="ruleState" value="1" data-submit/>
+			<ul class="dropdown-menu">
+				<li class="dropdown-item text-warp" data-value="1">启用</li>
+				<li class="dropdown-item text-warp" data-value="0">禁用</li>
+			</ul>
+		</div>
+	</div>
+	<div class="form-item">
+		<label class="form-label">textarea:</label>
+		<textarea class="m-input input-textarea"></ textarea>
+	</div>
+	<div class="confirm-btns">
+		<div class="button button-main">保存</div>
+		<div class="button ml" data-click="hidepopup">取消</div>
+	</div>
+</div>
+<div id="popupDemo2" style="display: none;">
+	<div class="form-item form-must-icon">
+		<label class="form-label">label1</label>
+		<input type="text" class="m-input"/>
+	</div>
+	<div class="form-item form-must-icon">
+		<label class="form-label">label2:</label>
+		<input type="text" class="m-input"/>
+	</div>
+	<div class="form-item has-icon">
+		<label class="form-label">时间选择:</label>
+		<div class="timepick-warp form-input">
+			<input type="text" class="m-input" data-do="timepick" value="2017-03-02"/>
+		</div>
+	</div>
+	<div class="form-item radio-group has-icon">
+		<label class="form-label">radio:</label>
+		<div class="radio-item"><input type="radio" class="iconfont" name="ss"/>选项1</div>
+		<div class="radio-item"><input type="radio" class="iconfont" name="ss"/>选项1</div>
+	</div>
+	<div class="form-item checkbox-group has-icon">
+		<label class="form-label">checkbox:</label>
+		<div class="checkbox-item"><input type="checkbox" class="iconfont" checked="checked"/>选项1</div>
+		<div class="checkbox-item"><input type="checkbox" class="iconfont" />选项1</div>
+	</div>
+	<div class="form-item has-icon">
+		<label class="form-label">select:</label>
+		<div class="select-dropdown m-input" data-do="select">
+			<div class="text-warp selected-value"></div>
+			<input type="hidden" name="ruleState" value="1" data-submit/>
+			<ul class="dropdown-menu">
+				<li class="dropdown-item text-warp" data-value="1">启用</li>
+				<li class="dropdown-item text-warp" data-value="0">禁用</li>
+			</ul>
+		</div>
+	</div>
+	<div class="form-item has-icon">
+		<label class="form-label">textarea:</label>
+		<textarea class="m-input input-textarea"></ textarea>
+	</div>
+	<div class="confirm-btns">
+		<div class="button button-main">保存</div>
+		<div class="button ml" data-click="hidepopup">取消</div>
+	</div>
+</div>
+		</textarea>
+		<p class="help-title">弹出js控制</p>
+		<textarea class="code-space" disabled>
+module.clickTree.popupDemo = function() {
+	var id = $(this).data('id');
+	module.popup.show({
+		title: '这是一个popup',
+		content: $(id).html(),
+		callback: function() {
+			$(document).trigger(EVENT.INIT.DOTREE,this);
+		}
+	});
+}
+		</textarea>
+	</div>
+</div>
+<script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/jquery.form.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/flatpickr.min.js' charset='utf-8'></script>
+<script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$('textarea:disabled').each(function(){
+		$(this).css('height',this.scrollHeight);
+	});
+	module.clickTree.popupDemo = function() {
+		var id = $(this).data('id');
+		module.popup.show({
+			title: '这是一个popup',
+			content: $(id).html(),
+			callback: function() {
+				$(document).trigger(EVENT.INIT.DOTREE,this);
+			}
+		});
+	}
+</script>
+</body>
+</html>

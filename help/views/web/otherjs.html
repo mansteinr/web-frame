@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>后台管理</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href=''>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-store"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!--IOS设备上禁止将数字识别为可点击的tel link-->
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+    <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+    <link rel="stylesheet" type="text/css" href="../../static/css/help.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/_public/flatpickr.min.css"/>
+    <!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="iframe-body">
+	<div class="card-space">
+		<div class="card-title">隐藏popup</div>
+		<div class="card-container">
+			用于popup的隐藏，在clickTree上扩展，使用在元素属性配置 data-click="hidepopup"即可，常用于弹出popup隐藏按钮的配置
+			<textarea class="code-space" disabled><div class="button" data-click="hidepopup">点击关闭</div></textarea>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">table列表checkbox</div>
+		<div class="card-container">
+			用于列表的选择，全选功能，在clickTree上扩展，使用在元素属性配置 data-click="checkbox"即可，如果是 全选在需要额外配置 data-status="all"
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="iconfont table-checkbox" data-click="checkbox" data-status="all"></th>
+						<th>用户名</th>
+						<th>Guid</th>
+						<th>请求时间</th>
+						<th>请求参数</th>
+						<th>耗时（MS）</th>
+						<th>请求时间</th>
+						<th>请求参数</th>
+						<th>耗时（MS）</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="iconfont table-checkbox" data-click="checkbox"></td>
+						<td>用户名</td>
+						<td>Guid</td>
+						<td><a href="#" class="link">请求时间</a></td>
+						<td>请求参数</td>
+						<td>耗时（MS）</td>
+						<td>请求时间</td>
+						<td>请求参数</td>
+						<td>耗时（MS）</td>
+						<td><span class="link">编辑</span></td>
+					</tr>
+					<tr>
+						<td class="iconfont table-checkbox" data-click="checkbox"></td>
+						<td>用户名</td>
+						<td>Guid</td>
+						<td>请求时间</td>
+						<td>请求参数</td>
+						<td>耗时（MS）</td>
+						<td>请求时间</td>
+						<td>请求参数</td>
+						<td>耗时（MS）</td>
+						<td><span class="link">编辑</span></td>
+					</tr>
+					<tr>
+						<td class="iconfont table-checkbox" data-click="checkbox"></td>
+						<td>用户名</td>
+						<td>Guid</td>
+						<td>请求时间</td>
+						<td>请求参数</td>
+						<td>耗时（MS）</td>
+						<td>请求时间</td>
+						<td>请求参数</td>
+						<td>耗时（MS）</td>
+						<td><span class="link">编辑</span></td>
+					</tr>
+				</tbody>
+			</table>
+			<textarea class="code-space" disabled>
+<table class="table">
+	<thead>
+		<tr>
+			<th class="iconfont table-checkbox" data-click="checkbox" data-status="all"></th>
+			<th>用户名</th>
+			<th>Guid</th>
+			<th>请求时间</th>
+			<th>请求参数</th>
+			<th>耗时（MS）</th>
+			<th>请求时间</th>
+			<th>请求参数</th>
+			<th>耗时（MS）</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="iconfont table-checkbox" data-click="checkbox"></td>
+			<td>用户名</td>
+			<td>Guid</td>
+			<td><a href="#" class="link">请求时间</a></td>
+			<td>请求参数</td>
+			<td>耗时（MS）</td>
+			<td>请求时间</td>
+			<td>请求参数</td>
+			<td>耗时（MS）</td>
+			<td><span class="link">编辑</span></td>
+		</tr>
+		<tr>
+			<td class="iconfont table-checkbox" data-click="checkbox"></td>
+			<td>用户名</td>
+			<td>Guid</td>
+			<td>请求时间</td>
+			<td>请求参数</td>
+			<td>耗时（MS）</td>
+			<td>请求时间</td>
+			<td>请求参数</td>
+			<td>耗时（MS）</td>
+			<td><span class="link">编辑</span></td>
+		</tr>
+		<tr>
+			<td class="iconfont table-checkbox" data-click="checkbox"></td>
+			<td>用户名</td>
+			<td>Guid</td>
+			<td>请求时间</td>
+			<td>请求参数</td>
+			<td>耗时（MS）</td>
+			<td>请求时间</td>
+			<td>请求参数</td>
+			<td>耗时（MS）</td>
+			<td><span class="link">编辑</span></td>
+		</tr>
+	</tbody>
+</table>
+			</textarea>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">输入框重置</div>
+		<div class="card-container">
+			用于搜索区域输入框的重置，在clickTree上扩展，使用在元素属性配置 data-click="reset"即可，默认重置区域为 按钮所在的form，如果需要单独制定，请使用data-parent="selector"
+		</div>
+	</div>
+<script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/jquery.form.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/flatpickr.min.js' charset='utf-8'></script>
+<script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$('textarea').each(function(){
+		$(this).css('height',this.scrollHeight);
+	});
+</script>
+</body>
+</html>

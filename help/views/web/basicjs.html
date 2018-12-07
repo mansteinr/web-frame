@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>后台管理</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href=''>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-store"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!--IOS设备上禁止将数字识别为可点击的tel link-->
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+    <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+    <link rel="stylesheet" type="text/css" href="../../static/css/help.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/_public/flatpickr.min.css"/>
+    <!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="iframe-body">
+	<div class="card-space">
+		<div class="card-title">框架基本介绍</div>
+		<div class="card-container">
+			<div class="help-detail">整个前端web框架，实现了基本的UI组件，JS组件，各功能、能力间使用事件通知机制，减少耦合，实现集成和扩展接口，方便后期能力优化和补充。</div>
+			<div class="help-detail">整个JS功能库都是挂在载module上，可通过继承函数扩展功能module.extend</div>
+			<p class="help-title">1.扩展单个功能</p>
+			<div class="help-detail">module.extend('funcName',function() {});使用直接使用 module.funcName来调用</div>
+			<textarea class="code-space" disabled>
+例如：添加扩展功能say
+module.extend('say',function(detail) {
+	module.alert(detail);
+});
+使用时：
+module.say('你好');
+			</textarea>
+			<p class="help-title">2.扩展多个功能</p>
+			<div class="help-detail">module.extend({funcName1: function() {},funcName2: function() {}});使用直接使用 module.funcName来调用</div>
+			<textarea class="code-space" disabled>
+例如：添加扩展功能say,talk
+module.extend({
+	say: function(detail) {
+		module.alert(detail);
+	},
+	talk: function(detail) {
+		module.alert(detail);
+	}
+});
+使用时：
+module.say('你好');
+module.talk('告诉你哦');
+			</textarea>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">配置</div>
+		<div class="card-container">
+			<p class="help-title">1.配置参数 见common.js config参数</p>
+			<div class="help-detail">debug: true 设置是否开启debug模式</div>
+			<p class="help-title">2.事件通知 见common.js EVENT配置参数</p>
+			<div class="help-detail">配置全局通知事件函数</div>
+			<textarea class="code-space" disabled>
+EVENT = {
+	CONTEXTMENU: 'CONTEXTMENU',  					/* ! 右键事件*/
+	LOADREADY: 'LOADREADY',							/* ! 加载成功*/
+	TAB: {
+		NEW: 'NEW',									/* ! 新建tab*/
+        LOADING: 'LOADING',							/* ! tab加载中*/
+        CHANGE: 'CHANGE',							/* ! tab切换*/
+    	DELETE: 'DELETE',							/* ! 移除tab*/
+    	SUCCESS: 'SUCCESS',                         /* ! tab加载成功*/
+        ERROR: 'ERROR',                   			/* ! tab加载失败*/
+        RELOAD: 'RELOAD',                   		/* ! tab刷新加载*/
+        CLEAR: 'CLEAR'                   			/* ! 清除所有tab*/
+   },
+   ALERT: 'ALERT',									/* ! 打印提示*/
+   INIT: {
+   		DOTREE: 'DOTREE',							/* ! 监听初始化*/
+   		RESET: 'RESET'								/* ! 初始化搜索框 */
+   }
+}
+使用,直接通知监听：
+$(document).trigger(EVENT.TAB.NEW);
+			</textarea>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">事件处理</div>
+		<div class="card-container">
+			<p class="help-detail">框架集成默认初始化处理，和点击处理，方便快速集成和扩展,框架中已经集成了部分常用功能，包括select，hidepopup等，详细请见文档</p>
+			<p class="help-title">1.data-do 默认初始化处理</p>
+			<p class="help-detail">定义 module.doTree.doFunction = function() {}，默认初始化可以后期再次初始化，用于自定义添加空间后进行初始化，方法如下：</p>
+			<div class="help-detail">
+				$(document).trigger(EVENT.INIT.DOTREE,parent) 通过抛出异常进进行初始化，parent是 要初始化内容的父级jquery容器
+			</div>
+			<p class="help-detail">使用<textarea class="code-space" disabled><p data-do="doFunction"></p></textarea></p>
+			<p class="help-title">2.data-click 点击触发</p>
+			<p class="help-detail">定义 module.clickTree.doFunction = function() {}</p>
+			<p class="help-detail">使用<textarea class="code-space" disabled><p data-click="doFunction"></p></textarea></p>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">消息通知</div>
+		<div class="card-container">
+			<p class="help-detail">框架集成消息通知，用于iframe之间，iframe和外层，外层和iframe之间进行通信使用</p>
+			<p>基本参数：call 注册方法，data 传递数据，tabid 可选 通知tabid</p>
+			<p>1.广播</p>
+			<p>module.postMessage({call:'getInfo',data:'ss'});</p>
+			<p>2.固定通知</p>
+			<p>module.postMessage({call:'getInfo',data:'ss',tabid:'1506664666332'});</p>
+			<p>3.注册方法</p>
+			<textarea class="code-space" disabled>
+module.messageCallBack.getInfo = function(){
+	console.log(this);
+}
+			</textarea>
+		</div>
+	</div>
+	<div class="card-space">
+			<div class="card-title">非空判断</div>
+			<div class="card-container">
+				<p class="help-detail">1.用法</p>
+				<p>module.empty(obj)</p>
+				<p>2.用于判断对象、字符串、数组等</p>
+			</div>
+	</div>
+	<div class="card-space">
+			<div class="card-title">时间戳转换</div>
+			<div class="card-container">
+				<p class="help-detail">1.用法</p>
+				<p>module.FormatDate(obj, format)</p>
+				<p>2.format:  "yyyy-m-d h:i:s.S","yyyy年mm月dd日 hh:ii:ss"  default: "yyyy-mm-dd hh:ii:ss"</p>
+			</div>
+	</div>
+<script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/jquery.form.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/flatpickr.min.js' charset='utf-8'></script>
+<script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$('textarea').each(function(){
+		$(this).css('height',this.scrollHeight);
+	});
+</script>
+</body>
+</html>

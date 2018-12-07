@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>后台管理</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href=''>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-store"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!--IOS设备上禁止将数字识别为可点击的tel link-->
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+    <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+    <link rel="stylesheet" type="text/css" href="../../static/css/help.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/_public/flatpickr.min.css"/>
+    <!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="iframe-body">
+	<div class="card-space">
+		<div class="card-title">框架TAB管理</div>
+		<div class="card-container">
+			<div class="help-detail">整个框架可打开多个标签，框架集成了多种对标签的操作，包含 创建，关闭刷新标签等，同一标签只能打开一次</div>
+			<p class="help-title">1.创建标签</p>
+			<p class="help-subtitle">1.1 属性方式创建标签</p>
+			<div class="help-subdetail">
+				框架中data-click注册了loadtab方法，使用时在标签中添加属性即可创建新标签，例如：<div class="button" data-click="loadtab" data-title="API配置" data-url="views/web/apiconfig.html">点击打开 API配置</div><br>
+				包含属性：<br>title 打开标签标题，必填<br>url 打开标签加载的地址，必填 <br>loadhide 请求完成后是否隐藏tab加载动画，true|false 必填 <br>tabid 打开标签tabid，标签唯一标识 可选，默认自动创建
+			</div>
+			<textarea class="code-space" disabled>
+<div class="button" data-click="loadtab" data-title="API配置" data-url="views/web/apiconfig.html">点击打开 API配置</div>
+			</textarea>
+			<p class="help-subtitle">1.2 事件通知方式创建标签</p>
+			<div class="help-subdetail">
+				tab管理集成了多种事件监听，其中就有创建标签，使用方法是$(document).trigger(EVENT.TAB.NEW,options),options包含参数如下：<br>
+				title 打开标签标题，必填<br>url 打开标签加载的地址，必填 <br>loadhide 请求完成后是否隐藏tab加载动画，true|false 可选 默认 true <br>tabid 打开标签tabid，标签唯一标识必填
+				例如：<div class="button" data-click="changetab1">点击打开 $http</div>
+			</div>
+			<textarea class="code-space" disabled>
+<div class="button" data-click="changetab">点击打开 $http</div>
+module.clickTree.changetab1 = function() {
+	$(document).trigger(EVENT.TAB.NEW,{
+		title: '$http',
+		url: 'views/web/$http.html',
+		tabid: 'changetab',
+		loadhide: true
+	});
+}
+			</textarea>
+			<p class="help-subtitle">1.3 方法调用创建标签</p>
+			<div class="help-subdetail">
+				可以通过直接调用方法创建标签，使用方法是module.tabManage.create(null,options),options包含参数如下：<br>
+				title 打开标签标题，必填<br>url 打开标签加载的地址，必填 <br>loadhide 请求完成后是否隐藏tab加载动画，true|false 可选 默认 true <br>tabid 打开标签tabid，标签唯一标识必填
+				例如：<div class="button" data-click="changetab2">点击打开 $http</div>
+				<br>如果你在上一部已经打开没有关闭,你会发现会切换到打开的$http标签，这是因为打开的tabid相同，如果已经存在，则直接切换标签,这也是切换标签的一个方法，下面不再描述此方法
+			</div>
+			<textarea class="code-space" disabled>
+<div class="button" data-click="changetab2">点击打开 $http</div>
+module.clickTree.changetab2 = function() {
+	module.tabManage.create(null,{
+		title: '$http',
+		url: 'views/web/$http.html',
+		tabid: 'changetab',
+		loadhide: true
+	});
+}
+			</textarea>
+			<p class="help-title">2.切换标签</p>
+			<p class="help-subtitle">2.1 事件通知方式</p>
+			<div class="help-subdetail">
+				使用方法是$(document).trigger(EVENT.TAB.CHANGE,tabid),tabid为切换的标签tabid<br>
+				例如：<div class="button" data-click="changetab3">点击切换 $http</div>
+				<br>如果切换的标签不存在，则只会隐藏当前tab标签
+			</div>
+			<textarea class="code-space" disabled>
+<div class="button" data-click="changetab3">点击切换 $http</div>
+module.clickTree.changetab3 = function() {
+	$(document).trigger(EVENT.TAB.CHANGE,'changetab');
+}
+			</textarea>
+			<p class="help-subtitle">2.2 事件通知方式</p>
+			<div class="help-subdetail">
+				该方法是通过创建方法去切换标签，上面已经进行描述，此处不再描述
+			</div>
+			<p class="help-subtitle">2.3 方法调用</p>
+			<div class="help-subdetail">
+				可以通过直接调用方法创建标签，使用方法是module.tabManage.change(null,tabid),tabid为切换的标签tabid<br>
+				例如：<div class="button" data-click="changetab4">点击切换 $http</div>
+				<br>如果切换的标签不存在，则只会隐藏当前tab标签
+			</div>
+			<textarea class="code-space" disabled>
+<div class="button" data-click="changetab4">点击切换 $http</div>
+module.clickTree.changetab4 = function() {
+	module.tabManage.change(null,'changetab');
+}
+			</textarea>
+			<p class="help-title">3.刷新标签</p>
+			<div class="help-detail">刷新标签分为内层刷新和外层刷新，区别是外层刷新指定的tabid，为必填，内层不是，内层如果不填写tabid，则是刷新自己</div>
+			<p class="help-subtitle">3.1 事件通知方式</p>
+			<div class="help-subdetail">
+				使用方法是$(document).trigger(EVENT.TAB.RELOAD,tabid),tabid为切换的标签tabid<br>
+				例如：<div class="button" data-click="changetab5">刷新 $http</div>
+			</div>
+			<textarea class="code-space" disabled>
+例如：<div class="button" data-click="changetab5">刷新 $http</div>
+module.clickTree.changetab5 = function() {
+	$(document).trigger(EVENT.TAB.RELOAD,'changetab');
+}
+	
+			</textarea>
+			<p class="help-subtitle">3.2 方法调用</p>
+			<div class="help-subdetail">
+				可以通过直接调用方法创建标签，使用方法是module.tabManage.relaod(null,tabid),tabid为切换的标签tabid<br>
+				例如：<div class="button" data-click="changetab6">刷新 $http</div>
+			</div>
+			<textarea class="code-space" disabled>
+<div class="button" data-click="changetab6">刷新 $http</div>
+module.clickTree.changetab6 = function() {
+	module.tabManage.reload(null,'changetab');
+}
+	
+			</textarea>
+			<p class="help-title">4.关闭标签</p>
+			<div class="help-detail">关闭标签分为内层关闭和外层关闭，区别是外层关闭指定的tabid，为必填，内层不是，内层如果不填写tabid，则是关闭自己</div>
+			<p class="help-subtitle">4.1 事件通知方式</p>
+			<div class="help-subdetail">
+				使用方法是$(document).trigger(EVENT.TAB.DELETE,tabid),tabid为切换的标签tabid<br>
+				例如：<div class="button button-main mr" data-click="changetab2">点击打开 $http</div><div class="button" data-click="changetab7">关闭 $http</div>
+			</div>
+			<textarea class="code-space" disabled>
+<div class="button button-main mr" data-click="changetab2">点击打开 $http</div>
+<div class="button" data-click="changetab7">关闭 $http</div>
+module.clickTree.changetab7 = function() {
+	$(document).trigger(EVENT.TAB.DELETE,'changetab');
+}
+	
+			</textarea>
+			<p class="help-subtitle">4.2 方法调用</p>
+			<div class="help-subdetail">
+				可以通过直接调用方法创建标签，使用方法是module.tabManage.relaod(null,tabid),tabid为切换的标签tabid<br>
+				例如：<div class="button button-main mr" data-click="changetab2">点击打开 $http</div><div class="button" data-click="changetab8">关闭 $http</div>
+			</div>
+			<textarea class="code-space" disabled>
+<div class="button button-main mr" data-click="changetab2">点击打开 $http</div>
+<div class="button" data-click="changetab8">关闭 $http</div>
+module.clickTree.changetab8 = function() {
+	module.tabManage.delete(null,'changetab');
+}
+	
+			</textarea>
+			<p class="help-title">5.其他标签管理</p>
+			<div class="help-detail">
+				标签管理还包含其他管理，如显示加载表示，加载成功等，具体使用和调用方式如下
+				<p class="help-subtitle">5.1 显示加载标识</p>
+				<div class="help-detail">$(document).trigger(EVENT.TAB.LOADING,tabid) 或 module.tabManage.relaod(null,tabid)</div>
+				<p class="help-subtitle">5.2 加载成功</p>
+				<div class="help-detail">$(document).trigger(EVENT.TAB.SUCCESS,tabid) 或 module.tabManage.success(null,tabid)</div>
+				<p class="help-subtitle">5.2 外层，清除所有标签</p>
+				<div class="help-detail">$(document).trigger(EVENT.TAB.CLEAR) 或 module.tabManage.clear()</div>
+			</div>
+		</div>
+	</div>
+<script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/jquery.form.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/flatpickr.min.js' charset='utf-8'></script>
+<script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$('textarea').each(function(){
+		$(this).css('height',this.scrollHeight);
+	});
+	module.clickTree.changetab1 = function() {
+		$(document).trigger(EVENT.TAB.NEW,{
+			title: '$http',
+			url: 'views/web/$http.html',
+			tabid: 'changetab',
+			loadhide: true
+		});
+	}
+	module.clickTree.changetab2 = function() {
+		module.tabManage.create(null,{
+			title: '$http',
+			url: 'views/web/$http.html',
+			tabid: 'changetab',
+			loadhide: true
+		});
+	}
+	module.clickTree.changetab3 = function() {
+		$(document).trigger(EVENT.TAB.CHANGE,'changetab');
+	}
+	module.clickTree.changetab4 = function() {
+		module.tabManage.change(null,'changetab');
+	}
+	module.clickTree.changetab5 = function() {
+		$(document).trigger(EVENT.TAB.RELOAD,'changetab');
+	}
+	module.clickTree.changetab6 = function() {
+		module.tabManage.reload(null,'changetab');
+	}
+	module.clickTree.changetab7 = function() {
+		$(document).trigger(EVENT.TAB.DELETE,'changetab');
+	}
+	module.clickTree.changetab8 = function() {
+		module.tabManage.delete(null,'changetab');
+	}
+</script>
+</body>
+</html>

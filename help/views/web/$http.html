@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>后台管理</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href=''>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-store"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!--IOS设备上禁止将数字识别为可点击的tel link-->
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+    <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+    <link rel="stylesheet" type="text/css" href="../../static/css/help.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/_public/flatpickr.min.css"/>
+    <!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="iframe-body">
+	<div class="card-space">
+		<div class="card-title">ajax请求</div>
+		<div class="card-container">
+			<p class="help-detail">封装的http请求，把登录验证和异常处理进行统一处理，并对请求效果和loading动画进行处理，成功回掉函数只需要关注成功之后的数据返回</p>
+			<p class="help-title">1.方法使用</p>
+			<div class="help-detail">调用使用 module.$http(url,params,cb,type,op)，详细请见下面参数解析</div>
+			<p class="help-subtitle">1.1 url ajax请求参数地址，请使用apiConfig.js中配置的地址</p>
+			<p class="help-subtitle">1.2 params ajax请求参数，无请填写{}</p>
+			<p class="help-subtitle">1.3 cb ajax请求成功回掉</p>
+			<p class="help-subtitle">1.4 op 参数集合 type 请求方式  datatype 返回结果格式，默认JSON， isform 是否表单提交 error 请求失败时候的回调，默认打印错误提示</p>
+			<textarea class="code-space" disabled>
+module.$http(API.demoApi.demoUrl,{},function() {
+	console.log(this); /*this是成功回掉返回的参数*/
+});				
+			</textarea>
+			<p class="help-title">2.loading效果封装</p>
+			<div class="help-detail">ajax请求开始时会自动调用loading显示，请求结束后会自动调用londing隐藏,无需关心加载动画，具体实现代码如下</div>
+			<textarea class="code-space" disabled>
+beforeSend: function(){  //开始loading
+    module.loading.show();
+},
+complete: function(){
+	module.loading.hide();
+}
+			</textarea>
+		</div>
+	</div>
+<script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/jquery.form.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/_public/flatpickr.min.js' charset='utf-8'></script>
+<script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$('textarea').each(function(){
+		$(this).css('height',this.scrollHeight);
+	});
+</script>
+</body>
+</html>
