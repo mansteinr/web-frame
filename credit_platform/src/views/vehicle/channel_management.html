@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>后台管理</title>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href=''>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <!--IOS设备上禁止将数字识别为可点击的tel link-->
+  <meta content="telephone=no" name="format-detection">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/web/public.css'>
+  <link rel="stylesheet" type="text/css" href="../../static/_public/bootstrap.table.min.css" />
+  <style>
+    .switch {
+      width: 57px;
+      height: 24px;
+      position: relative;
+      border: 1px solid #dfdfdf;
+      background-color: #fdfdfd;
+      box-shadow: #ccf3f8 0 0 0 0 inset;
+      border-radius: 20px;
+      background-clip: content-box;
+      display: inline-block;
+      -webkit-appearance: none;
+      user-select: none;
+      outline: none;
+      margin-top: 8px;
+      cursor: pointer;
+  }
+  .switch:before {
+      content: '';
+      width: 23px;
+      height: 23px;
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      border-radius: 20px;
+      background-color: #fff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+  .switch:checked {
+      border-color: #00c2de;
+      box-shadow: #00c2de 0 0 0 16px inset;
+      background-color:#00c2de;
+  }
+  .switch:checked:before {
+      left: 33px;
+  }
+  .switch.switch-anim {
+      transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s;
+  }
+  .switch.switch-anim:before {
+      transition: left 0.3s;
+  }
+  .switch.switch-anim:checked {
+      box-shadow: #00c2de 0 0 0 16px inset;
+      background-color: #00c2de;
+      transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s;
+  }
+  .switch.switch-anim:checked:before {
+      transition: left 0.3s;
+  }
+  .channel-save{
+    float: left;
+    position: absolute;
+    top: 6px;
+    z-index: 101;
+    display: none;
+  }
+</style>
+<!--[if lt IE 9]>
+          <script src="../../static/_public/html5.js"></script>
+<![endif]-->
+</head>
+
+<body class="iframe-body">
+  <div class="card-space" id="app">
+    <div class="card-title">查询条件</div>
+    <div class="card-container clearfix">
+      <form>
+        <div class="search-item">
+          <label class="input-label">服务名称：</label>
+          <div class="select-dropdown m-input" data-do="select" data-search="true" title="">
+            <div class="text-warp selected-value"></div>
+            <input type="hidden" name="serviceId" value="">
+            <ul class="dropdown-menu">
+              <li class="dropdown-input"><input type="text" placeholder="输入搜索" class="search-input m-input"></li>
+            </ul>
+          </div>
+        </div>
+        <div class="search-item">
+          <label class="input-label">是否禁用：</label>
+          <input class="switch switch-anim"  name="forbiddenFlag" type="checkbox" checked>
+        </div>
+        <div class="search-space">
+          <div class="button ml" data-click="reset">重置</div>
+          <div class="button button-main ml" data-click="queryFun">保存</div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card-space">
+    <div class="card-title">通道信息</div>
+    <div class="card-container">
+      <div class="chartArea active">
+        <div class="item-box">
+          <div class="item active">
+            <div class="button channel-save button-main" data-click="saveFun">保存</div>
+            <div class='table-area' style="white-space: nowrap; overflow: hidden; overflow-x: scroll; -webkit-backface-visibility: hidden; -webkit-overflow-scrolling: touch;">
+              <table id="table1">
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap-table.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap-table-export.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/tableExport.js' charset='utf-8'></script>
+  <script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+  <script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/base/utils.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/base/drag.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/vehicle/channel_management.js' charset='utf-8'></script>
+</body>
+
+</html>

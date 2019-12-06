@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>后台管理</title>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href=''>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <!--IOS设备上禁止将数字识别为可点击的tel link-->
+  <meta content="telephone=no" name="format-detection">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/web/public.css'>
+  <link rel="stylesheet" type="text/css" href="../../static/_public/bootstrap.table.min.css" />
+  <style>
+    .form-item {
+      padding: 0 20px 0 125px;
+    }
+
+    .form-label {
+      width: 125px !important;
+    }
+  </style>
+  <!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body class="iframe-body">
+  <div class="card-space">
+    <div class="card-title" id="queryDatabase">查询条件</div>
+    <div class="card-container clearfix">
+      <form>
+        <div class="search-item">
+          <label class="input-label">授权码：</label>
+          <input type="text" class="m-input" name="authCode" placeholder="请输入授权码" />
+        </div>
+        <div class="search-item">
+          <label class="input-label">客户名称：</label>
+          <div class="select-dropdown m-input" data-do="select" data-search="true">
+            <div class="text-warp selected-value"></div>
+            <input type="hidden" name="customerId" />
+            <ul class="dropdown-menu">
+            </ul>
+          </div>
+        </div>
+        <div class="search-space">
+          <div class="button ml" data-click="reset">重置</div>
+          <div class="button button-main ml" data-click="queryFun">查询</div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card-space">
+    <div class="card-title">查询结果</div>
+    <div class="card-container">
+      <div class="button-group" style="float:left;position: absolute;top: 10px;z-index: 97;">
+        <i class="iconfont icon-zengjia" data-click="add"></i>
+      </div>
+      <div class="chartArea active">
+        <div class="item-box">
+          <div class="item active">
+            <div class='table-area'
+              style="white-space: nowrap; overflow: hidden; overflow-x: scroll; -webkit-backface-visibility: hidden; -webkit-overflow-scrolling: touch;">
+              <table data-row-style="rowStyle" id="table1"></table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="popupAddHtmlAdd" style="display: none;">
+    <form>
+      <div class="form-item form-must-icon" title="不允许输入汉字">
+        <label data-value="客户英文名" class="form-label">客户英文名：</label>
+        <input type="text" name="customerName" required class="ischinses m-input form-input" placeholder="请输入客户英文名">
+      </div>
+      <div class="form-item form-must-icon">
+        <label data-value="客户(公司)中文名" class="form-label">客户(公司)中文名：</label>
+        <input type="text" name="customerNamezh" required class="m-input form-input" placeholder="请输入客户（公司）中文名">
+      </div>
+      <div class="form-item has-icon">
+        <label data-value="客户密码" class="form-label">客户密码：</label>
+        <input type="text" name="customerPwd" class="m-input form-input" placeholder="请输入客户密码">
+      </div>
+      <div class="form-item form-must-icon">
+        <label data-value="客户联系人" class="form-label">客户联系人：</label>
+        <input type="text" name="customerContact" required class="m-input form-input" placeholder="请输入客户联系人">
+      </div>
+      <div class="form-item form-must-icon">
+        <label data-value="客户联系方式" class="form-label">客户联系方式：</label>
+        <input type="text" name="customerMobile" required class="m-input form-input" placeholder="请输入客户联系方式">
+      </div>
+      <div class="form-item form-must-icon">
+        <label data-value="商务联系人" class="form-label">商务联系人：</label>
+        <input type="text" name="bussinessContact" required class="m-input form-input" placeholder="请输入商务联系人">
+      </div>
+      <div class="form-item has-icon">
+        <label data-value="客户IP白名单" class="form-label">客户IP白名单：</label>
+        <input type="text" name="customerIp" class="m-input form-input" placeholder="请输入客户IP白名单">
+      </div>
+      <div class="form-item has-icon">
+        <label data-value="备注" class="form-label">备注：</label>
+        <textarea name="remark" class="m-input form-input input-textarea" placeholder="备注"></textarea>
+      </div>
+      <div class="confirm-btns">
+        <div class="button button-main" data-click="addFuns">保存</div>
+        <div class="button ml" data-click="hidepopup">取消</div>
+      </div>
+    </form>
+  </div>
+  <div id="popupEditHtmlEdit" style="display: none;">
+    <form>
+      <div class="form-item has-icon" title="英文名不能修改">
+        <label data-value="客户英文名" class="form-label">客户英文名：</label>
+        <input type="text" name="customerName" readonly="readonly" class="m-input form-input" placeholder="请输入客户名称">
+      </div>
+      <div class="form-item has-icon">
+        <label data-value="客户（公司）中文名" class="form-label">客户中文名：</label>
+        <input type="text" name="customerNamezh" class="m-input form-input" placeholder="请输入客户（公司）中文名">
+      </div>
+      <div class="form-item has-icon">
+        <label data-value="客户密码" class="form-label">客户密码：</label>
+        <input type="text" name="customerPwd" class="m-input form-input" placeholder="请输入客户密码">
+      </div>
+      <div class="form-item has-icon">
+        <label data-value="客户联系人" class="form-label">客户联系人：</label>
+        <input type="text" name="customerContact" class="m-input form-input" placeholder="请输入客户联系人">
+      </div>
+      <div class="form-item has-icon">
+        <label data-value="客户联系方式" class="form-label">客户联系方式：</label>
+        <input type="text" name="customerMobile" class="m-input form-input" placeholder="请输入客户联系方式">
+      </div>
+      <div class="form-item has-icon">
+        <label data-value="商务联系人" class="form-label">商务联系人：</label>
+        <input type="text" name="bussinessContact" class="m-input form-input" placeholder="请输入商务联系人">
+      </div>
+      <div class="form-item has-icon">
+        <label data-value="客户IP白名单" class="form-label">客户IP白名单：</label>
+        <input type="text" name="customerIp" class="m-input form-input" placeholder="请输入客户IP白名单">
+      </div>
+      <div class="form-item has-icon">
+        <label data-value="备注" class="form-label">备注：</label>
+        <textarea name="remark" class="m-input form-input input-textarea" placeholder="备注"></textarea>
+      </div>
+      <div class="confirm-btns">
+        <div class="button button-main" data-click="updateFuns">修改</div>
+        <div class="button ml" data-click="hidepopup">取消</div>
+      </div>
+    </form>
+  </div>
+  <script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap-table.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap-table-export.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/tableExport.js' charset='utf-8'></script>
+  <script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+  <script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/base/utils.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/wechat/wechatPublic.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/wechat/customer.js' charset='utf-8'></script>
+</body>
+
+</html>

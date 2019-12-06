@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>MiniVision</title>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href='static/images/Logo_02.png'>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <!--IOS设备上禁止将数字识别为可点击的tel link-->
+  <meta content="telephone=no" name="format-detection">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" type="text/css" href='static/css/font.css'>
+  <link rel="stylesheet" type="text/css" href='static/css/base.css'>
+  <!--[if lt IE 9]>
+    <script src="/static/_public/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="header-logo"></div>
+    <div class="user-space">
+      <div class="user-header" style="background-image: url(static/images/default.jpg);"></div>
+      <span class="username">admin</span>
+      <ul class="nav-menu-list">
+        <li data-click="pChoose">
+          <span class="iconfont icon-tongdao"></span>项目选择</li>
+        <li data-click="loginOut">
+          <span class="iconfont icon-Close"></span>退出</li>
+      </ul>
+    </div>
+  </nav>
+  <div class="main-menus no-select" id="mainMenus">
+    <div class="main-menus-bg"></div>
+    <div class="menu-controll" id="menuControll">
+      <span class="iconfont icon-tubiaozhizuomoban"></span>
+    </div>
+    <div id="menuWrapper">
+        <div class="menu-item-1 no-collapse" data-click="loadtab" data-url="views/query_index.html" data-title="总量统计">
+          <span class="iconfont icon-slaadfltic"></span>
+          <span class="menu-item-title">总量统计</span>
+        </div>
+        <div class="menu-item-1 has-collapse" data-click="collapse" data-target="#menu1" data-parent="#menuWrapper">
+          <span class="iconfont icon-guanli"></span>
+          <span class="menu-item-title">用量统计</span>
+        </div>
+        <div id="menu1" class="menus-space">
+          <div class="menu-item-2" data-click="loadtab" data-url="views/statistics/query_finance.html" data-title="对账分析">
+            <span class="iconfont icon-dkw_zhangdan"></span>余额快照
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/statistics/query_usage.html" data-title="客户用量查询">
+            <span class="iconfont icon-kefu"></span>客户用量查询
+          </div>
+          <div class="menu-item-2 has-collapse" data-click="collapse" data-target="#menu1_2" data-parent="#menu1">
+            <span class="iconfont icon-shangsheng"></span>上游服务占比分析
+          </div>
+          <div id="menu1_2" class="menus-space">
+            <div class="menu-item-3" data-click="loadtab" data-url="views/statistics/query_upstream_supplier.html" data-title="按供应商分析">
+              按供应商分析</div>
+            <div class="menu-item-3" data-click="loadtab" data-url="views/statistics/query_upstream_customer.html" data-title="按客户分析">
+              按客户分析</div>
+            <div class="menu-item-3" data-click="loadtab" data-url="views/statistics/query_upstream_service.html" data-title="按服务分析">
+              按服务分析</div>
+            <div class="menu-item-3" data-click="loadtab" data-url="views/statistics/query_upstream_serviceByData.html"
+              data-title="按日期服务分析">按日期服务分析</div>
+          </div>
+          <div class="menu-item-2 has-collapse" data-click="collapse" data-target="#menu1_3" data-parent="#menu1">
+            <span class="iconfont icon-xiajiang"></span>下游服务占比分析
+          </div>
+          <div id="menu1_3" class="menus-space">
+            <div class="menu-item-3" data-click="loadtab" data-url="views/statistics/query_downstream_customer.html"
+              data-title="按客户分析">按客户分析</div>
+            <div class="menu-item-3" data-click="loadtab" data-url="views/statistics/query_downstream_service.html" data-title="按服务分析">
+              按服务分析</div>
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/statistics/query_profit.html" data-title="利润分析">
+            <span class="iconfont icon-icon11-copy-copy-copy-copy-copy"></span>利润分析
+          </div>
+        </div>
+        <div class="menu-item-1 has-collapse" data-click="collapse" data-target="#menu4" data-parent="#menuWrapper">
+          <span class="iconfont icon-yunweiguanli"></span>
+          <span class="menu-item-title">运维工具</span>
+        </div>
+        <div id="menu4" class="menus-space">
+          <div class="menu-item-2" data-click="loadtab" data-url="views/devops/query_logs.html" data-title="日志分析">
+            <span class="iconfont icon-chakanrizhi"></span>日志分析
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/devops/query_quality.html" data-title="质量分析">
+            <span class="iconfont icon-zhiliangbz"></span>质量分析
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/devops/query_newquality.html" data-title="new质量分析">
+            <span class="iconfont icon-zhiliangbz"></span>new质量分析
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/devops/query_guid.html" data-title="查询guid">
+            <span class="iconfont icon-search"></span>查询guid
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/devops/query_mvTrackId.html" data-title="查询mvTrackId">
+            <span class="iconfont icon-shujucaiji"></span>查询mvTrackId
+          </div>
+        </div>
+        <div class="menu-item-1 has-collapse" data-click="collapse" data-target="#menu7" data-parent="#menuWrapper">
+          <span class="iconfont icon-daochu"></span>
+          <span class="menu-item-title">数据导出</span>
+        </div>
+        <div id="menu7" class="menus-space">
+          <div class="menu-item-2" data-click="loadtab" data-url="views/export/query_upStreamCount.html" data-title="上游调用量">
+            <span class="iconfont icon-jilu1"></span>上游调用量
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/export/query_mobileOperator.html" data-title="三网通服务调用量">
+            <span class="iconfont icon-icon-test"></span>三网通服务调用量
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/export/query_trackDetail.html" data-title="下游客户调用明细">
+            <span class="iconfont icon-jichuxinxi"></span>下游客户调用明细
+          </div>
+        </div>
+        <div class="menu-item-1 has-collapse" data-click="collapse" data-target="#menu8" data-parent="#menuWrapper">
+          <span class="iconfont icon-daochu"></span>
+          <span class="menu-item-title">平台质量分析</span>
+        </div>
+        <div id="menu8" class="menus-space">
+          <div class="menu-item-2" data-click="loadtab" data-url="views/configure/supplier_quality_analysis.html"
+            data-title="供应商质量分析">
+            <span class="iconfont icon-jilu1"></span>供应商质量分析
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/configure/customer_quality_analysis.html" data-title="服务质量分析">
+            <span class="iconfont icon-icon-test"></span>服务质量分析
+          </div>
+        </div>
+        <div class="menu-item-1 has-collapse" data-click="collapse" data-target="#menu9" data-parent="#menuWrapper">
+          <span class="iconfont icon-ai-tool"></span>
+          <span class="menu-item-title">配置管理</span>
+        </div>
+        <div id="menu9" class="menus-space">
+          <div class="menu-item-2" data-click="loadtab" data-url="views/configure/interface_parameter_maintenance.html"
+            data-title="供应商质量分析">
+            <span class="iconfont icon-canshu"></span>接口参数维护
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/configure/callDiffNumThreshold.html"
+            data-title="供应商质量分析">
+            <span class="iconfont icon-fabaowenjiantupian"></span>客户调用量差值-阈值
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/configure/restrict.html"
+            data-title="限量配置">
+            <span class="iconfont icon-fabaowenjiantupian"></span>限量配置
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/configure/blacklist.html"
+            data-title="黑名单">
+            <span class="iconfont icon-icon_kaoqin"></span>黑名单
+          </div>
+        </div>
+        <div class="menu-item-1 has-collapse" data-click="collapse" data-target="#vehicle" data-parent="#menuWrapper">
+          <span class="iconfont icon-jilu11"></span>
+          <span class="menu-item-title">异步服务运营</span>
+        </div>
+        <div id="vehicle" class="menus-space">
+          <div class="menu-item-2" data-click="loadtab" data-url="views/vehicle/query_order.html" data-title="订单查询">
+            <span class="iconfont icon-shenhe"></span>订单查询
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/vehicle/channel_management.html"
+            data-title="供应商通道管理">
+            <span class="iconfont icon-xitongpeizhi"></span>供应商通道管理
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/vehicle/query_reconciliation.html"
+            data-title="对账查询">
+            <span class="iconfont icon-yishoukuan"></span>对账查询
+          </div>
+        </div>
+        <div class="menu-item-1 has-collapse" data-click="collapse" data-target="#security" data-parent="#menuWrapper">
+          <span class="iconfont icon-anquan"></span>
+          <span class="menu-item-title">安全中心</span>
+        </div>
+        <div id="security" class="menus-space">
+          <div class="menu-item-2" data-click="loadtab" data-url="views/security/sensitive_word.html" data-title="敏感词">
+            <span class="iconfont icon-minganguanjianzi"></span>敏感词
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/security/service_regular.html" data-title="服务规则管理">
+            <span class="iconfont icon-zhiliangbz"></span>服务规则管理
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/security/rule_instance.html" data-title="实例管理">
+            <span class="iconfont icon-shuaxin"></span>实例管理
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/security/param_record.html" data-title="拦截记录">
+            <span class="iconfont icon-fanhuima"></span>拦截记录
+          </div>
+        </div>
+        <div class="menu-item-1 has-collapse" data-click="collapse" data-target="#apps" data-parent="#menuWrapper">
+          <span class="iconfont icon-apps"></span>
+          <span class="menu-item-title">app管理</span>
+        </div>
+        <div id="apps" class="menus-space">
+          <div class="menu-item-2" data-click="loadtab" data-url="views/app/one_click_login.html" data-title="一键登录">
+            <span class="iconfont icon-One-Click"></span>一键登录
+          </div>
+        </div>
+        <div class="menu-item-1 has-collapse" data-click="collapse" data-target="#wechat" data-parent="#menuWrapper">
+          <span class="iconfont icon-weixin"></span>
+          <span class="menu-item-title">微信公众号</span>
+        </div>
+        <div id="wechat" class="menus-space">
+          <div class="menu-item-2" data-click="loadtab" data-url="views/wechat/customer.html" data-title="客户管理">
+            <span class="iconfont icon-guanliyuan"></span>客户管理
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/wechat/service.html" data-title="服务管理">
+            <span class="iconfont icon-iconset0358"></span>服务管理
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/wechat/comprehensive.html" data-title="实例管理">
+            <span class="iconfont icon-fangkuan2"></span>实例管理
+          </div>
+          <div class="menu-item-2" data-click="loadtab" data-url="views/wechat/wechatLog.html" data-title="调用日志">
+            <span class="iconfont icon-chakanrizhi"></span>调用日志
+          </div>
+        </div>
+    </div>
+
+    
+  </div>
+  <div class="main-container">
+    <div class="main-tabs no-select">
+      <div class="tab-item-space" id="tab-space"></div>
+      <div class="tabs-controller">
+        <i class="iconfont icon-zhongzhi" title="刷新" data-click="reloadTab"></i>
+        <i class="iconfont icon-delete" title="删除所有tab" data-click="dAllTab"></i>
+      </div>
+    </div>
+    <div class="main-pages" id="main-pages"></div>
+  </div>
+  <!--描述：最后加载js，增加页面相应速度-->
+  <script type='text/javascript' src='./static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+  <script src="./static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+  <script type='text/javascript' src='./static/js/common.js' charset='utf-8'></script>
+  <script type='text/javascript' src='./static/js/base.js' charset='utf-8'></script>
+  <script src="./static/js/index.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

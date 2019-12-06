@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>后台管理</title>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href=''>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <!--IOS设备上禁止将数字识别为可点击的tel link-->
+  <meta content="telephone=no" name="format-detection">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/web/public.css'>
+  <link rel="stylesheet" type="text/css" href="../../static/_public/bootstrap.table.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/_public/jsoneditor/jsoneditor.min.css" />
+  <!--[if lt IE 9]>
+    <script src="../../static/_public/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body class="iframe-body">
+  <div class="card-space">
+    <div class="card-title" id="queryDatabase">设置总量</div>
+    <div class="card-container clearfix">
+      <form>
+        <div class="search-item">
+          <label class="input-label">IdName：</label>
+          <input type="text" class="m-input" name="IdName" />
+        </div>
+        <div class="search-item">
+          <label class="input-label">IdNameInfo：</label>
+          <input type="text" class="m-input" name="IdNameInfo" />
+        </div>
+        <div class="search-item">
+          <label class="input-label">IdNamePhoto：</label>
+          <input type="text" class="m-input" name="IdNamePhoto" />
+        </div>
+        <div class="search-space">
+          <div class="button button-main ml" data-click="queryFun">设置</div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card-space">
+    <div class="card-title">查询结果
+      <div class="search-space">
+        <div class="button button-main" data-click="addFun">新增</div>
+        <div class="button button-main ml" data-click="customerFun">设置</div>
+      </div>
+    </div>
+    <div class="card-container">
+      <div class="chartArea active">
+        <div class="item active">
+          <div class='table-area'>
+            <table id="table1">
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-space">
+    <div class="card-title">
+      <form style="position: absolute;top: -5px;left: 10px;width: 100%;" id="form">
+        <div class="search-item">
+          <label class="input-label">选择时间：</label>
+          <div class="timepick-warp">
+            <input type="text" class="m-input" id="dayTime" readonly name="rangetime" />
+          </div>
+        </div>
+        <div class="search-item">
+          <label class="input-label">客户名称：</label>
+          <div class="select-dropdown m-input" data-do="select" data-search="true" data-multiple="true">
+            <div class="text-warp selected-value"></div>
+            <input type="hidden" name="customers" />
+            <ul class="dropdown-menu">
+            </ul>
+          </div>
+        </div>
+        <div class="search-item">
+          <label class="input-label">接口类型：</label>
+          <div class="select-dropdown m-input" data-do="select" data-search="true" data-multiple="true">
+            <div class="text-warp selected-value"></div>
+            <input type="hidden" name="services" value="IdName" />
+            <ul class="dropdown-menu">
+              <li class="dropdown-item  text-warp" data-value="IdName">IdName</li>
+              <li class="dropdown-item  text-warp" data-value="IdNamePhoto">IdNamePhoto</li>
+              <li class="dropdown-item  text-warp" data-value="IdNameInfo">IdNameInfo</li>
+            </ul>
+          </div>
+        </div>
+        <div class="search-space">
+          <div class="button button-main ml" data-click="getLimitServiceConditioFun">查询</div>
+        </div>
+      </form>
+    </div>
+    <div class="card-container" style="top:50px">
+      <div class="chartArea active">
+        <div class="item active">
+          <div class='table-area'>
+            <table id="table2">
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="popupAddHtml" style="display: none;">
+    <form>
+      <div class="form-item">
+        <label class="form-label">客户名称：</label>
+        <div class="select-dropdown m-input" data-do="select" data-search="true">
+          <div class="text-warp selected-value"></div>
+          <input type="hidden" name="loginName" />
+          <ul class="dropdown-menu">
+          </ul>
+        </div>
+      </div>
+      <div class="param-wrapper">
+      </div>
+      <div class="confirm-btns">
+        <div class="button" data-click="hidepopup">取消</div>
+        <div class="button button-main ml" data-click="determineFun">取消</div>
+      </div>
+    </form>
+  </div>
+  <script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/laydate.js' charset='utf-8'></script>
+  <script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap-table.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap-table-export.js' charset='utf-8'></script>
+  <script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+  <script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/base/utils.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/jsoneditor/jsoneditor.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/configure/restrict.js' charset='utf-8'></script>
+</body>
+
+</html>

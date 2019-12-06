@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>后台管理</title>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href=''>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <!--IOS设备上禁止将数字识别为可点击的tel link-->
+  <meta content="telephone=no" name="format-detection">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/web/public.css'>
+  <link rel="stylesheet" type="text/css" href="../../static/_public/bootstrap.table.min.css" />
+  <style>
+    .pramas {
+      max-height: 240px;
+      overflow: auto;
+    }
+    .pramas span {
+      display: block;
+      height: 40px;
+      line-height: 40px;
+      width: 100%;
+    }
+  </style>
+  <!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body class="iframe-body">
+  <div class="card-space">
+    <div class="card-title">查询结果</div>
+    <div class="card-container">
+      <div class="button-group" style="float:left;position: absolute;top: 10px;z-index: 97;">
+        <i class="iconfont icon-zengjia" data-value="insertRegIns" data-click="add"></i>
+      </div>
+      <div class="chartArea active">
+        <div class="item-box">
+          <div class="item active">
+            <div class='table-area' style="white-space: nowrap; overflow: hidden; overflow-x: scroll; -webkit-backface-visibility: hidden; -webkit-overflow-scrolling: touch;">
+              <table data-row-style="rowStyle" style="min-width:1000px;" id="table1"></table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="popupAddHtml" style="display: none;">
+    <form>
+      <div class="form-item form-must-icon">
+        <label class="form-label" data-value="规则名称">规则名称：</label>
+        <div class="select-dropdown m-input" data-do="select" data-search="true">
+          <div class="text-warp selected-value"></div>
+          <input type="hidden" name="regularId" />
+          <ul class="dropdown-menu regularId">
+          </ul>
+        </div>
+      </div>
+      <div class="form-item form-must-icon">
+        <label class="form-label" data-value="服务名称">服务名称：</label>
+        <div class="select-dropdown m-input" data-do="select" data-search="true">
+          <div class="text-warp selected-value"></div>
+          <input type="hidden" name="serviceId" />
+          <ul class="dropdown-menu serviceId">
+          </ul>
+        </div>
+      </div>
+      <div class="form-item form-must-icon pr0">
+        <label class="form-label" data-value="参数">参数：</label>
+        <div class="select-dropdown m-input" data-do="select" data-search="true" data-multiple="true">
+          <div class="text-warp selected-value"></div>
+          <input type="hidden" name="params" />
+          <ul class="dropdown-menu multiple">
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-item form-must-icon">
+        <label data-value="计数周期" class="form-label">计数周期：</label>
+        <input type="text" name="callPeriod" class="m-input form-input" placeholder="请输入计数周期（s）">
+      </div>
+      <div class="form-item form-must-icon">
+        <label data-value="锁定时长" class="form-label">锁定时长：</label>
+        <input type="text" name="lockTime" class="m-input form-input" placeholder="请输入锁定时长（s）">
+      </div>
+      <div class="form-item form-must-icon">
+        <label data-value="最大调用次数" class="form-label">最大调用次数：</label>
+        <input type="text" name="maxCount" class="m-input form-input" placeholder="最大调用次数">
+      </div>
+      <div class="form-item radio-group has-icon service-item">
+        <label class=" form-label">是否使用实例：</label>
+        <div class="radio-item"><input type="radio" class="iconfont" value=false checked="checked" name="use">否</div>
+        <div class="radio-item"><input type="radio" class="iconfont" value=true name="use">是</div>
+      </div>
+      <div class="form-item radio-group has-icon service-item">
+        <label class=" form-label">是否告警：</label>
+        <div class="radio-item"><input type="radio" class="iconfont" value=false checked="checked" name="alarm">否</div>
+        <div class="radio-item"><input type="radio" class="iconfont" value=true name="alarm">是</div>
+      </div>
+      <div class="form-item radio-group has-icon service-item">
+        <label class=" form-label">是否区分用户：</label>
+        <div class="radio-item"><input type="radio" class="iconfont" value=false checked="checked" name="useLoginName">否</div>
+        <div class="radio-item"><input type="radio" class="iconfont" value=true name="useLoginName">是</div>
+      </div>
+      <div class="form-item radio-group has-icon service-item">
+        <label class=" form-label">是否区分服务：</label>
+        <div class="radio-item"><input type="radio" class="iconfont" value=false checked="checked" name="useService">否</div>
+        <div class="radio-item"><input type="radio" class="iconfont" value=true name="useService">是</div>
+      </div>
+      <div class="confirm-btns">
+        <div class="button button-main" data-click="addFuns">保存</div>
+        <div class="button ml" data-click="hidepopup">取消</div>
+      </div>
+    </form>
+  </div>
+
+  <div id="popupAddHtmlLook" style="display: none;">
+    <form>
+      <div class="form-item form-must-icon pramas-box" style="padding-left: 65px !important;">
+        <label class="form-label">关联服务：</label>
+        <div class="search-item pramas" style="min-height: 160px;max-height: 240px;overflow: auto;">
+
+        </div>
+      </div>
+      <div class="confirm-btns">
+        <div class="button" data-click="hidepopup">取消</div>
+      </div>
+    </form>
+  </div>
+  <script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap-table.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap-table-export.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/tableExport.js' charset='utf-8'></script>
+  <script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+  <script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/base/utils.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/security/security_common.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/security/rule_instance.js' charset='utf-8'></script>
+</body>
+
+</html>

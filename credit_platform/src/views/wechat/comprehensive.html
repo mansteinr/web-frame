@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>后台管理</title>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href=''>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <!--IOS设备上禁止将数字识别为可点击的tel link-->
+  <meta content="telephone=no" name="format-detection">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/web/public.css'>
+  <link rel="stylesheet" type="text/css" href="../../static/_public/bootstrap.table.min.css" />
+  <!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body class="iframe-body">
+  <div class="card-space">
+    <div class="card-title" id="queryDatabase">查询条件</div>
+    <div class="card-container clearfix">
+      <form>
+        <div class="search-item">
+          <label class="input-label">授权码：</label>
+          <input type="text" class="m-input" name="authCode" placeholder="请输入授权码" />
+        </div>
+        <div class="search-item">
+          <label class="input-label">客户名称：</label>
+          <div class="select-dropdown m-input" data-do="select" data-search="true">
+            <div class="text-warp selected-value"></div>
+            <input type="hidden" name="customerId" />
+            <ul class="dropdown-menu">
+            </ul>
+          </div>
+        </div>
+        <div class="search-item">
+          <label class="input-label">服务名称：</label>
+          <div class="select-dropdown m-input" data-do="select" data-search="true">
+            <div class="text-warp selected-value"></div>
+            <input type="hidden" name="serviceId" />
+            <ul class="dropdown-menu">
+            </ul>
+          </div>
+        </div>
+        <div class="search-space">
+          <div class="button ml" data-click="reset">重置</div>
+          <div class="button button-main ml" data-click="queryFun">查询</div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card-space">
+    <div class="card-title">查询结果</div>
+    <div class="card-container">
+      <div class="button-group" style="float:left;position: absolute;top: 10px;z-index: 97;">
+        <i class="iconfont icon-zengjia" data-click="add"></i>
+      </div>
+      <div class="chartArea active">
+        <div class="item-box">
+          <div class="item active">
+            <div class='table-area spcail-table'
+              style="white-space: nowrap; overflow: hidden; overflow-x: scroll; -webkit-backface-visibility: hidden; -webkit-overflow-scrolling: touch;">
+              <table data-row-style="rowStyle" id="table1"></table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="popupAddHtmlAdd" style="display: none;">
+    <form>
+      <div class="form-item form-must-icon">
+        <label class="form-label">客户名称：</label>
+        <div class="select-dropdown m-input" data-do="select" data-search="true">
+          <div class="text-warp selected-value"></div>
+          <input type="hidden" name="customerId" />
+          <ul class="dropdown-menu">
+          </ul>
+        </div>
+      </div>
+      <div class="form-item form-must-icon">
+        <label class="form-label">服务名称：</label>
+        <div class="select-dropdown m-input" data-do="select" data-search="true">
+          <div class="text-warp selected-value"></div>
+          <input type="hidden" name="serviceId" />
+          <ul class="dropdown-menu">
+          </ul>
+        </div>
+      </div>
+      <div class="form-item has-icon">
+        <label data-value="授权次数" class="form-label">授权次数：</label>
+        <input type="number" name="authTotal" value="0" class="m-input form-input" placeholder="请输入授权次数">
+      </div>
+      <div class="form-item radio-group has-icon">
+        <label class=" form-label">是否需要计费：</label>
+        <div class="radio-item"><input type="radio" class="iconfont" value='0' checked="checked" name="needCharge">不计费
+        </div>
+        <div class="radio-item"><input type="radio" class="iconfont" value='1' name="needCharge">计费</div>
+      </div>
+      <div class="form-item radio-group has-icon">
+        <label class=" form-label">是否禁用：</label>
+        <div class="radio-item"><input type="radio" class="iconfont" value='0' checked="checked" name="forbidFlag">不禁用
+        </div>
+        <div class="radio-item"><input type="radio" class="iconfont" value='1' name="forbidFlag">禁用</div>
+      </div>
+      <div class="form-item has-icon">
+        <label data-value="备注" class="form-label">备注：</label>
+        <textarea name="remark" class="m-input form-input input-textarea" placeholder="备注"></textarea>
+      </div>
+      <div class="confirm-btns">
+        <div class="button button-main" data-click="addFuns">保存</div>
+        <div class="button ml" data-click="hidepopup">取消</div>
+      </div>
+    </form>
+  </div>
+  <div id="popupEditHtmlEdit" style="display: none;">
+    <form>
+      <div class="form-item has-icon">
+        <label data-value="实例Id" class="form-label">实例Id：</label>
+        <input type="text" name="customerServiceId" disabled="disabled" class="m-input form-input"
+          placeholder="请输入客户服务">
+      </div>
+      <div class="form-item radio-group has-icon">
+        <label class=" form-label">是否需要计费：</label>
+        <div class="radio-item"><input type="radio" class="iconfont" value='0' checked="checked" name="needCharge">不计费
+        </div>
+        <div class="radio-item"><input type="radio" class="iconfont" value='1' name="needCharge">计费</div>
+      </div>
+      <div class="form-item radio-group has-icon">
+        <label class=" form-label">是否禁用：</label>
+        <div class="radio-item"><input type="radio" class="iconfont" value='0' checked="checked" name="forbidFlag">不禁用
+        </div>
+        <div class="radio-item"><input type="radio" class="iconfont" value='1' name="forbidFlag">禁用</div>
+      </div>
+      <div class="form-item has-icon">
+        <label data-value="备注" class="form-label">备注：</label>
+        <textarea name="remark" class="m-input form-input input-textarea" placeholder="备注"></textarea>
+      </div>
+      <div class="confirm-btns">
+        <div class="button button-main" data-click="updateFuns">修改</div>
+        <div class="button ml" data-click="hidepopup">取消</div>
+      </div>
+    </form>
+  </div>
+  <div id="popupEditAuth" style="display: none;">
+    <form>
+      <div class="form-item">
+        <label data-value="授权次数" class="form-label">授权次数：</label>
+        <input type="text" name="authTotal" readonly="readonly" class="m-input form-input" placeholder="请输入授权次数">
+      </div>
+      <div class="form-item" style="border: 1px transparent #fff;padding-right: 0px">
+        <label data-value="授权次数" class="form-label">授权次数变量：</label>
+        <div style="display: flex;margin-top:4px;">
+          <div class="select-dropdown m-input" data-do="select" style="flex: 1;margin-right:5px;">
+            <div class="text-warp selected-value"></div>
+            <input type="hidden" name="authType" class="quick-search" value="add" />
+            <ul class="dropdown-menu">
+              <li class="dropdown-item text-warp" data-value="add" title="+">+</li>
+              <li class="dropdown-item text-warp" data-value="reduce" title="-">-</li>
+            </ul>
+          </div>
+          <input style="flex: 2;" type="number" name="authValue" class="m-input form-input" placeholder="请输入授权次数">
+        </div>
+      </div>
+      <div class="confirm-btns">
+        <div class="button button-main" data-click="updateAuth">修改</div>
+        <div class="button ml" data-click="hidepopup">取消</div>
+      </div>
+    </form>
+  </div>
+  <script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap-table.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap-table-export.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/tableExport.js' charset='utf-8'></script>
+  <script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+  <script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/base/utils.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/base/merge.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/wechat/wechatPublic.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/wechat/comprehensive.js' charset='utf-8'></script>
+</body>
+
+</html>

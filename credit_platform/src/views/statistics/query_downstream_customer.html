@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>后台管理</title>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href=''>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-store" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<!--IOS设备上禁止将数字识别为可点击的tel link-->
+	<meta content="telephone=no" name="format-detection">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+	<link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+	<link rel="stylesheet" type="text/css" href='../../static/css/web/public.css'>
+<link rel="stylesheet" type="text/css" href="../../static/_public/bootstrap.table.min.css" />
+	<!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body class="iframe-body">
+	<div class="card-space">
+		<div class="card-title" id="queryDatabase">查询条件</div>
+		<div class="card-container clearfix">
+			<form>
+				<div class="search-item">
+					<label class="input-label">选择时间：</label>
+					<div class="timepick-warp">
+						<input type="text" class="m-input" name="rangetime" id="dayTime" readonly />
+					</div>
+				</div>
+				<div class="search-item">
+					<label class="input-label">快速查询：</label>
+					<div class="select-dropdown m-input" data-do="select">
+						<div class="text-warp selected-value"></div>
+						<input type="hidden" class="quick-search" value="last-7" />
+						<ul class="dropdown-menu">
+							<li class="dropdown-item text-warp" data-value="last-7" title="最近七天">最近七天</li>
+							<li class="dropdown-item text-warp" data-value="last-30" title="最近一个月">最近一个月</li>
+							<li class="dropdown-item text-warp" data-value="last-90" title="最近三个月">最近三个月</li>
+							<li class="dropdown-item text-warp" data-value="last-all" title="全部">全部</li>
+						</ul>
+					</div>
+				</div>
+				<div class="search-item">
+					<label class="input-label">行业类型：</label>
+					<div class="select-dropdown m-input" data-do="select">
+						<div class="text-warp selected-value"></div>
+						<input type="hidden" name="businessType" value="0" />
+						<ul class="dropdown-menu">
+						</ul>
+					</div>
+				</div>
+				<div class="search-item">
+					<label class="input-label">客户名称：</label>
+					<div class="select-dropdown m-input" data-do="select" data-search="true">
+						<div class="text-warp selected-value"></div>
+						<input type="hidden" name="loginName" />
+						<ul class="dropdown-menu">
+						</ul>
+					</div>
+				</div>
+				<div class="search-space">
+					<div class="button ml" data-click="reset">重置</div>
+					<div class="button button-main ml" data-click="queryFun">查询</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">查询结果
+			<div class="button-group tabs">
+				<div class="button margin-r5 active">图表</div>
+				<div class="button">数据</div>
+			</div>
+		</div>
+		<div class="card-container">
+			<div class="chartArea active">
+				<div class="item-box">
+					<div class="item active">
+						<div class='chart-area'>
+							<div id="chart1" style="height:400px;">
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class='table-area'>
+							<table id="table1">
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">查询结果
+			<div class="button-group tabs">
+				<div class="button margin-r5 active">图表</div>
+				<div class="button">数据</div>
+			</div>
+		</div>
+		<div class="card-container">
+			<div class="chartArea active">
+				<div class="item-box">
+					<div class="item active">
+						<div class='chart-area'>
+							<div id="chart2" style="height:400px;">
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class='table-area'>
+							<table id="table2"></table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/_public/laydate.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/_public/bootstrap.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/_public/bootstrap-table.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/_public/bootstrap-table-export.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/_public/tableExport.js' charset='utf-8'></script>
+	<script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../static/_public/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/js/myChart.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/js/web/base/utils.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/js/web/statistics/query_downstream_customer.js' charset='utf-8'></script>
+</body>
+
+</html>

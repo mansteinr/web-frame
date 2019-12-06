@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>后台管理</title>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href=''>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <!--IOS设备上禁止将数字识别为可点击的tel link-->
+  <meta content="telephone=no" name="format-detection">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/web/public.css'>
+  <link rel="stylesheet" type="text/css" href="../../static/_public/bootstrap.table.min.css" />
+  <style>
+    .form-item {
+      width: 25%;
+    }
+    .secrets-wrapper {
+      border: 1px solid #eee;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .secrets-son {
+      display: flex;
+      padding-left: 35px;
+    }
+    .secrets-son .form-item {
+      width: 15%;
+      margin-right: 5px;
+    }
+    .query-item {
+      width: 100%;
+      position: relative;
+      height: 32px;
+      margin-top: 20px;
+    }
+    .query-item .button {
+      position: absolute;
+      left: 50%;
+      margin-left: -41px;
+    }
+    .icon-jian {
+      margin-right: 10px;
+    }
+    .icon-zengjia {
+      margin-left: 10px;
+    }
+    .secrets-son .iconfont {
+      line-height: 40px;
+      color: #00C2DE;
+      transition: color .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    textarea {
+      display: inline-block;
+      width: calc(100% + 10px) !important;
+      padding: 5px;
+    }
+    textarea:focus {
+      outline: none;
+      border-color: #00c2de;
+    }
+    [type="file"] {
+      opacity: 0;
+    }
+    .imgFile {
+      position: relative;
+    }
+    .imgFile span {
+      position: relative;
+      width: 100%;
+
+      height: 100%;
+    }
+    img {
+      position: absolute;
+      top: 0px;
+      display: none;
+      max-width: 100%;
+      max-height: 100%;
+      vertical-align: middle;
+    }
+    #imgFile { 
+      position: absolute;
+      height: 50px;
+      width: calc(100% - 100px);
+      top: 0px;
+      z-index: 103;
+      left: 100px
+    }
+    .icon-iconfontshangchuan{
+      color: #84899f;
+      font-size: 12px;
+    }
+    .icon-iconfontshangchuan:before {
+      content: "\e63e";
+      padding: 10px;
+    }
+    .select-dropdown .dropdown-menu {
+      z-index: 104;
+    }
+  </style>
+<!--[if lt IE 9]>
+  <script src="../../static/_public/html5.js"></script>
+<![endif]-->
+</head>
+
+<body class="iframe-body">
+  <div class="card-space">
+    <div class="card-title">新增</div>
+    <div class="card-container">
+      <div class="chartArea">
+        <form>
+          <div class="form-item app-item form-must-icon">
+            <label class="form-label">appId：</label>
+            <input type="text" name="appId" class="m-input form-input"  required placeholder="请输入appId"/>
+          </div>
+          <div class="form-item app-item form-must-icon">
+            <label class="form-label">appKey：</label>
+            <input type="text" name="appKey" class="m-input form-input" required placeholder="请输入appKey"/>
+          </div>          
+          <div class="form-item app-item form-must-icon app-add">
+            <label class="form-label">客户名称：</label>
+            <div class="select-dropdown m-input" data-do="select" data-search="true">
+              <div class="text-warp selected-value"></div>
+              <input type="hidden"  name="loginName" class="app-add"/>
+              <ul class="dropdown-menu">
+              </ul>
+            </div>
+          </div>
+          <div class="form-item app-item form-must-icon app-editor">
+            <label class="form-label">客户名称：</label>
+            <input type="text" name="loginName" class="m-input form-input app-editor" disabled required placeholder="请输入客户名称"/>
+          </div>
+
+          <div class="form-item app-item form-must-icon">
+            <label class="form-label">应用名称：</label>
+            <input type="text" name="appName" class="m-input form-input"  required placeholder="请输入应用名称"/>
+          </div>
+          <div class="form-item app-item form-must-icon">
+            <label class="form-label">所属行业：</label>
+            <div class="select-dropdown m-input" data-do="select" data-search="true">
+              <div class="text-warp selected-value"></div>
+              <input type="hidden" name="appBusiness" value="电子商务" />
+              <ul class="dropdown-menu">
+                <li class="dropdown-item text-warp" data-value="电子商务" title="电子商务">电子商务</li>
+                <li class="dropdown-item text-warp" data-value="金融" title="金融">金融</li>
+                <li class="dropdown-item text-warp" data-value="在线社区" title="在线社区">在线社区</li>
+                <li class="dropdown-item text-warp" data-value="房地产" title="房地产">房地产</li>
+                <li class="dropdown-item text-warp" data-value="医疗" title="医疗">医疗</li>
+                <li class="dropdown-item text-warp" data-value="交通汽车" title="交通汽车">交通汽车</li>
+                <li class="dropdown-item text-warp" data-value="旅游" title="旅游">旅游</li>
+                <li class="dropdown-item text-warp" data-value="游戏" title="游戏">游戏</li>
+                <li class="dropdown-item text-warp" data-value="教育" title="教育">教育</li>
+                <li class="dropdown-item text-warp" data-value="IT硬件" title="IT硬件">IT硬件</li>
+                <li class="dropdown-item text-warp" data-value="IT软件服务" title="IT软件服务">IT软件服务</li>
+                <li class="dropdown-item text-warp" data-value="文化出版" title="文化出版">文化出版</li>
+                <li class="dropdown-item text-warp" data-value="生活信息" title="生活信息">生活信息</li>
+                <li class="dropdown-item text-warp" data-value="其他" title="其他">其他</li>
+              </ul>
+            </div>
+          </div>
+          <div class="form-item app-item form-must-icon">
+            <label class="form-label">应用类型：</label>
+            <div class="select-dropdown m-input" data-do="select" data-search="true">
+              <div class="text-warp selected-value"></div>
+              <input type="hidden" name="appType" value="电商购物" />
+              <ul class="dropdown-menu">
+                <li class="dropdown-item text-warp" data-value="电商购物" title="电商购物">电商购物</li>
+                <li class="dropdown-item text-warp" data-value="通讯社交" title="通讯社交">通讯社交</li>
+                <li class="dropdown-item text-warp" data-value="生活休闲" title="生活休闲">生活休闲</li>
+                <li class="dropdown-item text-warp" data-value="旅游导航" title="旅游导航">旅游导航</li>
+                <li class="dropdown-item text-warp" data-value="健康医疗" title="健康医疗">健康医疗</li>
+                <li class="dropdown-item text-warp" data-value="教育学习" title="教育学习">教育学习</li>
+                <li class="dropdown-item text-warp" data-value="金融理财" title="金融理财">金融理财</li>
+                <li class="dropdown-item text-warp" data-value="办公商务" title="办公商务">办公商务</li>
+                <li class="dropdown-item text-warp" data-value="影视收听" title="影视收听">影视收听</li>
+                <li class="dropdown-item text-warp" data-value="阅读新闻" title="阅读新闻">阅读新闻</li>
+                <li class="dropdown-item text-warp" data-value="系统工具" title="系统工具">系统工具</li>
+                <li class="dropdown-item text-warp" data-value="其他" title="其他">其他</li>
+              </ul>
+            </div>
+          </div>
+          <div class="form-item app-item form-must-icon imgFile">
+            <label class="form-label">icon：</label>
+            <span class="iconfont icon-iconfontshangchuan" style="color: #84899f;">点击上传icon</span>
+            <input type="file"  id="imgFile" onchange="previewFile()">
+            <img src="" alt="点击上传icon" id='imgUpload'> 
+          </div>
+          <div class="form-item app-item radio-group has-icon service-item">
+            <label class=" form-label">平台类型：</label>
+            <div class="radio-item"><input type="radio" class="iconfont" value='Andriod' checked="checked" name="platform">Andriod</div>
+            <div class="radio-item"><input type="radio" class="iconfont" value='IOS'  name="platform">IOS</div>
+          </div>
+          <div class="form-item app-item form-must-icon andriod">
+            <label class="form-label">应用包名：</label>
+            <input type="text" name="packageName" class="m-input andriod form-input"  required placeholder="请输入应用包名"/>
+          </div>
+          <div class="form-item app-item form-must-icon andriod">
+            <label class="form-label">包签名：</label>
+            <input type="text" name="packageSign" class="m-input andriod form-input"  required placeholder="请输入包签名"/>
+          </div>
+          <div class="form-item app-item has-icon andriod">
+            <label class="form-label">安卓链接：</label>
+            <input type="text" name="androidLink" class="m-input form-input"  placeholder="请输入安卓链接"/>
+          </div>
+          <div class="form-item app-item has-icon  IOS">
+            <label class="form-label">IOS链接：</label>
+            <input type="text" name="iosLink" class="m-input form-input"  placeholder="请输入IOS链接"/>
+          </div>
+          <div class="form-item app-item form-must-icon IOS">
+            <label class="form-label">bundleId：</label>
+            <input type="text" name="bundleId" class="m-input IOS form-input"  required placeholder="请输入bundleId"/>
+          </div>
+          <div class="form-item app-item form-must-icon">
+            <label class="form-label">应用简介：</label>
+            <textarea name="introduce" required  placeholder="请输入应用简介"></textarea>
+          </div>
+          <div class="secrets-wrapper">
+            <div>密钥：</div>
+          </div>
+          <div class="query-item">
+            <div class="button button-main" data-click="addFuns">确定</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="popupLook" style="display: none;">
+    <table id="table2">
+    </table>
+  </div>
+  <script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+  <script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+  <script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/base/utils.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/app/add.js' charset='utf-8'></script>
+  <script>
+   function previewFile () {
+    var preview = document.querySelector('img');
+     var fileDom = document.querySelector('input[type=file]')
+     var file = fileDom.files[0]
+     // 当前浏览器支持FileReader
+     if(window.FileReader) {
+        var reader  = new FileReader()
+        reader.readAsDataURL(file)
+        reader.addEventListener("load", function () {
+          preview.style.display = 'block'
+          $('.icon-iconfontshangchuan').hide()
+          preview.src = reader.result
+        }, false)
+     } else {
+        alert('Not supported by your browser!')
+     }
+    }
+  </script>
+</body>
+
+</html>

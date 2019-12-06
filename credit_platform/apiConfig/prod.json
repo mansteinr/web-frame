@@ -1,0 +1,41 @@
+{
+  "replaces": [{
+    "credit_prod/static/js": [{
+      "rex": ":protocol",
+      "newCtx": "http://"
+    }, {
+      "rex": ":lable",
+      "newCtx": "minivision_prod"
+    }, {
+      "rex": ":upapi",
+      "newCtx": "121.196.226.17:7200/"
+    }, {
+      "rex": ":rbacweb",
+      "newCtx": "https://boss.miniclouds.cn/"
+    }, {
+      "rex": ":rbacapi",
+      "newCtx": "https://userapi.miniclouds.cn/"
+    }, {
+      "rex": ":qualityanalyzeapi",
+      "newCtx": "121.196.226.17:7200/"
+    }, {
+      "rex": ":vehicleapi",
+      "newCtx": "121.196.226.17:7200/"
+    }, {
+      "rex": ":imageapi",
+      "newCtx": "http://101.37.108.12:10777/file/show"
+    }, {
+      "rex": ":newImagApi",
+      "newCtx": "http://101.37.108.12:10778/file/show"
+    }, {
+      "rex": ":newSafaCenterapi",
+      "newCtx": "121.196.226.17:7200/"
+    }, {
+      "rex": ":lightSignInapi",
+      "newCtx": "121.196.226.17:7200/"
+    }, {
+      "rex": ":weChatapi",
+      "newCtx": "face.minivision.com.cn:9099/"
+    }]
+  }]
+}

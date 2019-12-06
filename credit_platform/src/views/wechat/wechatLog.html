@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>后台管理</title>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href=''>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-store" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<!--IOS设备上禁止将数字识别为可点击的tel link-->
+	<meta content="telephone=no" name="format-detection">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+	<link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+	<link rel="stylesheet" type="text/css" href='../../static/css/web/public.css'>
+	<link rel="stylesheet" type="text/css" href="../../static/_public/jsoneditor/jsoneditor.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../static/_public/bootstrap.table.min.css" />
+	<!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+	<![endif]-->
+	<style>
+		.card-space .search-item {
+			width: calc(40.5% - 125px) !important;
+		}
+	</style>
+</head>
+
+<body class="iframe-body">
+	<div class="card-space">
+		<div class="card-title" id="queryDatabase">查询条件</div>
+		<div class="card-container clearfix">
+			<form>
+				<div class="search-item" style='padding-left:55px'>
+					<label class="input-label">trackId：</label>
+					<input type="text" class="m-input" name="trackId" placeholder="请输入trackId" />
+				</div>
+				<div class="search-space">
+					<div class="button ml" data-click="reset">重置</div>
+					<div class="button button-main ml" data-click="queryFun">查询</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="card-space">
+		<div class="card-title">查询结果
+		</div>
+		<div class="card-container">
+			<div class="chartArea active">
+				<div class="item active">
+					<div id="guidResult"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/_public/bootstrap.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/_public/bootstrap-table.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/_public/bootstrap-table-export.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/_public/tableExport.js' charset='utf-8'></script>
+	<script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+	<script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/js/web/base/utils.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/_public/jsoneditor/jsoneditor.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../static/js/web/wechat/wechatLog.js' charset='utf-8'></script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>后台管理</title>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href=''>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <!--IOS设备上禁止将数字识别为可点击的tel link-->
+  <meta content="telephone=no" name="format-detection">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/web/public.css'>
+  <link rel="stylesheet" type="text/css" href="../../static/_public/jsoneditor/jsoneditor.min.css"/>
+  <style>
+    .special-search{
+      width: calc(45% - 175px) !important;
+      padding: 0 20px 0 170px !important;
+      margin: 5px 2% 5px 0 !important;
+    }
+    .card-space .search-item .special-input-label{
+      width: 170px !important;
+    }
+    .relative{
+      width: calc(100% - 170px)!important;
+      height: auto !important;
+    }
+  </style>
+  <!--[if lt IE 9]>
+    <script src="../../static/_public/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body class="iframe-body">
+  <div class="card-space">
+    <div class="card-title" id="queryDatabase">客户调用量差值-阈值配置</div>
+    <div class="card-container clearfix">
+      <form>
+        <div class="search-item special-search">
+          <label class="input-label special-input-label">前10分钟平均递增阈值：</label>
+          <input type="text" class="m-input plain-input numbers" name="avgIncNum" placeholder="请输入前10分钟平均递增阈值" />
+        </div>
+        <div class="search-item special-search">
+          <label class="input-label special-input-label">前一分钟调用量最大阈值：</label>
+          <input type="text" class="m-input plain-input numbers" name="maxCallNum" placeholder="请输入前一分钟调用量最大阈值" />
+        </div>
+        <div class="search-item special-search">
+          <label class="input-label special-input-label"> 前一分钟调用量最小阈值：</label>
+          <input type="text" class="m-input plain-input numbers" name="minCallNum" placeholder="请 前一分钟调用量最小阈值" />
+        </div>
+        <div class="search-item special-search">
+          <label class="input-label special-input-label">前一分钟的调用差值阈值：</label>
+          <input type="text" class="m-input plain-input numbers" name="maxDiffNum" placeholder="请输入前一分钟的调用差值阈值" />
+        </div>
+        <div class="search-item">
+          <label class="input-label">客户名称：</label>
+          <div class="select-dropdown m-input" data-do="select" data-search="true">
+            <div class="text-warp selected-value"></div>
+            <input type="hidden" name="loginName" />
+            <ul class="dropdown-menu">
+            </ul>
+          </div>
+        </div>
+        <div class="search-item">
+          <label class="input-label">接口类型：</label>
+          <div class="select-dropdown m-input" data-multiple="true" data-do="select" data-search="true">
+            <div class="text-warp selected-value"></div>
+            <input type="hidden" name="serviceName" />
+            <ul class="dropdown-menu service-params">
+            </ul>
+          </div>
+        </div>
+        <div class="search-item"  style="margin-right: 0;padding-left:35px;width: calc(28.5% - 35px);">
+          <div class="button" data-click="clearFun">清除</div>
+          <div class="button button-main ml" data-click="confirmFun">确定关系</div>
+        </div>
+        <div class="search-item relative">
+          <label class="input-label">对应关系：</label>
+          <div id="guidResult"></div>
+        </div>
+        <div class="search-space">
+          <div class="button ml" data-click="reset">重置</div>
+          <div class="button button-main ml" data-click="queryFun">修改</div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+  <script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+  <script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/base/utils.js' charset='utf-8'></script>
+  <script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+  <script type='text/javascript' src='../../static/_public/jsoneditor/jsoneditor.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/configure/callDiffNumThreshold.js' charset='utf-8'></script>
+</body>
+
+</html>

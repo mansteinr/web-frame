@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>后台管理</title>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href=''>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <!--IOS设备上禁止将数字识别为可点击的tel link-->
+  <meta content="telephone=no" name="format-detection">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/web/public.css'>
+  <link rel="stylesheet" type="text/css" href="../../static/_public/bootstrap.table.min.css" />
+  <style>
+    .params-form{
+      padding-left: 65px !important;
+    }
+    .params-form .select-dropdown{
+      width: 90% !important;
+    }
+    .pramas-item-box{
+      max-height: 300px;
+    }
+    .pramas-item-box .button-group{
+      position: relative;
+      width: 100%;
+    }
+    .search-item.pramas{
+      max-height: 300px;
+      overflow: auto;
+    }
+    .pramas-item-box .iconfont{
+      position: absolute;
+      right: -16px;
+      top: 6px;
+      text-align: center;
+      line-height: 26px;
+    }
+    .pramas-item-box .iconfont{
+      transform: rotate(0);
+      -webkit-transform: rotate(0);
+      transition: transform .6s;
+      -webkit-transition: -webkit-transform .6s;
+    }
+
+    .pramas-item-box .iconfont:hover {
+      transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+    }
+  </style>
+  <!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body class="iframe-body">
+  <div class="card-space">
+    <div class="card-title">接口参数维护
+
+    </div>
+    <div class="card-container">
+      <div class="button-group" style="float:left;position: absolute;top: 10px;z-index: 97;">
+        <i class="iconfont icon-zengjia" data-click="add"></i>
+        <!-- <i class="iconfont icon-shanchu1" data-click="delete"></i> -->
+      </div>
+      <div class="item active">
+        <div class='chart-area'>
+          <table id="table1"></table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="popupAddHtmlDel" style="display: none;">
+    <form>
+      <div class="form-item form-must-icon">
+        <label class="form-label">服务名称：</label>
+        <span class="form-input serviceName"></span>
+        <!-- <input type="text" name="empName" class="m-input form-input" required="" placeholder="请输入姓名"> -->
+      </div>
+      <div class="form-item form-must-icon">
+        <label class="form-label">参数：</label>
+        <div class="search-item pramas checkbox-group">
+
+        </div>
+      </div>
+      <div class="confirm-btns">
+        <div class="button button-main" data-click="editorFun">删除</div>
+        <div class="button ml" data-click="hidepopup">取消</div>
+      </div>
+    </form>
+  </div>
+  <div id="popupAddHtmlLook" style="display: none;">
+    <form>
+      <div class="form-item form-must-icon">
+        <label class="form-label">服务名称：</label>
+        <span class="form-input serviceName"></span>
+        <!-- <input type="text" name="empName" class="m-input form-input" required="" placeholder="请输入姓名"> -->
+      </div>
+      <div class="form-item form-must-icon pramas-box">
+        <label class="form-label">参数：</label>
+        <div class="search-item pramas">
+
+        </div>
+      </div>
+      <div class="confirm-btns">
+        <div class="button" data-click="hidepopup">取消</div>
+      </div>
+    </form>
+  </div>
+  <div id="popupAddHtmlAdd" style="display: none;">
+    <form>
+      <div class="form-item params-form form-must-icon">
+        <label class="form-label">接口类型：</label>
+        <div class="select-dropdown m-input" data-do="select" data-search="true">
+          <div class="text-warp selected-value"></div>
+          <input type="hidden" name="serviceName" />
+          <ul class="dropdown-menu serviceNameUl">
+          </ul>
+        </div>
+      </div>
+      <div class="form-item params-form form-must-icon">
+        <label class="form-label">参数：</label>
+        <div class="select-dropdown m-input" data-do="select" data-search="true">
+          <div class="text-warp selected-value"></div>
+          <input type="hidden" name="params" />
+          <ul class="dropdown-menu add-params-item">
+          </ul>
+        </div>
+        <div class="search-item pramas-item-box clearfix">
+        </div>
+      </div>
+      <div class="confirm-btns">
+        <div class="button button-main" data-click="addFuns">保存</div>
+        <div class="button ml" data-click="hidepopup">取消</div>
+      </div>
+    </form>
+  </div>
+  <script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap-table.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap-table-export.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/tableExport.js' charset='utf-8'></script>
+  <script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+  <script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/base/utils.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/configure/interface_parameter_maintenance.js' charset='utf-8'></script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+.table thead th:before {
+  content: '';
+  display: block;
+  width: 0px;
+  height: 0px;
+}
+
+#chart2 {
+  border-bottom: 1px dashed #d0d3d5;
+}
+
+.mv-table-title {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0 !important;
+  line-height: 45px;
+  text-align: center;
+  color: #36383c;
+  font-family: '微软雅黑';
+  font-size: 16px;
+}
+.marginTB0{
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+.supplier-search-item {
+    position: absolute;
+    display: none;
+    width: calc(35% - 100px);
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px 0 105px;
+    top: 0px;
+    left: 345px;
+    padding-left: 70px !important;
+}
+.supplier-search-item .input-label {
+   position: absolute;
+   display: block;
+   top: 0;
+   left: 0;
+   width: 100px;
+}
+.search-space {
+  padding-left: 20px !important;
+}
+.detail-time{
+  display: inline-block;
+  width: 60%;
+}
+.detail-time .m-input{
+  width: 60%;
+}
+.radio-search-item{
+  display: inline-block;
+  width: 49%;
+}
+.radio-search-item  .m-input{
+  width: 60%;
+}

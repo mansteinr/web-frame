@@ -1,0 +1,14 @@
+.DS_Store
+node_modules/
+dist/
+npm-debug.log
+credit_dev
+credit_dev_rev
+credit_test
+credit_test_rev
+credit_prod
+credit_prod_rev
+credit_localprod
+credit_localprod_rev
+credit_innerDev
+credit_innerDev_rev

@@ -1,0 +1,41 @@
+{
+  "replaces": [{
+    "credit_dev/static/js": [{
+      "rex": ":protocol",
+      "newCtx": "http://"
+    }, {
+      "rex": ":lable",
+      "newCtx": "minivision_dev"
+    }, {
+      "rex": ":upapi",
+      "newCtx": "10.30.20.77:7202/"
+    }, {
+      "rex": ":rbacweb",
+      "newCtx": "http://192.168.109.173:9000/"
+    }, {
+      "rex": ":rbacapi",
+      "newCtx": "http://192.168.109.173:7000/"
+    }, {
+      "rex": ":qualityanalyzeapi",
+      "newCtx": "10.30.20.77:7301/"
+    }, {
+      "rex": ":imageapi",
+      "newCtx": "http://120.55.241.117:10777/file/show"
+    }, {
+      "rex": ":newImagApi",
+      "newCtx": "http://120.55.241.117:10778/file/show"
+    }, {
+      "rex": ":vehicleapi",
+      "newCtx": "10.30.20.77:9089/"
+    }, {
+      "rex": ":newSafaCenterapi",
+      "newCtx": "10.30.20.77:9191/"
+    }, {
+      "rex": ":lightSignInapi",
+      "newCtx": "10.30.20.77:7202/"
+    }, {
+      "rex": ":weChatapi",
+      "newCtx": "10.30.20.77:9099/"
+    }]
+  }]
+}

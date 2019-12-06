@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>后台管理</title>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href=''>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <!--IOS设备上禁止将数字识别为可点击的tel link-->
+  <meta content="telephone=no" name="format-detection">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/web/public.css'>
+  <link rel="stylesheet" type="text/css" href="../../static/_public/bootstrap.table.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/_public/jsoneditor/jsoneditor.min.css" />
+  <style>
+    .time-div {
+      display: flex;
+    }
+
+    .el-date-editor--time input {
+      border-left: none;
+    }
+
+    .time-div:hover input {
+      border-color: #00c2de;
+    }
+
+    .td {
+      white-space: nowrap;
+    }
+  </style>
+  <!--[if lt IE 9]>
+            <script src="../../static/_public/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body class="iframe-body">
+  <div class="card-space" id="app">
+    <div class="card-title" id="queryDatabase">查询条件</div>
+    <div class="card-container clearfix">
+      <form>
+        <div class="search-item">
+          <label class="input-label">查询条件：</label>
+          <div class="select-dropdown m-input condition" data-do="select">
+            <div class="text-warp selected-value"></div>
+            <input type="hidden" class="quick-search" value="orderId" />
+            <ul class="dropdown-menu">
+              <li class="dropdown-item text-warp" data-value="orderId" title="订单号">订单号</li>
+              <li class="dropdown-item text-warp" data-value="vin" title="vin码">vin码</li>
+            </ul>
+          </div>
+        </div>
+        <div class="search-item vin">
+          <label class="input-label">vin：</label>
+          <input type="text" name="vin" class="m-input form-input" placeholder="请输入vin码">
+        </div>
+        <div class="search-item vin">
+          <label class="input-label">客户名称：</label>
+          <div class="select-dropdown m-input" data-do="select" data-search="true">
+            <div class="text-warp selected-value"></div>
+            <input type="hidden" name="loginName" />
+            <ul class="dropdown-menu">
+            </ul>
+          </div>
+        </div>
+        <div class="search-item vin">
+          <label class="input-label">开始时间：</label>
+          <div class="timepick-warp">
+            <input type="text" readonly class="m-input" name="startTime" id="startTime" />
+          </div>
+        </div>
+        <div class="search-item vin">
+          <label class="input-label">结束时间：</label>
+          <div class="timepick-warp">
+            <input type="text" readonly class="m-input" name="endTime" id="endTime" />
+          </div>
+        </div>
+        <div class="search-item orderId">
+          <label class="input-label">订单号：</label>
+          <input type="text" name="orderId" class="m-input form-input" placeholder="请输入订单号">
+        </div>
+        <div class="search-space">
+          <div class="button ml" data-click="reset">重置</div>
+          <div class="button button-main ml" data-click="queryFun">查询</div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card-space">
+    <div class="card-title">查询结果</div>
+    <div class="card-container">
+      <div class="chartArea active">
+        <div class="item-box">
+          <div class="item active">
+            <div class='table-area'
+              style="white-space: nowrap; overflow: hidden; overflow-x: scroll; -webkit-backface-visibility: hidden; -webkit-overflow-scrolling: touch;">
+              <table id="table1" style="min-width:1500px;">
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="queryGuid" style="display: none;">
+    <div class="result-box">
+      <div class="query">
+        <div class="addon">
+          <i class="iconfont icon-xiayou-copy"></i>
+        </div>
+        <div class="input">
+          <input type="text" id="guid" placeholder="请输入guid">
+        </div>
+        <div class="a">
+          <span data-click="queryLogDetail">查询</span>
+        </div>
+      </div>
+      <div class="result">
+        <div id="jsonView"></div>
+      </div>
+    </div>
+  </div>
+  <script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/laydate.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap-table.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap-table-export.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/tableExport.js' charset='utf-8'></script>
+  <script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+  <script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/base/utils.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/jsoneditor/jsoneditor.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/vehicle/query_order.js' charset='utf-8'></script>
+</body>
+
+</html>

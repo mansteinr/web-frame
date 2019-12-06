@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>后台管理</title>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href=''>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <!--IOS设备上禁止将数字识别为可点击的tel link-->
+  <meta content="telephone=no" name="format-detection">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
+  <link rel="stylesheet" type="text/css" href='../../static/css/web/public.css'>
+  <link rel="stylesheet" type="text/css" href="../../static/_public/bootstrap.table.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../static/_public/jsoneditor/jsoneditor.min.css" />
+  <link rel="stylesheet" href="../../static/css/web/query-logs.css">
+  <!--[if lt IE 9]>
+    <script src="../../static/_public/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body class="iframe-body">
+  <div class="card-space" id="app">
+    <div class="card-title" id="queryDatabase">查询条件</div>
+    <form>
+      <div class="card-container clearfix">
+        <div class="show-query clearfix">
+          <div class="search-item">
+            <label class="input-label">查询日期：</label>
+            <div class="timepick-warp">
+              <input type="text" class="m-input" name="date" id="day" readonly />
+            </div>
+          </div>
+          <div class="search-item">
+            <label class="input-label">开始时间：</label>
+            <div class="timepick-warp">
+              <input id="start" class="m-input" name="start1" />
+            </div>
+          </div>
+          <div class="search-item">
+            <label class="input-label">结束时间：</label>
+            <div class="timepick-warp">
+              <input id="end" class="m-input" name="end1" />
+            </div>
+          </div>
+          <div class="search-item">
+            <label class="input-label">行业类型：</label>
+            <div class="select-dropdown m-input" data-do="select">
+              <div class="text-warp selected-value"></div>
+              <input type="hidden" name="businessType" value="0" />
+              <ul class="dropdown-menu">
+              </ul>
+            </div>
+          </div>
+          <div class="search-item">
+            <label class="input-label">客户名称：</label>
+            <div class="select-dropdown m-input" data-do="select" data-search="true">
+              <div class="text-warp selected-value"></div>
+              <input type="hidden" name="loginName" />
+              <ul class="dropdown-menu">
+              </ul>
+            </div>
+          </div>
+          <div class="search-item">
+            <label class="input-label">接口类型：</label>
+            <div class="select-dropdown m-input" data-do="select" data-search="true">
+              <div class="text-warp selected-value"></div>
+              <input type="hidden" name="serviceName" />
+              <ul class="dropdown-menu service-params">
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="qurey-btn">
+          <div class="button" data-click='hideshow'>更多</div>
+        </div>
+        <div class="query-hide clearfix" style="display: none;">
+        </div>
+        <div class="search-space">
+          <div class="button ml" @click="resetTime" data-click="reset">重置</div>
+          <div class="button button-main ml" data-click="queryFun">查询</div>
+        </div>
+    </form>
+  </div>
+  </div>
+  <div class="card-space">
+    <div class="card-title">查询结果
+    </div>
+    <div class="card-container">
+      <div class="chartArea active">
+        <div class="item active">
+          <div class='table-area' style="min-height: 400px;">
+            <div class="searchResultBox">
+              <input type="text" class="query-result m-input" placeholder="按RESULT搜索">
+            </div>
+            <table id="table1">
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="queryGuid" style="display: none;">
+    <div class="result-box">
+      <div class="query">
+        <div class="addon">
+          <i class="iconfont icon-xiayou-copy"></i>
+        </div>
+        <div class="input">
+          <input type="text" id="guid" placeholder="请输入guid">
+        </div>
+        <div class="a">
+          <span data-click="queryLogDetail">查询</span>
+        </div>
+      </div>
+      <div class="result">
+        <div id="jsonView"></div>
+      </div>
+    </div>
+  </div>
+  <script type='text/javascript' src='../../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/laydate.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap-table.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/bootstrap-table-export.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/tableExport.js' charset='utf-8'></script>
+  <script src="../../static/_public/pinyin.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../static/js/apiConfig.js" type="text/javascript" charset="utf-8"></script>
+  <script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/base/utils.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/_public/jsoneditor/jsoneditor.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/devops/query_logs.js' charset='utf-8'></script>
+</body>
+
+</html>

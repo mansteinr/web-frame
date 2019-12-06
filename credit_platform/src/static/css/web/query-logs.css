@@ -1,0 +1,15 @@
+.searchResultBox {
+	display: none;
+	position: absolute;
+	width: 150px;
+	z-index: 48;
+	right: 265px;
+	top: 6.5px;
+}
+.searchResultBox.active {
+	display: block;
+}
+.searchResultBox input {
+	padding-left: 10px;
+	width: 125px !important;
+}
