@@ -21,7 +21,14 @@
   <link rel="stylesheet" type="text/css" href="../../static/_public/jsoneditor/jsoneditor.min.css" />
   <!--[if lt IE 9]>
     <script src="../../static/_public/html5.js"></script>
-	<![endif]-->
+  <![endif]-->
+  <style>
+    #table1 td.td-param {
+       display: block;
+       max-height: 240px;
+       overflow: auto;
+     }
+   </style>
 </head>
 
 <body class="iframe-body">
@@ -69,7 +76,7 @@
         <div class="qurey-btn">
           <div class="button" data-click='hideshow'>更多</div>
         </div>
-      <div class="query-hide clearfix" style="display: none;">
+        <div class="query-hide clearfix" style="display: none;">
         </div>
         <div class="search-space">
           <div class="button ml" data-click="reset">重置</div>

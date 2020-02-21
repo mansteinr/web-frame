@@ -64,8 +64,25 @@ $(function () {
       })
     },
     hasServices() {
-      module.hasServices().then(res => {
-        $('[name="serviceName"]').closest('.select-dropdown').find('.dropdown-menu').html(res)
+      module.hasServices(true).then(res => {
+        let html = ''
+
+        if (module.empty(res)) {
+          res.forEach( v => {
+            serviceNameArr.forEach(v1 => {
+              if(v1 === v.serviceName) {
+                html += '<li class="dropdown-item text-warp" data-serviceid = "' + v.serviceId + '" title = "' + v.serviceNameZh + ' (' + v.serviceName + ')' + '" data-value = "' + v.serviceName + '" data-servicenamezh="' + v.serviceNameZh + '">' + v.serviceNameZh + '</li>'
+              }
+            })
+          })
+          if(!html) {
+            html = '<li class="dropdown-item  text-warp" data-value = "暂无数据">暂无数据</li>'
+          }
+        } else {
+          html = '<li class="dropdown-item  text-warp" data-value = "暂无数据">暂无数据</li>'
+        }
+        
+        $('[name="serviceName"]').closest('.select-dropdown').find('.dropdown-menu').html(html)
         $(document).trigger(EVENT.INIT.DOTREE, $('[name="serviceName"]').closest('.search-item'))
       })
     },
@@ -74,6 +91,7 @@ $(function () {
         range: '至'
       })
       FN.getCustomers()
+      FN.scroll()
     }
   };
  
@@ -116,3 +134,4 @@ $(function () {
   }
   FN.initFun()
 })
+

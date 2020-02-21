@@ -134,15 +134,16 @@
       let options = {
         title: 'this is confirm title', 			/* ! confirm标题 */
         info: '这里是提示信息！',					/* ! confirm提示内容 */
-        status: 0,									/* ! confirm状态 */
+        status: 3,									/* ! confirm状态 */
         bclose: false,								/* ! 点击背景是否关闭，默认false */
         okbtn: '确定',								/* ! 确定按钮文字 */
         cancel: '取消',								/* ! 取消按钮文字 */
         callback: $.noop,							/* ! confirm点击确认回掉 */
-      }, statusArray = ['iconfont icon-jinggao', 'iconfont icon-queren', 'iconfont icon-queren1'];
+        cancelCb: $.noop,							/* ! confirm点击确认回掉 */
+      }, statusArray = ['iconfont icon-jinggao', 'iconfont icon-queren', 'iconfont icon-queren1', 'iconfont icon-jinggao'];
       $.extend(options, op);
-      let content = '<div class="confirm-info"><i class="' + statusArray[options.status] + '"></i>' + options.info +
-        '</div><div class="confirm-btns"><div class="button button-main">' + options.okbtn + '</div><div class="button ml" data-click="hidepopup">' + options.cancel + '</div></div>';
+      let content = `<div class="confirm-info"><i class="${statusArray[options.status]}"></i> <div>${options.info}
+        </div></div><div class="confirm-btns"><div class="button button-main">${options.okbtn}</div><div class="button ml" data-click="${options.status === 3 ? 'cancelpopue':'hidepopup'}">${options.cancel}</div></div>`;
       module.popup.show({
         title: options.title,
         content: content,
@@ -151,6 +152,10 @@
           this.find('.button.button-main').off('click').on('click', function () {
             module.popup.hide();
             options.callback.call();
+          });
+          this.find('[data-click="cancelpopue"]').off('click').on('click', function () {
+            module.popup.hide();
+            options.cancelCb.call();
           });
         }
       });

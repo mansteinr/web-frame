@@ -1,8 +1,9 @@
 $(function () {
-  /** 服务不能全选 后台循环太多 扛不住 */
+  /** 服务不能全选 后台循环太多 扛不住 
+   *  明细不支持跨天查询
+  */
   let FN = {
     upStreamCount: function (options) {
-      delete options.dimension
       delete options.loginName
       module.$http(API.logsPlat.upStreamCount, options, function () {
         let data = this.resData.dateUsages
@@ -34,11 +35,6 @@ $(function () {
       })
     },
     downFile(options) {
-      delete options.dimension
-      if (!options.upStream) {
-        module.alert('请输入上游通道名称')
-        return
-      }
       if (options.start !== options.end) {
         module.alert('不支持跨天查询')
         return
@@ -101,6 +97,11 @@ $(function () {
         return
       }
       $(".tabs .button:first-child").trigger("click")
+      if (!options.upStream) {
+        module.alert('请输入上游通道名称')
+        return
+      }
+      delete options.dimension
       if ($('[name="dimension"]:checked').val() === '0') {
         FN.downFile(options)
       } else {

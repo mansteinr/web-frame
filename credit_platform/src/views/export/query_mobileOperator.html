@@ -28,11 +28,31 @@
 			width: 0px;
 			height: 0px;
 		}
+		.icon-tip{
+			white-space: nowrap;
+			position: absolute;
+			left: 20px;
+    	top: 25px;
+			color: red;
+		}
+		@keyframes move {
+			0% {
+				left: 20px;
+			}
+			100% {
+				left: 95%;
+			}
+		}
+		.tip-banner {
+			animation: move 50.0s infinite linear;
+		}
 	</style>
 </head>
 
 <body class="iframe-body">
+
 	<div class="card-space">
+		<div class="iconfont icon-tip tip-banner">   只支持查询IdNamePhoneCheck、MobileOnlineInterval、MobileStatus三个接口</div>
 		<div class="card-title" id="queryDatabase">查询条件</div>
 		<div class="card-container clearfix">
 			<form enctype="multipart/form-data">

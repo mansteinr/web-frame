@@ -10,8 +10,6 @@
     safaCenterapi: ':newSafaCenterapi',
     qualityanalyzeapi: ':qualityanalyzeapi',
     vehicleapi: ':vehicleapi',
-    imageapi: ':imageapi',
-    newImagApi: ':newImagApi',
     lightSignInapi: ':lightSignInapi',
     weChatapi: ':weChatapi',
     /*非安全中心*/
@@ -46,15 +44,14 @@
   /*定义所有api*/
   apiConfig.apis = {
     lable: apiConfig.lable,
-    imageapi: apiConfig.imageapi, // 预览图片
-    newImagApi: apiConfig.newImagApi, // 预览图片
-    loaclMtk: 'e5a544d0-3129-4c73-950c-1872f51146fa', // 本地mtk 本地开发时候使用
+    localMtk: '725cba68-20a7-412c-badc-9fd719dd42e5', // 本地mtk 本地开发时候使用
     base: {
       login: apiConfig.rbacweb + 'login.html',
       loginout: apiConfig.rbacapi + 'logout/ajaxLogout',
       querymenus: apiConfig.rbacapi + 'sys/resource/querySubSystemMenuList',
       projectchoose: apiConfig.rbacweb + 'choose.html',
       loginchannel: apiConfig.rbacweb + 'loginChannel.html',
+      imageApi: apiConfig.upCtrapi('file/show')
     },
     /*服务平台公共接口*/
     commomApi: {
@@ -154,6 +151,9 @@
       setUpServerLimitCount: apiConfig.upCtrapi('operator/limitOfCXZX/setUpServerLimitCount'),
       getCustomerLimitCount: apiConfig.upCtrapi('operator/limitOfCXZX/getCustomerLimitCount'),
       setCustomerLimitCount: apiConfig.upCtrapi('operator/limitOfCXZX/setCustomerLimitCount'),
+      delCustomerLimitCount: apiConfig.upCtrapi('operator/limitOfCXZX/delCustomerLimitCount'),
+      setUpServerLimitFlag: apiConfig.upCtrapi('operator/limitOfCXZX/setUpServerLimitFlag'),
+      getUpServerLimitFlag: apiConfig.upCtrapi('operator/limitOfCXZX/getUpServerLimitFlag'),
       getLimitServiceCondition: apiConfig.upCtrapi('operator/limitOfCXZX/getLimitServiceCondition')
     },
     /*安全中心*/

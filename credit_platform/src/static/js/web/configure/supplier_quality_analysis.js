@@ -505,6 +505,7 @@ $(function () {
       let opt = {
         supServiceId: $('[name="supplierServiceName"]').closest('.select-dropdown').find('ul li.active').data('supserviceid')
       }
+      if(!opt.supServiceId) return
       module.$http(API.commomApi.queryPipeList, opt, function () {
         optionsAll = '';
         let data = this.resData.simplePipeInfos, lis = '';
@@ -522,7 +523,7 @@ $(function () {
         $(document).trigger(EVENT.INIT.DOTREE, $('[name="className"]').closest('.search-item'))
         $('input[type=radio]:checked').val() === '1' ? $('.radio-search-item').show() : $('.radio-search-item').hide(); /* 显示查询间隔时长 */
         $('[data-click="queryFun"]').trigger('click')
-        module.selected('className]')
+        module.selected('className')
       })
     },
     initFun() {
@@ -534,6 +535,7 @@ $(function () {
         elem: '#time',
         type: 'datetime',
         range: '至',
+        max: 1,
         value: initValue,
         done: (value) => {
           FN.detailSupplierData(value)

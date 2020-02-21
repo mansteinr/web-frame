@@ -59,6 +59,7 @@ $(function () {
         }
       })
       $('#menuWrapper').html(html)
+      $('[data-url="views/query_index.html"]').trigger('click')
     }
   }
 
@@ -68,7 +69,6 @@ $(function () {
     // 将本地mtk清除
     localStorage.clear()
   }
-  $('[data-url="views/query_index.html"]').trigger('click')
  
   /* 退出 */
   module.clickTree.loginOut = function () {

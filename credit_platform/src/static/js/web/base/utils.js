@@ -32,7 +32,7 @@ $(function () {
     renderTable: function (options, otherOpt = {}) {
       let bootstrapTableOpt = {
         pagination: true, // 显示分页
-        pageList: "[5, 10, 25, 50, All]",
+        pageList: "[5, 10, 25, 50]",
         pageNumber: options.pageNumber || 1, // 初始化显示的页码
         pageSize: 10, // 每一页加载数据条数
         classes: 'table table-hover table-no-bordered', // 删除表格的边框样式
@@ -93,27 +93,31 @@ $(function () {
       })
     },
 
-    /*获取客户名称*/
-    getCustomers: function () {
+    /*获取客户名称 onlyData只要不为空就行*/
+    getCustomers: function (onlyData) {
       let businessTypeId = $('[name="businessType"]').val()
       return new Promise(resolve => {
         module.$http(API.commomApi.customers, {}, function () {
           let data = this.resData, lis = ''
+          if(onlyData) {
+            resolve(data)
+            return 
+          }
           if (data && data.length > 0) {
             data.forEach(function (v, k) {
               if (!businessTypeId) {
-                lis += '<li class="dropdown-item  text-warp" data-customerid = "' + v.customerId + '" title = "' + v.customerName + '" data-value = "' + v.loginName + '" data-businessid="' + v.businessId + '" data-loginname="' + v.loginName + '"  data-businessname="' + v.businessName + '">' + v.customerName + '</li>'
+                lis += `<li class="dropdown-item  text-warp" data-customerid = "${ v.customerId }" title = "${ v.customerName } (${ v.loginName })" data-value = "${ v.loginName }" data-businessid="${ v.businessId }" data-loginname="${ v.loginName }"  data-businessname="${ v.businessName }">${ v.customerName }</li>`
               } else {
                 if (v.businessId == businessTypeId) {
-                  lis += '<li class="dropdown-item  text-warp" data-customerid = "' + v.customerId + '" title = "' + v.customerName + '" data-value = "' + v.loginName + '" data-businessid="' + v.businessId + '" data-loginname="' + v.loginName + '"  data-businessname="' + v.businessName + '">' + v.customerName + '</li>'
+                  lis += `<li class="dropdown-item  text-warp" data-customerid = "${ v.customerId }" title = "${ v.customerName }" data-value = "${ v.loginName }" data-businessid="${ v.businessId }" data-loginname="${ v.loginName }"  data-businessname="${ v.businessName }">${ v.customerName }</li>`
                 }
               }
             })
           } else {
-            lis = '<li class="dropdown-item  text-warp" data-value = "暂无数据">暂无数据</li>'
+            lis = `<li class="dropdown-item  text-warp" data-value = "暂无数据">暂无数据</li>`
           }
           if (!lis) {
-            lis = '<li class="dropdown-item  text-warp" data-value = "暂无数据">暂无数据</li>'
+            lis = `<li class="dropdown-item  text-warp" data-value = "暂无数据">暂无数据</li>`
           }
           resolve(lis)
         })
@@ -122,8 +126,8 @@ $(function () {
       })
     },
 
-    /*客户拥有的服务*/
-    hasServices: function () {
+    /*客户拥有的服务 onlyData只要不为空就行*/
+    hasServices: function (onlyData) {
       let options = {
         customerId: $('[name="loginName"]').closest('.select-dropdown').find('ul li.active').data('customerid')
       };
@@ -137,6 +141,10 @@ $(function () {
         }
         module.$http(API.commomApi.hasServices, options, function () {
           let data = this.resData, lis = ''
+          if(onlyData) {
+            resolve(data)
+            return
+          }
           if (module.empty(data)) {
             data.forEach(function (v, k) {
               lis += '<li class="dropdown-item text-warp" data-serviceid = "' + v.serviceId + '" title = "' + v.serviceNameZh + ' (' + v.serviceName + ')' + '" data-value = "' + v.serviceName + '" data-servicenamezh="' + v.serviceNameZh + '">' + v.serviceNameZh + '</li>'
@@ -179,12 +187,12 @@ $(function () {
               lis += '<li class="dropdown-item  text-warp" data-combine="' + v.combine + '"  data-id="' + v.serviceId + '" title="' + v.serviceNameZh + '"  data-value = "' + v.serviceName + '" >' + v.serviceNameZh + '</li>';
             });
           } else {
-            lis = '<li class="dropdown-item  text-warp" data-value = "暂无数据">暂无数据</li>'
+            lis = `<li class="dropdown-item  text-warp" data-value = "暂无数据">暂无数据</li>`
           }
           resolve(lis)
         })
       }).catch(err => {
-        module.alert('获取所有服务接口异常' + err.message)
+        module.alert(`获取所有服务接口异常${err.message}`)
       })
     },
 
@@ -262,7 +270,8 @@ $(function () {
 
     /*keyup事件校验*/
     keyup: function (options = {}) {
-      $(`.${options.selector || 'numbers'}`).keyup(function () {
+      let selector = options.selector || $('.numbers')
+      selector.keyup(function () {
         $(this).val($(this).val().replace(options.reg || /[^0-9]/g, options.flag || ''))
       }).bind("paste", function () { //CTR+V事件处理                  
         $(this).val($(this).val().replace(options.reg || /[^0-9]/g, options.flag || ''))
@@ -379,10 +388,8 @@ $(function () {
     viewImage: function () {
       $(document).on('click', '.jsoneditor-value', function () {
         let text = $(this).text()
-        if (text.indexOf('/data4') > -1) {
-          window.open(API.newImagApi + text)
-        } else if (text.indexOf('/data') > -1) {
-          window.open(API.imageapi + text)
+        if (text.indexOf('/data') > -1) {
+          window.open(API.base.imageApi + text)
         } else if (/^(http|https):\/\//.test(text)) {
           window.open(text)
         }
@@ -395,10 +402,10 @@ $(function () {
       let dataOptions = {
         elem: '#dayTime', //指定元素
         theme: '#00c2de',
-        max: 'today',
         min: '2017-03-15',
+        max: 'today',
         isInitValue: true,
-        type: 'date',
+        type: 'date'
       }, today = +new Date(),
         tiemOptions = {
           elem: '#time',
@@ -443,7 +450,6 @@ $(function () {
           timeOp.value = timeStart + ' 至 ' + timeEnd
           laydate.render(Object.assign(tiemOptions, timeOp))
         }
-
       }
     },
 

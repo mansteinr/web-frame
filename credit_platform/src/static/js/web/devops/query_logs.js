@@ -20,36 +20,12 @@ $(function () {
   }, {
     field: 'param',
     title: '请求参数',
+    class: 'td-param',
     formatter: function (value, row, index) {
       let html = ''
       for (let key in value) {
-        let label = key
-        switch (key) {
-          case 'accountNo':
-            label = '银行卡号'
-            break;
-          case 'idCard':
-            label = '身份证号'
-            break;
-          case 'mobile':
-            label = '手机号码'
-            break;
-          case 'name':
-            label = '姓名'
-            break;
-          case 'plateNumber':
-            label = '车牌号'
-            break;
-          case 'plateType':
-            label = '号牌种类'
-            break;
-          default:
-            label = key
-            break;
-        }
-        // 只展示下面几个参数 其他不需要展示
-        if (key == 'accountNo' || key == 'idCard' || key == 'mobile' || key == 'name' || key == 'plateNumber' || key == 'plateType') {
-          html += '<span class="param-item" title="' + label + ': ' + value[key] + '">' + label + ': ' + value[key] + '</span>'
+        if (key !== 'guid' && key !== 'image' && key !== 'shaIdCard' && key !== 'shaName' && key !== 'shaMobile') { // 不需要展示guid
+          html += '<span class="param-item" title="' + key + ': ' + value[key] + '">' + key + ': ' + value[key] + '</span>'
         }
       }
       return html
@@ -174,15 +150,15 @@ $(function () {
   // 查询函数
   module.clickTree.queryFun = function () {
     $(".searchResultBox").hide();
-    let form = $(this).closest('form'),
+    let form = $(this).closest('form').find('.show-query'),
       myFlag = false;
     if (module.checkForm(form)) {
-      let param = form.serializeArray(),
+      let param = form.find('input'),
         options = {},
         params = {}
       $(param).each(function (k, v) {
         // 防止出现空参数
-        if (v.value) {
+        if (v.value && v.name) {
           options[v.name] = v.value.trim()
         }
       })
@@ -191,19 +167,20 @@ $(function () {
           // 耗时时间不能放在params里面 否则查询不到数据
           if (v.name !== 'lowerCostTime' && v.name !== 'upperCostTime') {
             params[v.name] = v.value.trim()
+          } else {
+            options[v.name] = v.value.trim()
           }
         }
       })
       options.params = params
       if (options.upperCostTime && options.lowerCostTime) {
         if (options.lowerCostTime / 1 > options.upperCostTime / 1) {
-          module.alert("输入时间有误");
+          module.alert("输入耗时有误");
           myFlag = true;
         }
       };
       options.start = options.date + " " + options.start1
       options.end = options.date + " " + options.end1
-      debugger
       if (options.start1 && options.end1) {
         let NumberStart = Date.parse(options.start),
           Numberend = Date.parse(options.end)
@@ -215,6 +192,7 @@ $(function () {
       delete options.time
       delete options.start1
       delete options.end1
+      delete options.date
       if (options.mobile) {
         if (!module.checkTel(options.mobile)) {
           $('[name="mobile"]').addClass('input-error')
@@ -226,11 +204,6 @@ $(function () {
         // 将身份证中x转为X options.idCard.toUpperCase()也可 
         if (options.idCard.indexOf('x') > -1) {
           options.idCard = options.idCard.replace(/x/g, 'X')
-        }
-        if(!/^[\d]{15}$|^[\d]{18}$/.test(options.idCard)) {
-          $('[name="idCard"]').addClass('input-error')
-          module.alert("输入的身份证号码不正确")
-          myFlag = true
         }
       }
       if (myFlag) {

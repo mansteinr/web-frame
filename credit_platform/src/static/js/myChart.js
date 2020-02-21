@@ -70,7 +70,6 @@
       }
  
       lineData.forEach((v, k)=> {
-        console.log(chart.color[chart.color[k] ? k : k%10].replace(',1)', ',0.25)'))
         series.push({
           name: v.name,
           type: 'line',

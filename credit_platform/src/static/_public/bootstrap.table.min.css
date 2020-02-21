@@ -27,7 +27,7 @@
 
 .bootstrap-table .table.table-no-bordered>tbody>tr>td,
 .bootstrap-table .table.table-no-bordered>thead>tr>th {
-    border-right: 2px solid transparent
+    border-right: none;
 }
 
 .fixed-table-container {
@@ -69,7 +69,7 @@
     height: 0;
     padding: 0;
     margin: 0;
-    border-left: 1px solid #ddd
+    border-left: none;
 }
 
 .fixed-table-container thead th:focus {
@@ -117,7 +117,7 @@
 }
 
 .fixed-table-container tbody td {
-    border-left: 1px solid #ddd
+    border-left: none;
 }
 
 .fixed-table-container tbody tr:first-child td {

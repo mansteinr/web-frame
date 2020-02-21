@@ -34,35 +34,13 @@ $(function () {
     }
   }, {
     field: 'param',
+    class: 'td-param',
     title: '参数',
     formatter: function (value, row, index) {
       let html = '';
       for (let key in value) {
-        let label = key
-        switch (key) {
-          case 'accountNo':
-            label = '银行卡号'
-            break;
-          case 'idCard':
-            label = '身份证号'
-            break;
-          case 'mobile':
-            label = '手机号码'
-            break;
-          case 'name':
-            label = '姓名'
-            break;
-          case 'plateNumber':
-            label = '车牌号'
-            break;
-          case 'plateType':
-            label = '号牌种类'
-            break;
-          default:
-            break;
-        }
-        if (key == 'accountNo' || key == 'idCard' || key == 'mobile' || key == 'name' || key == 'plateNumber' || key == 'plateType') {
-          html += '<span class="param-item" title="' + label + ': ' + value[key] + '">' + label + ': ' + value[key] + '</span>'
+        if (key !== 'guid' && key !== 'image' && key !== 'shaIdCard' && key !== 'shaName' && key !== 'shaMobile') { // 不需要展示guid
+          html += '<span class="param-item" title="' + key + ': ' + value[key] + '">' + key + ': ' + value[key] + '</span>'
         }
       }
       return html
@@ -118,7 +96,7 @@ $(function () {
         }, {
           url: API.safePlat.paramRecord,
           ajaxOptions: {
-            headers: { "mtk": module.localData.getData('usermtk') || API.loaclMtk },
+            headers: { "mtk": module.localData.getData('usermtk') || API.localMtk },
           },
           method: 'post',
           responseHandler: function (res) {
@@ -138,6 +116,7 @@ $(function () {
         })
       },
       getParams(op) {
+        if(!op.id) return
         let divs = `<div class="search-item radio-group">
           <label  style="white-space: nowrap;overflow: hidden;" class="input-label">是否密文：</label>
           <div class="radio-item"><input type="radio" class="iconfont" value=false checked="checked" name="enParam">否</div>
@@ -178,11 +157,11 @@ $(function () {
           })
         } else {
           // 非组合服务
-          let liActive = $('[name="serviceName1"]').closest('.search-item').find('li.active'),
+          let liActive = $('[name="serviceName"]').closest('.search-item').find('li.active'),
             op = {}
           op.serviceName = liActive.data('value') ? liActive.data('value').trim() : ''
           op.serviceNameCh = liActive.text()
-          op.serviceId = liActive.data('serviceid')
+          op.serviceId = liActive.data('id')
           if (!op.serviceName) {
             return
           }

@@ -558,6 +558,7 @@ $(function () {
           elem: '#time',
           type: 'datetime',
           range: '至',
+          max: 1,
           value: initValue,
           done: (value) => {
             FN.detailData(value)

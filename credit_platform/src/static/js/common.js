@@ -110,10 +110,10 @@
               ajaxOptions = {
                 url: url,
                 data: {},
-                headers: { "mtk": module.localData.getData('usermtk') || API.loaclMtk },
+                headers: { "mtk": module.localData.getData('usermtk') || API.localMtk },
                 crossDomain: true,
                 beforeSend: function() { //开始loading
-                  if (JSON.stringify(params).indexOf('暂无数据') >= 0) {
+                  if (params && JSON.stringify(params).indexOf('暂无数据') >= 0) {
                     module.alert('请检测参数')
                     return
                   }

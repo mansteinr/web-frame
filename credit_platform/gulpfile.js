@@ -10,7 +10,6 @@ let gulp = require('gulp'),
     htmlmin = require('gulp-htmlmin')
 
 // var reqOptimize = require('gulp-requirejs-optimize'); // requireJs文件合并所需模块
-// ====================================================================
 /**
  * 替换文件内容(多个文件)
  * 
@@ -101,7 +100,7 @@ function fileDisplay(filePath, cb) {
   });
 }
 
-// 服务平台 ======================
+// 服务平台 
 function creditPlatformWebTask() {
 
   // 清空
@@ -121,7 +120,7 @@ function creditPlatformWebTask() {
     let args = process.argv[4].split(','),
         output = args[0],
         delayTime = args[2] ? parseInt(args[2]) : 2000;
-    //=================== css
+    // css
     // 记录css版本号 并copy
     (function () {
       gulp.src(['src/static/css/**'])
@@ -132,7 +131,7 @@ function creditPlatformWebTask() {
         .pipe(gulp.dest(output + '_rev/css'));
     }());
 
-    //=================== image
+    // image
     (function () {
       gulp.src(['src/static/images/**'])
         .pipe(rev())
@@ -141,28 +140,36 @@ function creditPlatformWebTask() {
         .pipe(gulp.dest(output + '_rev/images'));
     }());
 
-    //=================== fonts
+    // fonts
     (function () {
       // fonts copy
       gulp.src(['src/static/fonts/**/*'])
         .pipe(gulp.dest(output + '/static/fonts'));
     }());
 
-    //=================== js
+    // js
     (function () {
       // copy js 生成对应的版本号 js 直接在html引入的
       gulp.src(['src/static/_public/**/*'])
         .pipe(gulp.dest(output + '/static/_public'));
-
-      gulp.src(['src/static/js/**'])
+      if(output === 'credit_localprod' || output === 'credit_test') {
+        gulp.src(['src/static/js/**'])
+        .pipe(rev())
+        .pipe(gulp.dest(output + '/static/js'))
+        .pipe(rev.manifest())
+        .pipe(gulp.dest(output + '_rev/js'));
+      } else {
+        gulp.src(['src/static/js/**'])
         .pipe(rev())
         .pipe(uglify())
         .pipe(gulp.dest(output + '/static/js'))
         .pipe(rev.manifest())
         .pipe(gulp.dest(output + '_rev/js'));
+      }
+   
     }());
 
-    //=================== html
+    // html
     (function () {
       // 压缩copy html
       gulp.src(['src/**/*.html'])
@@ -177,7 +184,6 @@ function creditPlatformWebTask() {
           minifyCSS: true
         }))
         .pipe(gulp.dest(output));
-
     }());
 
     setTimeout(function () {

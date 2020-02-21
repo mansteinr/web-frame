@@ -13,6 +13,9 @@
   <!--IOS设备上禁止将数字识别为可点击的tel link-->
   <meta content="telephone=no" name="format-detection">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta   http-equiv= "Pragma"   content= "no-cache" /> 
+  <meta   http-equiv= "Cache-Control"   content= "no-cache" /> 
+  <meta   http-equiv= "Expires"   content= "0" /> 
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <link rel="stylesheet" type="text/css" href='../../static/css/font.css'>
   <link rel="stylesheet" type="text/css" href='../../static/css/base.css'>
@@ -22,24 +25,43 @@
   <!--[if lt IE 9]>
     <script src="../../static/_public/html5.js"></script>
   <![endif]-->
+  <style>
+    .icon-tip:before {
+      padding-right: 10px;
+    }
+    #form .search-item{
+      padding-left: 85px;
+    }
+    #form .search-item > div{
+      width: 110% !important;
+    }
+  </style>
 </head>
 
 <body class="iframe-body">
   <div class="card-space">
-    <div class="card-title" id="queryDatabase">设置总量</div>
+    <div class="card-title" id="queryDatabase">设置总量
+    </div>
     <div class="card-container clearfix">
-      <form>
+      <form id="overDataForm">
         <div class="search-item">
-          <label class="input-label">IdName：</label>
-          <input type="text" class="m-input" name="IdName" />
+          <label class="input-label">服务名称：</label>
+          <div class="select-dropdown m-input condition" data-do="select">
+            <div class="text-warp selected-value"></div>
+            <input type="hidden" value="" name="serviceName"/>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item text-warp" data-value="IdName" title="IdName">IdName</li>
+              <li class="dropdown-item text-warp" data-value="IdNamePhoto" title="IdNamePhoto">IdNamePhoto</li>
+            </ul>
+          </div>
         </div>
         <div class="search-item">
-          <label class="input-label">IdNameInfo：</label>
-          <input type="text" class="m-input" name="IdNameInfo" />
+          <input type="text" readonly class="m-input numbers" name="IdNamePhoto" />
         </div>
         <div class="search-item">
-          <label class="input-label">IdNamePhoto：</label>
-          <input type="text" class="m-input" name="IdNamePhoto" />
+          <!-- 0是禁止 -->
+          <label class="input-label">是否开启：</label>
+          <input class="switch switch-anim" data-click="checkBoxChange"  name="setUpServerLimitFlag" value="1" type="checkbox" checked>
         </div>
         <div class="search-space">
           <div class="button button-main ml" data-click="queryFun">设置</div>
@@ -51,7 +73,6 @@
     <div class="card-title">查询结果
       <div class="search-space">
         <div class="button button-main" data-click="addFun">新增</div>
-        <div class="button button-main ml" data-click="customerFun">设置</div>
       </div>
     </div>
     <div class="card-container">
@@ -85,13 +106,13 @@
         </div>
         <div class="search-item">
           <label class="input-label">接口类型：</label>
-          <div class="select-dropdown m-input" data-do="select" data-search="true" data-multiple="true">
+          <div class="select-dropdown m-input" data-do="select" data-search="true">
             <div class="text-warp selected-value"></div>
-            <input type="hidden" name="services" value="IdName" />
+            <input type="hidden" name="service" value="IdName" />
             <ul class="dropdown-menu">
               <li class="dropdown-item  text-warp" data-value="IdName">IdName</li>
               <li class="dropdown-item  text-warp" data-value="IdNamePhoto">IdNamePhoto</li>
-              <li class="dropdown-item  text-warp" data-value="IdNameInfo">IdNameInfo</li>
+              <!-- <li class="dropdown-item  text-warp" data-value="IdNameInfo">IdNameInfo</li> -->
             </ul>
           </div>
         </div>
@@ -122,11 +143,60 @@
           </ul>
         </div>
       </div>
-      <div class="param-wrapper">
+      <div class="param-wrapper" style="max-height: 380px;overflow: auto;">
       </div>
       <div class="confirm-btns">
         <div class="button" data-click="hidepopup">取消</div>
-        <div class="button button-main ml" data-click="determineFun">取消</div>
+        <div class="button button-main ml" data-click="determineFun">确定</div>
+      </div>
+    </form>
+  </div>
+  <div id="popupEditorHtml" style="display: none;">
+    <form>
+      <!-- <div class="form-item">
+        <label class="form-label">IdName：</label>
+        <input type="text" class="m-input" name="IdName" />
+      </div>
+      <div class="form-item">
+        <label class="form-label">IdNameInfo：</label>
+        <input type="text" class="m-input" name="IdNameInfo"/>
+      </div> -->
+      <div class="form-item">
+        <label class="form-label">IdNamePhoto：</label>
+        <input type="text" class="m-input numbers" maxlength="8" name="IdNamePhoto"/>
+      </div>
+      <div class="confirm-btns">
+        <div class="button" data-click="hidepopup">取消</div>
+        <div class="button button-main ml" data-click="determineEditorFun">确定</div>
+      </div>
+    </form>
+  </div>
+  <div id="popupDeleterHtml" style="display: none;">
+    <form>
+      <div class="form-item">
+        <label class="form-label">IdNamePhoto：</label>
+        <input type="text" class="m-input numbers" name="IdNamePhoto"/>
+        <i style="border:none;position: absolute;line-height: 40px; right: -20px;top: 0px;" title="删除" class="iconfont icon-delete" data-click="deleteParams"></i>
+      </div>
+      <div class="confirm-btns">
+        <div class="button" data-click="hidepopup">取消</div>
+        <div class="button button-main ml" data-click="determineEditorFun">确定</div>
+      </div>
+    </form>
+  </div>
+
+  <div id="totalPopueHtml" style="display: none;">  
+    <form>
+      <div class="form-item">
+        <label class="form-label">IdNamePhoto：</label>
+        <input type="text" class="m-input numbers" maxlength="8" name="IdNamePhoto"/>
+     </div>
+      <!-- <div class="detail-item"></div>
+        <table id="table3">
+      </table> -->
+      <div class="confirm-btns">
+        <div class="button" data-click="hidepopup">取消</div>
+        <div class="button button-main ml" data-click="totalPopueHtmlFun">确定</div>
       </div>
     </form>
   </div>
@@ -140,6 +210,7 @@
   <script type='text/javascript' src='../../static/js/common.js' charset='utf-8'></script>
   <script type='text/javascript' src='../../static/js/view-default.js' charset='utf-8'></script>
   <script type='text/javascript' src='../../static/js/web/base/utils.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../../static/js/web/base/merge.js' charset='utf-8'></script>
   <script type='text/javascript' src='../../static/_public/jsoneditor/jsoneditor.min.js' charset='utf-8'></script>
   <script type='text/javascript' src='../../static/js/web/configure/restrict.js' charset='utf-8'></script>
 </body>

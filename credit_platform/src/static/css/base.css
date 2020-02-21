@@ -1308,7 +1308,7 @@ table th:not('td.jsoneditor-tree') {
 .popup .popup-container .confirm-info {
   text-align: center;
   height: 100px;
-  line-height: 100px;
+  overflow: auto;
 }
 
 .popup .popup-container .confirm-info .iconfont {
@@ -1517,4 +1517,54 @@ input[type="number"] {
 
 .noColor {
   color: #f56c6c
+}
+
+.switch {
+  width: 57px;
+  height: 24px;
+  position: relative;
+  border: 1px solid #dfdfdf;
+  background-color: #fdfdfd;
+  box-shadow: #ccf3f8 0 0 0 0 inset;
+  border-radius: 20px;
+  background-clip: content-box;
+  display: inline-block;
+  -webkit-appearance: none;
+  user-select: none;
+  outline: none;
+  margin-top: 8px;
+  cursor: pointer;
+}
+.switch:before {
+  content: '';
+  width: 23px;
+  height: 23px;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.switch:checked {
+  border-color: #00c2de;
+  box-shadow: #00c2de 0 0 0 16px inset;
+  background-color:#00c2de;
+}
+.switch:checked:before {
+  left: 33px;
+}
+.switch.switch-anim {
+  transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s;
+}
+.switch.switch-anim:before {
+  transition: left 0.3s;
+}
+.switch.switch-anim:checked {
+  box-shadow: #00c2de 0 0 0 16px inset;
+  background-color: #00c2de;
+  transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s;
+}
+.switch.switch-anim:checked:before {
+  transition: left 0.3s;
 }
