@@ -13,7 +13,7 @@
     "lint-fix": "eslint --fix .js,.vue src"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "echarts": "^4.1.0",
     "moment": "^2.22.1",
     "vue": "^2.5.2",
